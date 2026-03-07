@@ -60,7 +60,7 @@ const Header = () => {
 
       {/* 5. Request Quote Button (Clickable to Quote Page) */}
       <div className="flex-shrink-0">
-        <Link href="/request-quote">
+        <Link href="/request">
           <button className="bg-[#860000] text-white px-7 py-2.5 rounded-full font-semibold tracking-wide hover:bg-[#680000] transition-colors duration-300">
             REQUEST QUOTE
           </button>
