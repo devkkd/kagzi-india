@@ -8,16 +8,18 @@ const products = [
     size: "A5",
     gsm: 75,
     categoryId: 1,
+    subCategoryId: 101, // Leather Diary
     image: "",
   },
   {
     id: 102,
-    title: "Leather Bound Journal",
+    title: "Executive Desk Diary",
     price: 450,
     unit: "Piece",
     size: "A5",
     gsm: 100,
     categoryId: 1,
+    subCategoryId: 102, // Executive Diary
     image: "",
   },
   {
@@ -28,6 +30,7 @@ const products = [
     size: "A6",
     gsm: 80,
     categoryId: 1,
+    subCategoryId: 104, // Notebooks
     image: "",
   },
 
@@ -40,27 +43,33 @@ const products = [
     size: "Assorted",
     gsm: 250,
     categoryId: 2,
+    subCategoryId: 201, // Gift Box
     image: "",
   },
   {
     id: 202,
-    title: "Textured Wrapping Paper",
+    title: "Premium Sweet Box",
     price: 120,
-    unit: "Roll",
-    size: "1m x 2m",
-    gsm: 90,
-    categoryId: 2,
-    image: "",
-  },
-  {
-    id: 203,
-    title: "Handmade Gift Tags",
-    price: 99,
-    unit: "Pack of 10",
-    size: "Standard",
+    unit: "Piece",
+    size: "Small",
     gsm: 300,
     categoryId: 2,
+    subCategoryId: 204, // Sweet Boxes
+    image: "",
+  },
+  
+  // Bags (categoryId: 3)
+  {
+    id: 301,
+    title: "Handmade Paper Shopper",
+    price: 99,
+    unit: "Pack of 5",
+    size: "Standard",
+    gsm: 200,
+    categoryId: 3,
+    subCategoryId: 301, // Shopping Bag
     image: "",
   }
 ];
+
 export default products;
