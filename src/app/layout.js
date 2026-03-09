@@ -1,12 +1,7 @@
-'use client';
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "../context/CartContext";
-import { usePathname } from 'next/navigation';
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import CertificationsNewsletter from "../components/CertificationsNewsletter";
-
+import LayoutClient from "./LayoutClient";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,10 +13,12 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export default function RootLayout({ children }) {
-  const pathname = usePathname();
-  const isAdminRoute = pathname?.startsWith('/admin');
+export const metadata = {
+  title: "Kagzi India - Handmade Paper",
+  description: "Premium handmade paper products from India",
+};
 
+export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
@@ -31,14 +28,9 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <CartProvider>
-          {!isAdminRoute && <Header />}
-          {children}
-          {!isAdminRoute && (
-            <>
-              <CertificationsNewsletter />
-              <Footer />
-            </>
-          )}
+          <LayoutClient>
+            {children}
+          </LayoutClient>
         </CartProvider>
       </body>
     </html>
