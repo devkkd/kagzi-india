@@ -2,6 +2,7 @@
 import connectDB from '@/lib/mongodb';
 import Inquiry from '@/models/Inquiry';
 import Product from '@/models/Product';
+import { sendProductInquiryNotification, sendCustomerConfirmation } from '@/lib/emailService';
 
 class InquiryController {
   // Create new inquiry
@@ -21,6 +22,36 @@ class InquiryController {
 
       const inquiry = new Inquiry(data);
       await inquiry.save();
+
+      // Get product details if productId exists
+      let productDetails = null;
+      if (data.productId) {
+        productDetails = await Product.findById(data.productId).select('name mainImage').lean();
+      }
+
+      // Send email notifications (don't block the response if email fails)
+      try {
+        // Send notification to admin
+        await sendProductInquiryNotification({
+          name: inquiry.fullName,
+          email: inquiry.email,
+          phone: inquiry.phone,
+          company: inquiry.companyName,
+          message: inquiry.message,
+          productName: productDetails?.name,
+          productImage: productDetails?.mainImage,
+        });
+
+        // Send confirmation to customer
+        await sendCustomerConfirmation({
+          name: inquiry.fullName,
+          email: inquiry.email,
+          message: inquiry.message,
+        });
+      } catch (emailError) {
+        console.error('Email notification error:', emailError);
+        // Continue even if email fails
+      }
 
       return {
         success: true,

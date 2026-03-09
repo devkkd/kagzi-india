@@ -1,11 +1,11 @@
-"use client";
-import React from 'react';
-import ProductCard from './ProductCard'; // Ensure this path is correct
-import products from '../data/products'; // Ensure this path is correct
+// Server Component - No 'use client' directive
+import ProductCard from './ProductCard';
 
-const RelatedProducts = () => {
-  // UI Only: Just take the first 4 products to display the layout
-  const displayProducts = products.slice(0, 4);
+const RelatedProducts = ({ products }) => {
+  // Don't render if no products
+  if (!products || products.length === 0) {
+    return null;
+  }
 
   return (
     <section className="w-full py-20 sm:py-24 bg-transparent">
@@ -21,8 +21,8 @@ const RelatedProducts = () => {
 
         {/* Product Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {displayProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
+          {products.map((product) => (
+            <ProductCard key={product._id} product={product} />
           ))}
         </div>
 

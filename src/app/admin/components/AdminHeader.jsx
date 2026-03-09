@@ -24,23 +24,23 @@ export default function AdminHeader({ onMenuClick, admin }) {
           </button>
 
           {/* Search Bar */}
-          <div className="hidden md:flex items-center bg-[#FAF6F1] rounded-lg px-4 py-2 w-full max-w-md">
+          {/* <div className="hidden md:flex items-center bg-[#FAF6F1] rounded-lg px-4 py-2 w-full max-w-md">
             <FiSearch className="text-gray-400 mr-2" />
             <input
               type="text"
               placeholder="Search..."
               className="bg-transparent outline-none text-sm w-full text-gray-700 placeholder-gray-400"
             />
-          </div>
+          </div> */}
         </div>
 
         {/* Right: Notifications + Profile */}
         <div className="flex items-center space-x-4">
           {/* Notifications */}
-          <button className="relative p-2 text-gray-600 hover:text-[#860000] transition-colors">
+          {/* <button className="relative p-2 text-gray-600 hover:text-[#860000] transition-colors">
             <FiBell size={20} />
             <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
-          </button>
+          </button> */}
 
           {/* Profile Dropdown */}
           <div className="relative">
@@ -89,14 +89,14 @@ export default function AdminHeader({ onMenuClick, admin }) {
 
       {/* Mobile Search */}
       <div className="md:hidden px-4 pb-4">
-        <div className="flex items-center bg-[#FAF6F1] rounded-lg px-4 py-2">
+        {/* <div className="flex items-center bg-[#FAF6F1] rounded-lg px-4 py-2">
           <FiSearch className="text-gray-400 mr-2" />
           <input
             type="text"
             placeholder="Search..."
             className="bg-transparent outline-none text-sm w-full text-gray-700 placeholder-gray-400"
           />
-        </div>
+        </div> */}
       </div>
     </header>
   );

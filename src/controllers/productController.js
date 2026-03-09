@@ -63,8 +63,8 @@ class ProductController {
         : { slug: identifier };
 
       const product = await Product.findOne(query)
-        .populate('categoryId', 'name slug')
-        .populate('subcategoryId', 'name slug');
+        .populate('categoryId', '_id name slug')
+        .populate('subcategoryId', '_id name slug');
 
       if (!product) {
         return {

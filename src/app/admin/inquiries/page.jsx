@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { FiMail, FiPhone, FiUser, FiBuilding, FiMessageSquare, FiX, FiTrash2, FiEye, FiFilter, FiSearch } from 'react-icons/fi';
+import { FiMail, FiPhone, FiUser, FiBriefcase, FiMessageSquare, FiX, FiTrash2, FiEye, FiFilter, FiSearch } from 'react-icons/fi';
+import Pagination from '../components/Pagination';
 
 export default function InquiriesPage() {
   const [inquiries, setInquiries] = useState([]);
@@ -10,10 +11,16 @@ export default function InquiriesPage() {
   const [showModal, setShowModal] = useState(false);
   const [selectedInquiry, setSelectedInquiry] = useState(null);
   const [updatingStatus, setUpdatingStatus] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
 
   useEffect(() => {
     fetchInquiries();
   }, [filterStatus]);
+
+  useEffect(() => {
+    setCurrentPage(1); // Reset to page 1 when filters change
+  }, [filterStatus, searchTerm]);
 
   const fetchInquiries = async () => {
     try {
@@ -99,6 +106,12 @@ export default function InquiriesPage() {
     (inquiry.companyName && inquiry.companyName.toLowerCase().includes(searchTerm.toLowerCase()))
   );
 
+  // Pagination logic
+  const totalPages = Math.ceil(filteredInquiries.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentInquiries = filteredInquiries.slice(startIndex, endIndex);
+
   if (loading) {
     return (
       <div className="flex items-center justify-center h-full">
@@ -173,7 +186,7 @@ export default function InquiriesPage() {
               </tr>
             </thead>
             <tbody className="divide-y divide-[rgba(208,195,195,0.3)]">
-              {filteredInquiries.map((inquiry) => (
+              {currentInquiries.map((inquiry) => (
                 <tr key={inquiry.id} className="hover:bg-gray-50">
                   <td className="px-6 py-4">
                     <div>
@@ -226,6 +239,15 @@ export default function InquiriesPage() {
           </table>
         </div>
 
+        {/* Pagination */}
+        {filteredInquiries.length > 0 && (
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={setCurrentPage}
+          />
+        )}
+
         {/* Empty State */}
         {filteredInquiries.length === 0 && (
           <div className="text-center py-12">
@@ -266,7 +288,7 @@ export default function InquiriesPage() {
                 {selectedInquiry.companyName && (
                   <div>
                     <label className="flex items-center text-sm font-semibold text-gray-700 mb-2">
-                      <FiBuilding className="mr-2" /> Company Name
+                      <FiBriefcase className="mr-2" /> Company Name
                     </label>
                     <p className="text-gray-900">{selectedInquiry.companyName}</p>
                   </div>

@@ -12,6 +12,7 @@ import Testimonials from '@/components/Testimonials'
 import BrandPartners from '@/components/BrandPartners'
 import QuoteSection from '@/components/QuoteSection'
 import FAQ from '@/components/FAQ'
+import OurProductsServer from '@/components/OurProductsServer'
 
 
 

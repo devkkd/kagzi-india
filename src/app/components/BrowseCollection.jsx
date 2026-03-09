@@ -50,7 +50,7 @@ const BrowseCollection = () => {
               className="text-4xl sm:text-5xl text-gray-900 leading-tight"
               style={{ fontFamily: 'Sooner, sans-serif' }}
             >
-              Browse by <span className="text-[#860000]">Collection</span>
+              Browse <span className="text-[#860000]">Collection</span>
             </h2>
           </div>
 

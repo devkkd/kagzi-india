@@ -94,10 +94,7 @@ const ProductSchema = new mongoose.Schema({
     min: 0
   },
   
-  // Features & Tags
-  features: [{
-    type: String
-  }],
+  // Tags
   tags: [{
     type: String
   }],
@@ -183,7 +180,6 @@ ProductSchema.methods.toSafeObject = function() {
     color: this.color,
     sku: this.sku,
     stock: this.stock,
-    features: this.features,
     tags: this.tags,
     isActive: this.isActive,
     metaTitle: this.metaTitle,

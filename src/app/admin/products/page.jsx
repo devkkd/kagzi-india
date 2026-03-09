@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import { FiPlus, FiEdit2, FiTrash2, FiSearch, FiX, FiImage, FiFilter, FiPackage } from 'react-icons/fi';
 import MultipleImageUpload from '../components/MultipleImageUpload';
+import Pagination from '../components/Pagination';
 
 export default function ProductsPage() {
   const [products, setProducts] = useState([]);
@@ -12,6 +13,8 @@ export default function ProductsPage() {
   const [editingProduct, setEditingProduct] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [filterCategory, setFilterCategory] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 12;
   const [formData, setFormData] = useState({
     name: '',
     description: '',
@@ -211,6 +214,17 @@ export default function ProductsPage() {
     product.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  // Pagination logic
+  const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentProducts = filteredProducts.slice(startIndex, endIndex);
+
+  // Reset to page 1 when filters change
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchTerm, filterCategory]);
+
   if (loading) {
     return (
       <div className="flex items-center justify-center h-full">
@@ -266,7 +280,7 @@ export default function ProductsPage() {
 
       {/* Products Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        {filteredProducts.map((product) => (
+        {currentProducts.map((product) => (
           <div
             key={product.id}
             className="bg-white rounded-xl shadow-md border border-[rgba(208,195,195,0.3)] overflow-hidden hover:shadow-lg transition-shadow"
@@ -341,6 +355,17 @@ export default function ProductsPage() {
           </div>
         ))}
       </div>
+
+      {/* Pagination */}
+      {filteredProducts.length > 0 && (
+        <div className="mt-8">
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={setCurrentPage}
+          />
+        </div>
+      )}
 
       {/* Empty State */}
       {filteredProducts.length === 0 && (

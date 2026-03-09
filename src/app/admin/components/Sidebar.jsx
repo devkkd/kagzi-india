@@ -11,7 +11,8 @@ import {
   FiFileText,
   FiImage,
   FiX,
-  FiMessageSquare
+  FiMessageSquare,
+  FiUploadCloud
 } from 'react-icons/fi';
 
 const menuItems = [
@@ -19,11 +20,9 @@ const menuItems = [
   { icon: FiFileText, label: 'Categories', href: '/admin/categories' },
   { icon: FiFileText, label: 'Subcategories', href: '/admin/subcategories' },
   { icon: FiPackage, label: 'Products', href: '/admin/products' },
-  { icon: FiMessageSquare, label: 'Inquiries', href: '/admin/inquiries' },
-  { icon: FiShoppingCart, label: 'Orders', href: '/admin/orders' },
-  { icon: FiUsers, label: 'Customers', href: '/admin/customers' },
-  { icon: FiImage, label: 'Gallery', href: '/admin/gallery' },
-  { icon: FiSettings, label: 'Settings', href: '/admin/settings' },
+  { icon: FiUploadCloud, label: 'Bulk Upload', href: '/admin/bulk-upload' },
+  { icon: FiMessageSquare, label: 'Product Inquiries', href: '/admin/inquiries' },
+  { icon: FiMessageSquare, label: 'Customer Inquiries', href: '/admin/customer-inquiries' },
 ];
 
 export default function Sidebar({ isOpen, onClose }) {

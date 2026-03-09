@@ -1,15 +1,83 @@
-import React from 'react';
-import categories from '@/data/categories'; // Adjust the import path if needed
-import subCategories from '@/data/subCategories'; // Adjust the import path if needed
+'use client';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const CuratedCollections = () => {
+  const [categories, setCategories] = useState([]);
+  const [subcategoriesByCategory, setSubcategoriesByCategory] = useState({});
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      setLoading(true);
+      
+      // Fetch categories
+      const categoriesResponse = await axios.get('/api/categories');
+      if (categoriesResponse.data.success) {
+        const activeCategories = categoriesResponse.data.data.filter(cat => cat.isActive);
+        setCategories(activeCategories);
+
+        // Fetch subcategories for each category
+        const subcategoriesData = {};
+        for (const category of activeCategories) {
+          const subcategoriesResponse = await axios.get(`/api/subcategories?categoryId=${category.id}`);
+          if (subcategoriesResponse.data.success) {
+            const activeSubcategories = subcategoriesResponse.data.data.filter(sub => sub.isActive);
+            if (activeSubcategories.length > 0) {
+              subcategoriesData[category.id] = activeSubcategories;
+            }
+          }
+        }
+        setSubcategoriesByCategory(subcategoriesData);
+      }
+    } catch (err) {
+      console.error('Failed to fetch data:', err);
+      setError('Failed to load collections');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (loading) {
+    return (
+      <section className="w-full py-20 sm:py-24 bg-transparent">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-center items-center py-20">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#860000]"></div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section className="w-full py-20 sm:py-24 bg-transparent">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center py-20">
+            <p className="text-red-600 mb-4">{error}</p>
+            <button 
+              onClick={fetchData}
+              className="bg-[#860000] text-white px-6 py-2 rounded-lg hover:bg-[#680000] transition-colors"
+            >
+              Try Again
+            </button>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="w-full py-20 sm:py-24 bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* =========================================
-            TOP HEADER SECTION
-            ========================================= */}
+        {/* TOP HEADER SECTION */}
         <div className="flex flex-col mb-16 sm:mb-20">
           <span className="text-sm leading-tight text-gray-900 mb-4 font-medium">
             Our Collections
@@ -22,17 +90,13 @@ const CuratedCollections = () => {
           </h2>
         </div>
 
-        {/* =========================================
-            MAPPED CATEGORIES & SUBCATEGORIES
-            ========================================= */}
+        {/* MAPPED CATEGORIES & SUBCATEGORIES */}
         <div className="flex flex-col">
           {categories.map((category, index) => {
             // Get all subcategories that belong to this specific category
-            const relatedSubCategories = subCategories.filter(
-              (sub) => sub.categoryId === category.id
-            );
+            const relatedSubCategories = subcategoriesByCategory[category.id] || [];
 
-            // If a category has no subcategories in the JSON, skip rendering it
+            // If a category has no subcategories, skip rendering it
             if (relatedSubCategories.length === 0) return null;
 
             return (
@@ -41,9 +105,9 @@ const CuratedCollections = () => {
                 {/* Category Header Row */}
                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-6">
                   <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight">
-                    {category.title}
+                    {category.name}
                   </h3>
-                  <button className="bg-[#860000] text-white px-6 py-2.5 rounded-full text-sm font-medium hover:bg-[#680000] transition-colors flex items-center gap-2 flex-shrink-0">
+                  <button className="bg-[#860000] text-white px-6 py-2.5 rounded-full text-sm font-medium hover:bg-[#680000] transition-colors flex items-center gap-2 shrink-0">
                     View all Products <span>&rarr;</span>
                   </button>
                 </div>
@@ -53,22 +117,22 @@ const CuratedCollections = () => {
                   {relatedSubCategories.map((subCategory) => (
                     <div key={subCategory.id} className="flex flex-col group cursor-pointer">
                       
-                      {/* Image Placeholder */}
-                      <div className="w-full aspect-square bg-[#e8e4e0] mb-5 overflow-hidden flex items-center justify-center">
+                      {/* Image */}
+                      <div className="w-full aspect-square bg-[#e8e4e0] mb-5 overflow-hidden flex items-center justify-center rounded-lg">
                         {subCategory.image ? (
                           <img 
                             src={subCategory.image} 
-                            alt={subCategory.title} 
+                            alt={subCategory.name} 
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                           />
                         ) : (
-                          <span className="text-gray-400 text-sm">Placeholder</span>
+                          <span className="text-gray-400 text-sm">No Image</span>
                         )}
                       </div>
 
                       {/* Subcategory Details */}
                       <h4 className="text-sm leading-tight font-bold text-gray-900 mb-2">
-                        {subCategory.title}
+                        {subCategory.name}
                       </h4>
                       <span className="text-sm leading-tight text-gray-800 font-medium group-hover:text-[#860000] transition-colors">
                         View All Products &rarr;
@@ -78,8 +142,8 @@ const CuratedCollections = () => {
                   ))}
                 </div>
 
-                {/* Divider Line (Shows under every category except the very last one) */}
-                {index < categories.length - 1 && (
+                {/* Divider Line */}
+                {index < categories.filter(cat => subcategoriesByCategory[cat.id]?.length > 0).length - 1 && (
                   <hr className="mt-16 sm:mt-20 border-t border-gray-300" />
                 )}
 
@@ -87,6 +151,13 @@ const CuratedCollections = () => {
             );
           })}
         </div>
+
+        {/* Empty State */}
+        {categories.length === 0 && (
+          <div className="text-center py-20">
+            <p className="text-gray-600 text-lg">No collections available at the moment.</p>
+          </div>
+        )}
 
       </div>
     </section>
