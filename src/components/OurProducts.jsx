@@ -127,7 +127,7 @@ const OurProducts = () => {
                     })}
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-8">
                     {displayProducts.length > 0 ? (
                         displayProducts.map((product, idx) => (
                             <ProductCard key={product._id || product.id || `prod-${idx}`} product={product} />

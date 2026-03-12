@@ -20,7 +20,8 @@ const SliderSection = () => {
     "EXPORT QUALITY",
     "DECKLE EDGE ARTISAN PAPER",
     "COTTON RAG PAPER",
-    "SUSTAINABLE"
+    "SUSTAINABLE",
+    'hii praffull'
   ];
 
   return (
