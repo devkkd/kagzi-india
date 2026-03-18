@@ -95,12 +95,14 @@ export default function BulkUploadPage() {
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
-    if (file && file.type === 'text/csv') {
+    const validTypes = ['text/csv', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.ms-excel'];
+    const validExt = file?.name?.match(/\.(csv|xlsx|xls)$/i);
+    if (file && (validTypes.includes(file.type) || validExt)) {
       setCsvFile(file);
       setErrors([]);
       setResults(null);
     } else {
-      alert('Please upload a valid CSV file');
+      alert('Please upload a valid CSV or Excel (.xlsx) file');
     }
   };
 
@@ -208,7 +210,7 @@ export default function BulkUploadPage() {
         <div className="border-2 border-dashed border-gray-300 rounded-xl p-8 text-center mb-4">
           <input
             type="file"
-            accept=".csv"
+            accept=".csv,.xlsx,.xls"
             onChange={handleFileChange}
             className="hidden"
             id="csv-upload"
@@ -238,7 +240,7 @@ export default function BulkUploadPage() {
                 <p className="text-gray-700 font-medium mb-1">
                   Click to upload or drag and drop
                 </p>
-                <p className="text-sm text-gray-500">CSV files only</p>
+                <p className="text-sm text-gray-500">CSV or Excel (.xlsx) files</p>
               </>
             )}
           </label>

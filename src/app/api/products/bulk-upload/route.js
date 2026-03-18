@@ -5,129 +5,129 @@ import Category from '@/models/Category';
 import Subcategory from '@/models/Subcategory';
 import { uploadToCloudinary } from '@/lib/cloudinary';
 import fs from 'fs';
-import path from 'path';
+import * as XLSX from 'xlsx';
 
-// Helper function to upload image to Cloudinary from local path
-async function uploadImageFromPath(imagePath) {
-  try {
-    // Normalize path and handle spaces
-    const normalizedPath = imagePath.trim().replace(/\\/g, '/');
-    
-    // Check if file exists
-    if (!fs.existsSync(normalizedPath)) {
-      throw new Error(`File not found: ${normalizedPath}`);
-    }
-
-    // Use existing cloudinary utility
-    const result = await uploadToCloudinary(normalizedPath, 'kagzi-products');
-    
-    if (!result.success) {
-      throw new Error(result.error || 'Upload failed');
-    }
-
-    return result.url;
-  } catch (error) {
-    console.error('Image upload error:', error);
-    throw error;
-  }
+// Normalize header names: remove spaces, lowercase, handle common variations
+function normalizeHeader(header) {
+  if (!header) return '';
+  const h = header.toString().trim().toLowerCase().replace(/[\s\-_]+/g, '');
+  const map = {
+    'name': 'name',
+    'description': 'description',
+    'price': 'price',
+    'minimumorderquantity': 'minimumOrderQuantity',
+    'minorderqty': 'minimumOrderQuantity',
+    'moq': 'minimumOrderQuantity',
+    'categoryid': 'categoryId',
+    'category': 'categoryId',
+    'subcategoryid': 'subcategoryId',
+    'subcategory': 'subcategoryId',
+    'size': 'size',
+    'covermaterial': 'coverMaterial',
+    'bindingtype': 'bindingType',
+    'covertype': 'coverType',
+    'usageapplication': 'usageApplication',
+    'usage': 'usageApplication',
+    'gsm': 'gsm',
+    'coverprint': 'coverPrint',
+    'color': 'color',
+    'colour': 'color',
+    'stock': 'stock',
+    'tags': 'tags',
+    'imagepaths': 'imagePaths',
+    'images': 'imagePaths',
+  };
+  return map[h] || h;
 }
 
-// Helper function to find category by name or ID
+// Parse file - supports both CSV and XLSX
+async function parseFile(file) {
+  const buffer = Buffer.from(await file.arrayBuffer());
+  const fileName = file.name.toLowerCase();
+
+  let rawRows = [];
+
+  if (fileName.endsWith('.xlsx') || fileName.endsWith('.xls')) {
+    const workbook = XLSX.read(buffer, { type: 'buffer' });
+    const sheet = workbook.Sheets[workbook.SheetNames[0]];
+    rawRows = XLSX.utils.sheet_to_json(sheet, { defval: '' });
+  } else {
+    // CSV fallback
+    const csvText = buffer.toString('utf-8');
+    const lines = csvText.split('\n').filter(l => l.trim());
+    if (lines.length < 2) throw new Error('CSV file is empty or invalid');
+
+    const parseLine = (line) => {
+      const values = [];
+      let current = '';
+      let inQuotes = false;
+      for (let i = 0; i < line.length; i++) {
+        const char = line[i];
+        if (char === '"') {
+          if (inQuotes && line[i + 1] === '"') { current += '"'; i++; }
+          else inQuotes = !inQuotes;
+        } else if (char === ',' && !inQuotes) {
+          values.push(current.trim()); current = '';
+        } else {
+          current += char;
+        }
+      }
+      values.push(current.trim());
+      return values;
+    };
+
+    const headers = parseLine(lines[0]);
+    for (let i = 1; i < lines.length; i++) {
+      const values = parseLine(lines[i]);
+      const row = {};
+      headers.forEach((h, idx) => { row[h] = values[idx] || ''; });
+      rawRows.push(row);
+    }
+  }
+
+  // Normalize all header keys
+  return rawRows.map(row => {
+    const normalized = {};
+    for (const key of Object.keys(row)) {
+      const normKey = normalizeHeader(key);
+      normalized[normKey] = row[key];
+    }
+    return normalized;
+  });
+}
+
+async function uploadImageFromPath(imagePath) {
+  const normalizedPath = imagePath.trim().replace(/\\/g, '/');
+  if (!fs.existsSync(normalizedPath)) {
+    throw new Error(`File not found: ${normalizedPath}`);
+  }
+  const result = await uploadToCloudinary(normalizedPath, 'kagzi-products');
+  if (!result.success) throw new Error(result.error || 'Upload failed');
+  return result.url;
+}
+
 async function findCategory(nameOrId) {
   if (!nameOrId) return null;
-  
-  // Try to find by ID first
-  if (nameOrId.match(/^[0-9a-fA-F]{24}$/)) {
-    const category = await Category.findById(nameOrId);
-    if (category) return category._id;
+  const val = nameOrId.toString().trim();
+  if (val.match(/^[0-9a-fA-F]{24}$/)) {
+    const cat = await Category.findById(val);
+    if (cat) return cat._id;
   }
-  
-  // Find by name (case-insensitive)
-  const category = await Category.findOne({ 
-    name: { $regex: new RegExp(`^${nameOrId}$`, 'i') } 
-  });
-  
-  return category ? category._id : null;
+  const cat = await Category.findOne({ name: { $regex: new RegExp(`^${val}$`, 'i') } });
+  return cat ? cat._id : null;
 }
 
-// Helper function to find subcategory by name or ID
 async function findSubcategory(nameOrId, categoryId) {
   if (!nameOrId) return null;
-  
-  // Try to find by ID first
-  if (nameOrId.match(/^[0-9a-fA-F]{24}$/)) {
-    const subcategory = await Subcategory.findById(nameOrId);
-    if (subcategory) return subcategory._id;
+  const val = nameOrId.toString().trim();
+  if (val.match(/^[0-9a-fA-F]{24}$/)) {
+    const sub = await Subcategory.findById(val);
+    if (sub) return sub._id;
   }
-  
-  // Find by name (case-insensitive) and category
-  const query = { 
-    name: { $regex: new RegExp(`^${nameOrId}$`, 'i') }
-  };
-  
-  if (categoryId) {
-    query.categoryId = categoryId;
-  }
-  
-  const subcategory = await Subcategory.findOne(query);
-  return subcategory ? subcategory._id : null;
-}
-
-// Parse CSV data with proper handling of quoted values
-function parseCSV(csvText) {
-  const lines = csvText.split('\n').filter(line => line.trim());
-  if (lines.length < 2) {
-    throw new Error('CSV file is empty or invalid');
-  }
-
-  // Parse CSV line considering quotes
-  const parseLine = (line) => {
-    const values = [];
-    let current = '';
-    let inQuotes = false;
-
-    for (let i = 0; i < line.length; i++) {
-      const char = line[i];
-      const nextChar = line[i + 1];
-
-      if (char === '"') {
-        if (inQuotes && nextChar === '"') {
-          // Escaped quote
-          current += '"';
-          i++; // Skip next quote
-        } else {
-          // Toggle quote state
-          inQuotes = !inQuotes;
-        }
-      } else if (char === ',' && !inQuotes) {
-        // End of value
-        values.push(current.trim());
-        current = '';
-      } else {
-        current += char;
-      }
-    }
-    
-    // Add last value
-    values.push(current.trim());
-    return values;
-  };
-
-  const headers = parseLine(lines[0]);
-  const rows = [];
-
-  for (let i = 1; i < lines.length; i++) {
-    const values = parseLine(lines[i]);
-    const row = {};
-    
-    headers.forEach((header, index) => {
-      row[header] = values[index] || '';
-    });
-    
-    rows.push(row);
-  }
-
-  return rows;
+  const query = { name: { $regex: new RegExp(`^${val}$`, 'i') } };
+  if (categoryId) query.categoryId = categoryId;
+  const sub = await Subcategory.findOne(query);
+  return sub ? sub._id : null;
 }
 
 export async function POST(req) {
@@ -138,90 +138,85 @@ export async function POST(req) {
     const file = formData.get('file');
 
     if (!file) {
-      return NextResponse.json(
-        { success: false, message: 'No file uploaded' },
-        { status: 400 }
-      );
+      return NextResponse.json({ success: false, message: 'No file uploaded' }, { status: 400 });
     }
 
-    // Read CSV file
-    const csvText = await file.text();
-    const rows = parseCSV(csvText);
+    const rows = await parseFile(file);
 
-    const results = {
-      total: rows.length,
-      successful: 0,
-      failed: 0,
-      errors: []
-    };
+    const results = { total: rows.length, successful: 0, failed: 0, errors: [] };
 
-    // Process each row
     for (let i = 0; i < rows.length; i++) {
       const row = rows[i];
-      
+
+      // Skip rows that look like secondary header rows
+      if (row.name && row.name.toString().toLowerCase() === 'name') {
+        results.total--;
+        continue;
+      }
+
+      // Skip completely empty rows
+      if (!row.name || row.name.toString().trim() === '') {
+        results.total--;
+        continue;
+      }
+
       try {
-        // Find category by name or ID
-        const categoryId = await findCategory(row.categoryId || row.category);
+        const categoryId = await findCategory(row.categoryId);
         if (!categoryId) {
-          results.errors.push(`Row ${i + 2}: Category not found: ${row.categoryId || row.category}`);
+          results.errors.push(`Row ${i + 2}: Category not found: "${row.categoryId}"`);
           results.failed++;
           continue;
         }
 
-        // Find subcategory by name or ID (optional)
         let subcategoryId = null;
-        if (row.subcategoryId || row.subcategory) {
-          subcategoryId = await findSubcategory(row.subcategoryId || row.subcategory, categoryId);
+        if (row.subcategoryId && row.subcategoryId.toString().trim()) {
+          subcategoryId = await findSubcategory(row.subcategoryId.toString().trim(), categoryId);
           if (!subcategoryId) {
-            results.errors.push(`Row ${i + 2}: Warning - Subcategory not found: ${row.subcategoryId || row.subcategory} (continuing without subcategory)`);
+            results.errors.push(`Row ${i + 2}: Warning - Subcategory not found: "${row.subcategoryId}" (continuing without subcategory)`);
           }
         }
 
-        // Upload images from local paths
-        const imagePaths = row.imagePaths ? row.imagePaths.split('|').map(p => p.trim()) : [];
+        // Upload images
+        const imagePaths = row.imagePaths ? row.imagePaths.toString().split('|').map(p => p.trim()).filter(Boolean) : [];
         const uploadedImages = [];
-
-        for (const imagePath of imagePaths) {
-          if (imagePath) {
-            try {
-              const imageUrl = await uploadImageFromPath(imagePath);
-              uploadedImages.push(imageUrl);
-            } catch (imgError) {
-              results.errors.push(`Row ${i + 2}: Failed to upload image ${imagePath} - ${imgError.message}`);
-            }
+        for (const imgPath of imagePaths) {
+          try {
+            const url = await uploadImageFromPath(imgPath);
+            uploadedImages.push(url);
+          } catch (imgErr) {
+            results.errors.push(`Row ${i + 2}: Image upload failed for "${imgPath}" - ${imgErr.message}`);
           }
         }
 
-        // Prepare product data
+        const price = parseFloat(row.price) || 0;
+
         const productData = {
-          name: row.name,
-          description: row.description,
-          price: parseFloat(row.price) || 0,
+          name: row.name.toString().trim(),
+          description: row.description ? row.description.toString().trim() : '',
+          price,
           minimumOrderQuantity: parseInt(row.minimumOrderQuantity) || 1,
           images: uploadedImages,
-          categoryId: categoryId,
-          subcategoryId: subcategoryId,
-          size: row.size || '',
-          coverMaterial: row.coverMaterial || '',
-          bindingType: row.bindingType || '',
-          coverType: row.coverType || '',
-          usageApplication: row.usageApplication || '',
-          gsm: row.gsm || '',
-          coverPrint: row.coverPrint || '',
-          color: row.color || '',
+          categoryId,
+          subcategoryId,
+          size: row.size ? row.size.toString().trim() : '',
+          coverMaterial: row.coverMaterial ? row.coverMaterial.toString().trim() : '',
+          bindingType: row.bindingType ? row.bindingType.toString().trim() : '',
+          coverType: row.coverType ? row.coverType.toString().trim() : '',
+          usageApplication: row.usageApplication ? row.usageApplication.toString().trim() : '',
+          gsm: row.gsm ? row.gsm.toString().trim() : '',
+          coverPrint: row.coverPrint ? row.coverPrint.toString().trim() : '',
+          color: row.color ? row.color.toString().trim() : '',
           stock: parseInt(row.stock) || 0,
-          tags: row.tags ? row.tags.split('|').map(t => t.trim()) : [],
+          tags: row.tags ? row.tags.toString().split('|').map(t => t.trim()).filter(Boolean) : [],
           isActive: true
         };
 
-        // Validate required fields
-        if (!productData.name || !productData.price) {
-          results.errors.push(`Row ${i + 2}: Missing required fields (name or price)`);
+        if (!productData.name) {
+          results.errors.push(`Row ${i + 2}: Missing required field: name`);
           results.failed++;
           continue;
         }
 
-        // Create product
         await Product.create(productData);
         results.successful++;
 
@@ -232,19 +227,12 @@ export async function POST(req) {
       }
     }
 
-    return NextResponse.json({
-      success: true,
-      results
-    });
+    return NextResponse.json({ success: true, results });
 
   } catch (error) {
     console.error('Bulk upload error:', error);
     return NextResponse.json(
-      { 
-        success: false, 
-        message: error.message || 'Bulk upload failed',
-        errors: [error.message]
-      },
+      { success: false, message: error.message || 'Bulk upload failed', errors: [error.message] },
       { status: 500 }
     );
   }
