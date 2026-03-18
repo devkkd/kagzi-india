@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 
 const Hero = () => {
@@ -45,12 +46,16 @@ const Hero = () => {
             </p>
             
             <div className="flex flex-wrap items-center gap-4">
+              <Link href='/products'>
               <button className="bg-[#860000] text-white px-8 py-3.5 rounded-full text-base font-medium hover:bg-[#680000] transition-colors flex items-center gap-2">
                 Explore Our Products <span>&rarr;</span>
               </button>
+              </Link>
+              <Link href='/contact'>
               <button className="bg-transparent border border-gray-900 text-gray-900 px-8 py-3.5 rounded-full text-base font-medium hover:bg-gray-100 transition-colors">
                 Request A Quote
               </button>
+              </Link>
             </div>
           </div>
 
