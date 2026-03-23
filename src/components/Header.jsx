@@ -9,7 +9,7 @@ const Header = () => {
   const pathname = usePathname();
   const { getCartCount } = useCart();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  // Removed isSearchOpen state as mobile search is hidden
 
   const getLinkStyle = (path) => {
     const isActive = pathname === path || (path !== '/' && pathname?.startsWith(path));
@@ -86,15 +86,6 @@ const Header = () => {
 
           {/* RIGHT SECTION */}
           <div className="flex items-center gap-1 sm:gap-3 shrink-0">
-            {/* Mobile Search Toggle */}
-            <button
-              onClick={() => setIsSearchOpen(!isSearchOpen)}
-              className="lg:hidden p-2 text-gray-900 hover:text-[#860000] transition-colors"
-              aria-label="Toggle search"
-            >
-              <FiSearch size={20} />
-            </button>
-
             {/* Cart */}
             <Link href="/cart" className="relative p-2 rounded-full transition-colors">
               <FiShoppingCart size={20} className="text-gray-900" />
@@ -114,21 +105,9 @@ const Header = () => {
             </Link>
           </div>
         </div>
-
-        {/* Mobile Search Bar (expandable) */}
-        <div className={`lg:hidden overflow-hidden transition-all duration-300 ${isSearchOpen ? 'max-h-16 py-2' : 'max-h-0'}`}>
-          <div className="flex items-center mx-4 px-4 py-2 border border-[rgba(208,195,195,1)] rounded-full bg-transparent">
-            <FiSearch className="text-[#a39a9a] shrink-0" size={14} />
-            <input
-              type="text"
-              placeholder="Search handmade paper..."
-              className="ml-2 w-full bg-transparent outline-none text-gray-800 placeholder-[#a39a9a] text-sm"
-            />
-          </div>
-        </div>
       </header>
 
-      {/* Mobile Overlay */}
+      {/* Mobile Overlay (Optional now since menu is full width, but kept to maintain strict functionality) */}
       <div
         className={`fixed inset-0 bg-black/40 z-40 lg:hidden transition-opacity duration-300 ${
           isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
@@ -136,9 +115,9 @@ const Header = () => {
         onClick={closeMobileMenu}
       />
 
-      {/* Slide-in Menu Panel */}
+      {/* Slide-in Menu Panel - Changed width to w-full */}
       <div
-        className={`fixed top-0 left-0 h-full w-4/5 max-w-[320px] sm:w-[300px] bg-white z-50 lg:hidden transform transition-transform duration-300 ease-in-out flex flex-col ${
+        className={`fixed top-0 left-0 h-full w-full bg-white z-50 lg:hidden transform transition-transform duration-300 ease-in-out flex flex-col ${
           isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
@@ -170,7 +149,7 @@ const Header = () => {
 
         {/* Bottom CTA */}
         <div className="mt-auto px-6 py-6 border-t border-[rgba(208,195,195,0.5)]">
-          <Link href="/request-quote" onClick={closeMobileMenu}>
+          <Link href="/contact" onClick={closeMobileMenu}>
             <button className="w-full bg-[#860000] text-white py-3 rounded-full font-semibold text-xs tracking-wide hover:bg-[#680000] transition-colors duration-300">
               REQUEST QUOTE
             </button>

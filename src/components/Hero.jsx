@@ -7,7 +7,7 @@ const Hero = () => {
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
         
         {/* 1. Top Wide Text */}
-        <div className="text-center text-xs sm:text-sm font-medium tracking-[0.4em] sm:tracking-[1.6em] text-gray-900">
+        <div className="text-center text-xs sm:text-sm font-medium tracking-[0.4em] sm:tracking-[0.6em] text-gray-900">
           HANDCRAFTED 100% SUSTAINABLE MADE IN INDIA
         </div>
 
