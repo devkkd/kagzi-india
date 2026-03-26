@@ -1,6 +1,5 @@
 "use client";
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import ProductCard from './ProductCard';
 import Link from 'next/link';
 
@@ -22,17 +21,18 @@ const OurProducts = () => {
     const loadData = async () => {
         try {
             setLoading(true);
+            const base = process.env.NEXT_PUBLIC_APP_URL || '';
             const [catRes, prodRes] = await Promise.all([
-                axios.get('/api/categories'),
-                axios.get('/api/products')
+                fetch(`${base}/api/categories`).then(r => r.json()),
+                fetch(`${base}/api/products`).then(r => r.json())
             ]);
 
-            if (catRes.data.success) {
-                setCategories(catRes.data.data.filter(c => c.isActive));
+            if (catRes.success) {
+                setCategories(catRes.data.filter(c => c.isActive));
             }
 
-            if (prodRes.data.success) {
-                setAllProducts(prodRes.data.data);
+            if (prodRes.success) {
+                setAllProducts(prodRes.data);
             }
         } catch (error) {
             console.error('Error loading data:', error);
