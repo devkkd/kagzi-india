@@ -1,16 +1,26 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import Shop from '@/components/Shop'
 import BrandPartners from '@/components/BrandPartners'
 import QuoteSection from '@/components/QuoteSection'
 import FAQ from '@/components/FAQ'
 
-export default function page() {
+function ProductsContent() {
     return (
-        <div>
+        <>
             <Shop />
             <BrandPartners />
             <QuoteSection />
             <FAQ />
+        </>
+    )
+}
+
+export default function Page() {
+    return (
+        <div>
+            <Suspense fallback={<div>Loading products...</div>}>
+                <ProductsContent />
+            </Suspense>
         </div>
     )
 }

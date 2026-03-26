@@ -19,7 +19,7 @@ const QuoteSection = () => {
           className="text-2xl sm:text-3xl lg:text-4xl text-gray-900 leading-relaxed sm:leading-relaxed lg:leading-[1.4] mb-8 sm:mb-10 font-semibold z-10"
           style={{ fontFamily: '"Crimson Pro", serif' }}
         >
-          "In an age that moves too fast, we make paper that asks you to<br className="hidden md:block" /> slow down. To feel the surface, to trust your hands,<br className="hidden md:block" /> to write something worth keeping."
+          'In an age that moves too fast, we make paper that asks you to<br className="hidden md:block" /> slow down. To feel the surface, to trust your hands,<br className="hidden md:block" /> to write something worth keeping.'
         </h3>
 
         {/* Author Text */}
