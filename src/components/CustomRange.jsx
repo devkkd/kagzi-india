@@ -11,7 +11,7 @@ const CustomRange = () => {
           <div className="flex flex-col flex-1 w-full">
             <h2 
               className="text-3xl sm:text-4xl lg:text-[3.5rem] text-gray-900 leading-[1.1] sm:leading-[1.2]"
-              style={{ fontFamily: 'Sooner, sans-serif' }}
+              style={{ fontFamily: 'MainFont, sans-serif' }}
             >
               Looking for a <span className="text-[#860000]">Custom Range?</span>
             </h2>

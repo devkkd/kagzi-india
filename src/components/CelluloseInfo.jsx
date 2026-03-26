@@ -15,7 +15,7 @@ const CelluloseInfo = () => {
             {/* Large Percentage Statistic */}
             <span 
               className="text-5xl sm:text-6xl lg:text-7xl text-[#860000] mb-4 block"
-              style={{ fontFamily: 'Sooner, sans-serif' }}
+              style={{ fontFamily: 'MainFont, sans-serif' }}
             >
               95%
             </span>
@@ -23,7 +23,7 @@ const CelluloseInfo = () => {
             {/* Main Heading */}
             <h1 
               className="text-3xl sm:text-4xl lg:text-5xl text-gray-900 leading-[1.1]"
-              style={{ fontFamily: 'Sooner, sans-serif' }}
+              style={{ fontFamily: 'MainFont, sans-serif' }}
             >
               Cellulose - Pure Cotton Fibre
             </h1>

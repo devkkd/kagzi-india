@@ -4,7 +4,7 @@ import React from 'react';
 const CertificationsNewsletter = () => {
   // Certification logos data using your exact paths
   const certifications = [
-    { id: 1, src: '/images/icons/icon10.png', alt: 'ISO Certified' },
+    { id: 1, src: '/images/icons/icon10.svg', alt: 'ISO Certified' },
     { id: 2, src: '/images/icons/icon11.svg', alt: 'IAF Accredited' },
     { id: 3, src: '/images/icons/icon12.svg', alt: 'Sedex' },
     { id: 4, src: '/images/icons/icon13.png', alt: 'Eco Friendly' },
@@ -22,7 +22,7 @@ const CertificationsNewsletter = () => {
           {/* Section Heading */}
           <h2 
             className="text-3xl sm:text-4xl lg:text-5xl text-gray-900 leading-[1.1] mb-12 sm:mb-16"
-            style={{ fontFamily: 'Sooner, sans-serif' }}
+            style={{ fontFamily: 'MainFont, sans-serif' }}
           >
             Our <span className="text-[#860000]">Certifications</span>
           </h2>
@@ -60,7 +60,7 @@ const CertificationsNewsletter = () => {
             
             <h2 
               className="text-3xl sm:text-4xl lg:text-5xl text-gray-900 leading-[1.2]"
-              style={{ fontFamily: 'Sooner, sans-serif' }}
+              style={{ fontFamily: 'MainFont, sans-serif' }}
             >
               Paper Love, Delivered To <br />
               <span className="text-[#860000]">Your Inbox</span>

@@ -38,16 +38,16 @@ const Footer = () => {
   return (
     <footer className="w-full bg-[#860000] text-white pt-6 sm:pt-10 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* =========================================
             TOP SECTION: INFO & LINKS GRID
             ========================================= */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-9 gap-x-6 gap-y-12 mb-4 sm:mb-5">
-          
+
           {/* Column 1: Company Info */}
           <div className="col-span-2 sm:col-span-3 md:col-span-4 lg:col-span-2 flex flex-col pr-4">
             <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-6">
-              Kagzi India
+              Kagzi Industries
             </h2>
             <p className="text-sm leading-tight mb-8 text-gray-100">
               Born in Jaipur. Made by hand. Shipped with care to 30+ countries. We make paper that lasts - for writing, wrapping, and everything worth keeping.
@@ -83,10 +83,10 @@ const Footer = () => {
               {socialLinks.map((social, index) => (
                 <li key={index}>
                   <a href="#" className="flex items-center gap-3 group">
-                    <img 
-                      src={social.icon} 
-                      alt={social.name} 
-                      className="w-6 h-6 object-contain group-hover:scale-110 transition-transform" 
+                    <img
+                      src={social.icon}
+                      alt={social.name}
+                      className="w-6 h-6 object-contain group-hover:scale-110 transition-transform"
                     />
                     <span className="text-sm leading-tight text-gray-200 group-hover:text-white transition-colors">
                       {social.name}
@@ -118,10 +118,10 @@ const Footer = () => {
       {/* =========================================
           BOTTOM SECTION: GIANT LOGO
           ========================================= */}
-      <div className="w-full flex justify-center px-4 sm:px-8 translate-y-2 sm:translate-y-4">
-        <img 
-          src="/images/logo/mainlogo.svg" 
-          alt="Kagzi India Background" 
+      <div className="w-full flex justify-center px-4 sm:px-20 sm:pb-16 sm:pt-12 translate-y-2 sm:translate-y-4">
+        <img
+          src="/images/logo/mainlogo.svg"
+          alt="Kagzi India Background"
           // `brightness-0 invert` ensures the logo turns pure white regardless of its original SVG color
           className="w-[75%] max-w-7xl h-auto object-contain brightness-0 invert opacity-95"
         />

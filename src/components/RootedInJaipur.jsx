@@ -12,7 +12,7 @@ const RootedInJaipur = () => {
           <div className="flex-1">
             <h2 
               className="text-3xl sm:text-4xl lg:text-5xl text-gray-900 leading-[1.2]"
-              style={{ fontFamily: 'Sooner, sans-serif' }}
+              style={{ fontFamily: 'MainFont, sans-serif' }}
             >
               Rooted in <span className="text-[#860000]">Jaipur</span>,<br className="hidden sm:block" />
               Grown for the <span className="text-[#860000]">World</span>
@@ -47,7 +47,7 @@ const RootedInJaipur = () => {
               />
               <h3 
                 className="text-3xl sm:text-4xl lg:text-5xl text-gray-900"
-                style={{ fontFamily: 'Sooner, sans-serif' }}
+                style={{ fontFamily: 'MainFont, sans-serif' }}
               >
                 Our Mission
               </h3>
@@ -67,7 +67,7 @@ const RootedInJaipur = () => {
               />
               <h3 
                 className="text-3xl sm:text-4xl lg:text-5xl text-gray-900"
-                style={{ fontFamily: 'Sooner, sans-serif' }}
+                style={{ fontFamily: 'MainFont, sans-serif' }}
               >
                 Our Vision
               </h3>

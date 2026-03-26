@@ -31,14 +31,14 @@ const CottonData = () => {
   return (
     <section className="w-full py-20 sm:py-24 bg-[#FBF0E4]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-0 lg:divide-x divide-gray-300">
 
           {/* =========================================
               LEFT COLUMN: CHEMICAL COMPOSITION
               ========================================= */}
           <div className="w-full lg:w-1/2 flex flex-col lg:pr-12 xl:pr-16">
-            
+
             {/* Pre-title */}
             <div className="flex items-center gap-4 mb-6">
               <div className="w-16 h-[1px] bg-[#860000]"></div>
@@ -48,9 +48,9 @@ const CottonData = () => {
             </div>
 
             {/* Heading */}
-            <h2 
+            <h2
               className="text-2xl sm:text-3xl lg:text-4xl text-gray-900 leading-[1.2] mb-6"
-           
+              style={{ fontFamily: 'MainFont, sans-serif' }}
             >
               Why Cotton Makes The <br className="hidden sm:block" />
               Finest Paper On <span className="text-[#860000]">Earth</span>
@@ -69,12 +69,12 @@ const CottonData = () => {
                 <div className="w-1/4 text-sm font-bold tracking-wide uppercase text-left">Typical %</div>
                 <div className="w-1/4 text-sm font-bold tracking-wide uppercase text-left">Range %</div>
               </div>
-              
+
               {/* Table Rows */}
               <div className="flex flex-col border-b border-gray-300">
                 {compositionData.map((row, index) => (
-                  <div 
-                    key={index} 
+                  <div
+                    key={index}
                     className="flex px-4 py-4 sm:px-6 border-t border-gray-200/60"
                   >
                     <div className="w-1/2 text-sm text-gray-800">{row.name}</div>
@@ -96,7 +96,7 @@ const CottonData = () => {
               RIGHT COLUMN: GLOBAL PRODUCTION
               ========================================= */}
           <div className="w-full lg:w-1/2 flex flex-col lg:pl-12 xl:pl-16">
-            
+
             {/* Pre-title */}
             <div className="flex items-center gap-4 mb-6">
               <div className="w-16 h-[1px] bg-[#860000]"></div>
@@ -106,8 +106,9 @@ const CottonData = () => {
             </div>
 
             {/* Heading */}
-            <h2 
+            <h2
               className="text-2xl sm:text-3xl lg:text-4xl text-gray-900 leading-[1.2] mb-6"
+              style={{ fontFamily: 'MainFont, sans-serif' }}
             >
               India Is The World's <br className="hidden sm:block" />
               <span className="text-[#860000]">Second Largest Cotton Producer</span>
@@ -122,15 +123,15 @@ const CottonData = () => {
             <div className="flex flex-col gap-4 mb-8">
               {productionData.map((item, index) => (
                 <div key={index} className="flex items-center gap-4">
-                  
+
                   {/* Country Name */}
                   <div className={`w-24 shrink-0 text-sm text-right ${item.isHighlight ? 'text-[#860000] font-bold' : 'text-gray-800'}`}>
                     {item.country}
                   </div>
-                  
+
                   {/* Bar Track & Fill */}
                   <div className="flex-1 h-3.5 bg-[#E1D6CD] relative rounded-r-sm">
-                    <div 
+                    <div
                       className="absolute left-0 top-0 bottom-0 bg-[#860000]"
                       style={{ width: `${item.percent}%` }}
                     ></div>

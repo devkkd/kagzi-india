@@ -14,7 +14,7 @@ const RelatedProducts = ({ products }) => {
         {/* Main Heading */}
         <h2 
           className="text-3xl sm:text-4xl lg:text-5xl text-gray-900 leading-[1.2] mb-12"
-          style={{ fontFamily: 'Sooner, sans-serif' }}
+          style={{ fontFamily: 'MainFont, sans-serif' }}
         >
           Product You Like <span className="text-[#860000]">Also</span>
         </h2>

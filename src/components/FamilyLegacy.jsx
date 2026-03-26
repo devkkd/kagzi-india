@@ -29,7 +29,7 @@ const FamilyLegacy = () => {
             {/* Main Heading */}
             <h2 
               className="text-4xl sm:text-5xl text-gray-900 leading-[1.5] mb-4"
-              style={{ fontFamily: 'Sooner, sans-serif' }}
+              style={{ fontFamily: 'MainFont, sans-serif' }}
             >
               A Family Legacy Written in <br />
               <span className="text-[#860000]">Cotton & Water</span>
@@ -77,7 +77,7 @@ const FamilyLegacy = () => {
             <div key={index} className="flex flex-col items-center justify-center py-4 sm:py-6 text-center px-3">
               <span 
                 className="text-4xl sm:text-5xl text-gray-900 mb-3"
-                style={{ fontFamily: 'Sooner, sans-serif' }}
+                style={{ fontFamily: 'MainFont, sans-serif' }}
               >
                 {stat.number}
               </span>

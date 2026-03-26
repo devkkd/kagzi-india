@@ -83,7 +83,7 @@ const PaperDifferences = () => {
 
           <h2 
             className="text-3xl sm:text-4xl lg:text-5xl leading-[1.2] mb-12"
-            style={{ fontFamily: 'Sooner, sans-serif' }}
+            style={{ fontFamily: 'MainFont, sans-serif' }}
           >
             The Difference You Can <span className="text-[#860000]">Feel</span>
           </h2>
@@ -124,7 +124,7 @@ const PaperDifferences = () => {
 
           <h2 
             className="text-3xl sm:text-4xl lg:text-5xl leading-[1.2] mb-12"
-            style={{ fontFamily: 'Sooner, sans-serif' }}
+            style={{ fontFamily: 'MainFont, sans-serif' }}
           >
             Materials That Carry No <span className="text-[#860000]">Hidden Harm</span>
           </h2>

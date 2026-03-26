@@ -80,7 +80,7 @@ const OurProductsServer = async () => {
                             </span>
                         </div>
                         <h2 
-                            style={{ fontFamily: 'Sooner, sans-serif' }} 
+                            style={{ fontFamily: 'MainFont, sans-serif' }} 
                             className="text-4xl sm:text-5xl text-gray-900 leading-tight"
                         >
                             Paper That Holds <span className="text-[#860000]">Meaning</span>

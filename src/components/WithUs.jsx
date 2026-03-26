@@ -12,7 +12,7 @@ const WithUs = () => {
           <div className="flex flex-col flex-1 w-full">
             <h2 
               className="text-4xl sm:text-5xl lg:text-[3.5rem] text-gray-900 leading-[1.1] sm:leading-[1.2]"
-              style={{ fontFamily: 'Sooner, sans-serif' }}
+              style={{ fontFamily: 'MainFont, sans-serif' }}
             >
               Ready to Work <span className="text-[#860000]">With Us?</span>
             </h2>

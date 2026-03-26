@@ -46,7 +46,7 @@ const FAQ = () => {
             
             <h2 
               className="text-3xl sm:text-4xl lg:text-5xl text-gray-900 leading-[1.15]"
-              style={{ fontFamily: 'Sooner, sans-serif' }}
+              style={{ fontFamily: 'MainFont, sans-serif' }}
             >
               Questions We Hear <br />
               Often <span className="text-[#860000]">Answered</span> <br />

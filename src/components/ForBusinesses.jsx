@@ -2,7 +2,7 @@ import React from 'react';
 
 const ForBusinesses = () => {
   return (
-    <section className="w-full py-20 sm:py-24 bg-[#FAF6F1]">
+    <section className="w-full py-20 sm:py-24 bg-[#FBF0E4]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="flex flex-col lg:flex-row justify-between items-start gap-10 lg:gap-16">
@@ -18,7 +18,7 @@ const ForBusinesses = () => {
             
             <h2 
               className="text-4xl sm:text-5xl text-gray-900 leading-[1.1] sm:leading-[1.2]"
-              style={{ fontFamily: 'Sooner, sans-serif' }}
+              style={{ fontFamily: 'MainFont, sans-serif' }}
             >
               Custom Orders for Brands <br className="hidden sm:block" />
               Who <span className="text-[#860000]">Care About Craft</span>

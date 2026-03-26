@@ -8,7 +8,7 @@ const WeMake = () => {
         {/* Main Heading */}
         <h2 
           className="text-4xl sm:text-5xl lg:text-[3.5rem] text-gray-900 leading-[1.1] sm:leading-[1.2] mb-6"
-          style={{ fontFamily: 'Sooner, sans-serif' }}
+          style={{ fontFamily: 'MainFont, sans-serif' }}
         >
           This Is the Paper <span className="text-[#860000]">We Make</span>
         </h2>

@@ -62,7 +62,7 @@ const Header = () => {
               <img
                 src="/images/logo/mainlogo.svg"
                 alt="Kagzi India"
-                className="h-9 xl:h-11 object-contain"
+                className="h-3 md:h-7 object-contain"
               />
             </Link>
 
@@ -80,7 +80,7 @@ const Header = () => {
             <img
               src="/images/logo/mainlogo.svg"
               alt="Kagzi India"
-              className="h-8 sm:h-9 object-contain"
+              className="h-5 md:h-7 object-contain"
             />
           </Link>
 

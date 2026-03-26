@@ -12,7 +12,7 @@ const ComeSeeUs = () => {
           <div className="flex-1 w-full">
             <h2 
               className="text-3xl sm:text-4xl lg:text-5xl text-gray-900 leading-[1.2]"
-              style={{ fontFamily: 'Sooner, sans-serif' }}
+              style={{ fontFamily: 'MainFont, sans-serif' }}
             >
               Better Yet - <span className="text-[#860000]">Come See Us</span>
             </h2>

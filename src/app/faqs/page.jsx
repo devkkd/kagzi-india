@@ -156,7 +156,7 @@ const FAQPage = () => {
           </span>
           <h1 
             className="text-4xl sm:text-5xl lg:text-[3.5rem] text-gray-900 leading-[1.1]"
-            style={{ fontFamily: 'Sooner, sans-serif' }}
+            style={{ fontFamily: 'MainFont, sans-serif' }}
           >
             Questions We Hear Often, <span className="text-[#860000]">Answered Honestly</span>
           </h1>
@@ -184,6 +184,7 @@ const FAQPage = () => {
                           ? 'text-[#860000] font-bold' 
                           : 'text-gray-800 font-normal hover:text-[#860000]'
                       }`}
+                      style={{ fontFamily: 'MainFont, sans-serif' }}
                     >
                       {item.category}
                     </span>

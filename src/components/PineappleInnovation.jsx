@@ -24,7 +24,7 @@ const PineappleInnovation = () => {
             {/* Main Heading */}
             <h2 
               className="text-3xl sm:text-4xl lg:text-5xl text-gray-900 leading-[1.3] lg:leading-[1.4]"
-              style={{ fontFamily: 'Sooner, sans-serif' }}
+              style={{ fontFamily: 'MainFont, sans-serif' }}
             >
               What If the World's Next <br className="hidden lg:block" />
               Paper Came from a <br className="hidden lg:block" />

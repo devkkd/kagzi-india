@@ -29,7 +29,7 @@ const BrandPartners = () => {
             
             <h2 
               className="text-4xl sm:text-5xl text-gray-900 leading-tight"
-              style={{ fontFamily: 'Sooner, sans-serif' }}
+              style={{ fontFamily: 'MainFont, sans-serif' }}
             >
               Trusted By Global <span className="text-[#860000]">Brands</span>
             </h2>

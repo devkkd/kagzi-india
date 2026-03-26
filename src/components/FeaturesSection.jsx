@@ -29,7 +29,7 @@ const FeaturesSection = () => {
   ];
 
   return (
-    <section className="w-full py-20 sm:py-24">
+    <section className="w-full py-20 sm:py-24 border border-t border-gray-300 ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">

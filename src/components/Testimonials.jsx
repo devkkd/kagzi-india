@@ -61,7 +61,7 @@ const Testimonials = () => {
         
         <h2 
           className="text-4xl sm:text-5xl text-gray-900 leading-tight"
-          style={{ fontFamily: 'Sooner, sans-serif' }}
+          style={{ fontFamily: 'MainFont, sans-serif' }}
         >
           What Our Customers <span className="text-[#860000]">Are Saying</span>
         </h2>

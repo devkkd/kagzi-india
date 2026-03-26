@@ -17,7 +17,7 @@ const PaperMakingIntro = () => {
             </span>
             <h1 
               className="text-3xl sm:text-4xl lg:text-5xl text-gray-900 leading-[1.2]"
-              style={{ fontFamily: 'Sooner, sans-serif' }}
+              style={{ fontFamily: 'MainFont, sans-serif' }}
             >
               From Fibre to <span className="text-[#860000]">Feeling</span>
             </h1>
@@ -56,7 +56,7 @@ const PaperMakingIntro = () => {
 
             <h2 
               className="text-3xl sm:text-4xl lg:text-5xl text-gray-900 leading-[1.2] mb-10"
-              style={{ fontFamily: 'Sooner, sans-serif' }}
+              style={{ fontFamily: 'MainFont, sans-serif' }}
             >
               Cotton The Soul Of <br className="hidden sm:block" />
               Every Sheet We <span className="text-[#860000]">Make</span>
@@ -87,7 +87,7 @@ const PaperMakingIntro = () => {
               <div className="flex flex-col border-b border-r border-gray-400 pb-8 pr-4 sm:pr-8">
                 <span 
                   className="text-4xl sm:text-5xl lg:text-6xl text-gray-900 mb-2"
-                  style={{ fontFamily: 'Sooner, sans-serif' }}
+                  style={{ fontFamily: 'MainFont, sans-serif' }}
                 >
                   95%
                 </span>
@@ -100,7 +100,7 @@ const PaperMakingIntro = () => {
               <div className="flex flex-col border-b border-gray-400 pb-8 pl-4 sm:pl-8">
                 <span 
                   className="text-4xl sm:text-5xl lg:text-6xl text-gray-900 mb-2"
-                  style={{ fontFamily: 'Sooner, sans-serif' }}
+                  style={{ fontFamily: 'MainFont, sans-serif' }}
                 >
                   100%
                 </span>
@@ -113,7 +113,7 @@ const PaperMakingIntro = () => {
               <div className="flex flex-col border-r border-gray-400 pt-8 pr-4 sm:pr-8">
                 <span 
                   className="text-4xl sm:text-5xl lg:text-6xl text-gray-900 mb-2"
-                  style={{ fontFamily: 'Sooner, sans-serif' }}
+                  style={{ fontFamily: 'MainFont, sans-serif' }}
                 >
                   0
                 </span>
@@ -126,7 +126,7 @@ const PaperMakingIntro = () => {
               <div className="flex flex-col pt-8 pl-4 sm:pl-8">
                 <span 
                   className="text-4xl sm:text-5xl lg:text-6xl text-gray-900 mb-2"
-                  style={{ fontFamily: 'Sooner, sans-serif' }}
+                  style={{ fontFamily: 'MainFont, sans-serif' }}
                 >
                   ∞
                 </span>

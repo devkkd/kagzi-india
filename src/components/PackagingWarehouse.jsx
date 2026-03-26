@@ -15,7 +15,7 @@ const PackagingWarehouse = () => {
           <div className="flex-1 flex flex-col">
             <h2
               className="text-3xl sm:text-4xl lg:text-5xl text-gray-900 leading-[1.2] mb-8"
-              style={{ fontFamily: 'Sooner, sans-serif' }}
+              style={{ fontFamily: 'MainFont, sans-serif' }}
             >
               Our <span className="text-[#860000]">Packaging</span>
             </h2>
@@ -50,7 +50,7 @@ const PackagingWarehouse = () => {
           <div className="flex-1 flex flex-col">
             <h2
               className="text-3xl sm:text-4xl lg:text-5xl text-gray-900 leading-[1.2] mb-8"
-              style={{ fontFamily: 'Sooner, sans-serif' }}
+              style={{ fontFamily: 'MainFont, sans-serif' }}
             >
               Our <span className="text-[#860000]">Warehouse</span>
             </h2>

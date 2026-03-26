@@ -43,7 +43,7 @@ const BrowseCollection = async () => {
             </div>
             <h2 
               className="text-4xl sm:text-5xl text-gray-900 leading-tight"
-              style={{ fontFamily: 'Sooner, sans-serif' }}
+              style={{ fontFamily: 'MainFont, sans-serif' }}
             >
               Browse by <span className="text-[#860000]">Collection</span>
             </h2>
@@ -64,7 +64,8 @@ const BrowseCollection = async () => {
             {categories.map((category) => (
               <Link 
                 key={category._id} 
-                href={`/products?category=${category.slug}`}
+                // 🔥 THE FIX: Changed category.slug to category._id
+                href={`/products?category=${category._id}`}
                 className="flex flex-col group cursor-pointer"
               >
                 

@@ -25,7 +25,7 @@ const QuoteSection = () => {
         {/* Author Text */}
         <p 
           className="text-3xl sm:text-4xl lg:text-5xl text-gray-900 tracking-wider z-10"
-          style={{ fontFamily: 'Sooner, sans-serif' }}
+          style={{ fontFamily: 'MainFont, sans-serif' }}
         >
           THE KAGZI FAMILY, JAIPUR
         </p>

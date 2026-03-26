@@ -84,7 +84,7 @@ const HistoryTimeline = () => {
   useEffect(() => {
     const handleScroll = () => {
       const sectionElements = historyData.map(item => document.getElementById(item.id));
-      
+
       let currentActive = activeId;
       sectionElements.forEach(section => {
         if (section) {
@@ -138,16 +138,16 @@ const HistoryTimeline = () => {
   return (
     <section className="w-full py-20 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Top Header Section */}
         <div className="flex flex-col lg:flex-row justify-between items-start mb-20 gap-8">
           <div className="flex flex-col flex-1">
             <span className="text-xs leading-tight font-medium text-gray-900 mb-6">
               The History of Paper
             </span>
-            <h2 
+            <h2
               className="text-4xl sm:text-5xl lg:text-[3.5rem] text-gray-900 leading-[1.1]"
-              style={{ fontFamily: 'Sooner, sans-serif' }}
+              style={{ fontFamily: 'MainFont, sans-serif' }}
             >
               A Craft <span className="text-[#860000]">3,500 Years</span><br className="hidden sm:block" />
               in the <span className="text-[#860000]">Making</span>
@@ -161,23 +161,23 @@ const HistoryTimeline = () => {
         </div>
 
         <div className="flex flex-col lg:flex-row relative gap-10 lg:gap-20">
-          
+
           {/* =========================================
               LEFT COLUMN: STICKY TIMELINE NAV
               ========================================= */}
           {/* Mobile: Horizontal scrollable menu. Desktop: Vertical sticky timeline */}
           <div className="lg:w-1/4 sticky top-[80px] z-30 lg:h-max bg-[#FAF6F1] lg:bg-transparent pb-4 lg:pb-0 border-b border-gray-300 lg:border-none">
-            
+
             <div className="relative flex lg:flex-col overflow-x-auto lg:overflow-visible gap-6 lg:gap-8 py-2 hide-scrollbar">
-              
+
               {/* Vertical line (Desktop only) */}
               <div className="hidden lg:block absolute left-[11px] top-4 bottom-4 w-[1px] bg-gray-300 z-0"></div>
 
               {historyData.map((item) => {
                 const isActive = activeId === item.id;
                 return (
-                  <div 
-                    key={item.id} 
+                  <div
+                    key={item.id}
                     onClick={() => scrollToSection(item.id)}
                     className="relative flex items-center cursor-pointer group whitespace-nowrap lg:whitespace-normal z-10"
                   >
@@ -185,9 +185,11 @@ const HistoryTimeline = () => {
                     <div className="hidden lg:flex w-6 h-6 absolute left-0 items-center justify-center">
                       <div className={`rounded-full transition-all duration-300 ${isActive ? 'w-6 h-6 bg-[#860000]' : 'w-2 h-2 bg-gray-400 group-hover:bg-[#860000]'}`}></div>
                     </div>
-                    
+
                     {/* Nav Text */}
-                    <span className={`lg:ml-12 text-lg lg:text-xl transition-all duration-300 ${isActive ? 'text-[#860000] font-bold' : 'text-gray-600 font-medium group-hover:text-[#860000]'}`}>
+                    <span className={`lg:ml-12 text-lg lg:text-xl transition-all duration-300 ${isActive ? 'text-[#860000] font-bold' : 'text-gray-700 font-medium group-hover:text-[#860000]'}`}
+                      style={{ fontFamily: 'MainFont, sans-serif' }}
+                    >
                       {item.navTitle}
                     </span>
                   </div>
@@ -202,20 +204,22 @@ const HistoryTimeline = () => {
           <div className="lg:w-3/4 flex flex-col gap-24 lg:gap-32 pb-20">
             {historyData.map((item) => (
               <div key={item.id} id={item.id} className="flex flex-col scroll-mt-32">
-                
+
                 {/* Subheading */}
-                <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">
+                <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4"
+                  style={{ fontFamily: 'MainFont, sans-serif' }}
+                >
                   {item.sub}
                 </h3>
-                
+
                 {/* Main Heading */}
-                <h4 
+                <h4
                   className="text-3xl sm:text-4xl lg:text-[3rem] text-gray-900 leading-[1.1] mb-8"
-                  style={{ fontFamily: 'Sooner, sans-serif' }}
+                  style={{ fontFamily: 'MainFont, sans-serif' }}
                 >
                   {renderStyledTitle(item.title)}
                 </h4>
-                
+
                 {/* Description Paragraphs */}
                 <div className="flex flex-col gap-4 mb-10 max-w-3xl">
                   {item.desc.split('\n').map((paragraph, idx) => (
@@ -224,12 +228,12 @@ const HistoryTimeline = () => {
                     </p>
                   ))}
                 </div>
-                
+
                 {/* Associated Grouped Image */}
                 <div className="w-full rounded-sm overflow-hidden">
-                  <img 
-                    src={item.img} 
-                    alt={item.title.replace(':', '')} 
+                  <img
+                    src={item.img}
+                    alt={item.title.replace(':', '')}
                     className="w-full h-auto object-cover"
                   />
                 </div>
@@ -240,7 +244,7 @@ const HistoryTimeline = () => {
 
         </div>
       </div>
-      
+
       {/* Hide scrollbar for mobile horizontal nav while keeping it scrollable */}
       <style jsx="true">{`
         .hide-scrollbar::-webkit-scrollbar {

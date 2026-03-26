@@ -3,8 +3,6 @@
 <rect width="526.385" height="283.528" fill="url(#pattern1_95_3086)"/>
 <rect y="283.291" width="308.861" height="274.47" fill="url(#pattern2_95_3086)"/>
 <rect x="355.559" y="341.951" width="170.464" height="226.559" fill="url(#pattern3_95_3086)"/>
-<rect width="59.2599" height="59.2599" transform="matrix(-1 0 0 1 526.112 224.513)" fill="#860000"/>
-<rect width="59.2599" height="59.2599" transform="matrix(-1 0 0 1 585.854 283.291)" fill="#860000"/>
 <defs>
 <pattern id="pattern0_95_3086" patternContentUnits="objectBoundingBox" width="1" height="1">
 <use xlink:href="#image0_95_3086" transform="scale(0.00192308 0.00161812)"/>

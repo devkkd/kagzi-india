@@ -4,79 +4,38 @@ import React, { useState, useEffect } from 'react';
 const Stages = () => {
   const [activeId, setActiveId] = useState('stage-1');
 
-  // Exact data from your prompt
   const stagesData = [
-    {
-      id: 'stage-1',
-      navTitle: 'Stage 01',
-      sub: '01. Sourcing Cotton Rags',
-      title: 'Where Most See Waste, We See Paper',
-      desc: "We begin with discarded cotton fabric - clean, unbleached remnants from textile mills and garment factories that most people discard without a second thought. To us, they are the raw soul of the paper yet to be born.\nEvery kilogram of cotton rag we source is one kilogram diverted from landfill.\nOur paper is not just made from the earth - it begins by saving it.",
-      listTitle: "What We Use:",
-      listItems: [
-        "100% recycled cotton textile waste",
-        "Khadi fibres for specialty papers",
-        "No wood pulp. No trees."
-      ],
-      img: '/images/papermaking/Stages1.svg' // Replace with your actual image path
-    },
-    {
-      id: 'stage-2',
-      navTitle: 'Stage 02',
-      sub: '02. Soaking & Beating',
-      title: 'The Transformation Begins in Water',
-      desc: "The cotton rags are soaked in clean water for several hours - softening the fibres, loosening the weave, preparing them for rebirth.\n\nThen they are beaten into a fine, silky pulp using traditional wooden mallets and water-powered beaters.\nNo bleach.\nNo caustic chemicals. Nothing that does not belong.\nThe result is a white, creamy slurry of pure cellulose - the fundamental building block of all paper.\n\nAt this stage, the pulp is alive with possibility.",
-      img: '/images/papermaking/Stages2.svg'
-    },
-    {
-      id: 'stage-3',
-      navTitle: 'Stage 03',
-      sub: '03. Vat Immersion',
-      title: 'A Cloud of Possibility',
-      desc: "The pulp is suspended in large open vats filled with clean water, creating a milky bath of evenly distributed cotton fibre.\n\nNatural pigments indigo, turmeric, rose, pomegranate rind may be introduced at this stage to create our coloured papers.\nThis is where a sheet of paper is first imagined.\nThe vat holds everything the finished sheet will be - it simply hasn't taken form yet.",
-      img: '/images/papermaking/Stages3.svg'
-    },
-    {
-      id: 'stage-4',
-      navTitle: 'Stage 04',
-      sub: '04. Sheet Lifting',
-      title: 'The Moment the Sheet is Born',
-      desc: "A skilled craftsperson submerges a wooden mould and deckle a framed mesh screen into the vat, then lifts it steadily, evenly, drawing an even layer of cotton fibre across its surface.\nThis single gesture perfected over a lifetime of practice determines the weight, the texture, and the character of the sheet.\n\nToo fast and the fibre distributes unevenly. Too slow and the sheet is too thick. It takes years to get it right. Our artisans have had years.\nThe natural, uneven edge created by this lifting is the deckle edge — the irreproducible signature of a handmade sheet.",
-      img: '/images/papermaking/Stages4.svg'
-    },
-    {
-      id: 'stage-5',
-      navTitle: 'Stage 05',
-      sub: '05. Drying in Sun',
-      title: 'Patience is the Unseen Ingredient',
-      desc: "A skilled craftsperson submerges a wooden mould and deckle a framed mesh screen into the vat, then lifts it steadily, evenly, drawing an even layer of cotton fibre across its surface.\nThis single gesture perfected over a lifetime of practice determines the weight, the texture, and the character of the sheet.\n\nToo fast and the fibre distributes unevenly. Too slow and the sheet is too thick. It takes years to get it right. Our artisans have had years.\nThe natural, uneven edge created by this lifting is the deckle edge — the irreproducible signature of a handmade sheet.",
-      img: '/images/papermaking/Stages5.svg'
-    },
-    {
-      id: 'stage-6',
-      navTitle: 'Stage 06',
-      sub: '06. Finishing & Colour',
-      title: 'The Last Touch is the Most Human',
-      desc: "Once dry, each sheet is inspected by hand checked for consistency, texture, and quality. Sheets requiring colour receive it at this stage: natural dyes only, applied with care and expertise.\n\nOur ornamentation artists may add dried flowers, pressed botanicals, or hand-applied decorative accents where required.\nEach batch is then sorted, graded, and packed by trained professionals ready to travel to 30+ countries and become something extraordinary in someone else's hands.",
-      img: '/images/papermaking/Stages6.svg'
-    }
+    { id: 'stage-1', navTitle: 'Stage 01', sub: '01 Stage One', title: 'Sorting', desc: "Collected cotton textile waste is hand-sorted - separating clean, unbleached rags from unusable material. Only the purest cotton makes the cut.", meta: "100% Cotton | Hand Sorted", img: '/images/papermaking/Stages1.jpg' },
+    { id: 'stage-2', navTitle: 'Stage 02', sub: '02 Stage Two', title: 'Cutting', desc: "Sorted rags are cut into small, uniform pieces - preparing the fibre for efficient soaking and beating. Size matters here; uniformity ensures even pulp.", meta: "Uniform Fibre", img: '/images/papermaking/Stages2.jpg' },
+    { id: 'stage-3', navTitle: 'Stage 03', sub: '03 Stage Three', title: 'Pulping', desc: "Cut rags are soaked in clean water then beaten into a fine, silky pulp using traditional wooden mallets. No bleach. No caustic chemicals. Just water and time.", meta: "Zero Chemicals | Clean Water", img: '/images/papermaking/Stages3.jpg' },
+    { id: 'stage-4', navTitle: 'Stage 04', sub: '04 Stage Four', title: 'Sheet Making', desc: "Pulp is suspended in open vats. A craftsperson lifts a mould and deckle through the bath - drawing an even fibre layer. This single gesture creates the sheet.", meta: "Deckle Edge | By Hand", img: '/images/papermaking/Stages4.png' },
+    { id: 'stage-5', navTitle: 'Stage 05', sub: '05 Stage Five', title: 'Pressing', desc: "The freshly formed, water-heavy sheet is carefully pressed onto a smooth cotton surface to remove excess water and begin the bonding process.", meta: "Fibre Bonding", img: '/images/papermaking/Stages5.jpg' },
+    { id: 'stage-6', navTitle: 'Stage 06', sub: '06 Stage Six', title: 'Separating', desc: "Pressed sheets are carefully separated from the cotton surface one by one, by hand without tearing. This requires patience and a practiced touch.", meta: "Hand Release", img: '/images/papermaking/Stages6.jpg' },
+    { id: 'stage-7', navTitle: 'Stage 07', sub: '07 Stage Seven', title: 'Drying', desc: "Sheets are laid out under Rajasthan's open sky. No electric dryers. No forced heat. Just sun, wind, and time allowing fibres to bond slowly and evenly.", meta: "Sun Dried | Zero Energy", img: '/images/papermaking/Stages7.jpg' },
+    { id: 'stage-8', navTitle: 'Stage 08', sub: '08 Stage Eight', title: 'Recycling', desc: "All process water is treated and returned to the ground. Off-cut fibre and trim waste are recycled back into the pulp vat. Nothing leaves the workshop as waste.", meta: "Zero Waste | Closed Loop", img: '/images/papermaking/Stages8.jpg' },
+    { id: 'stage-9', navTitle: 'Stage 09', sub: '09 Stage Nine', title: 'Pressing', desc: "Dried sheets go through a final pressing stage flattening, smoothing, and achieving the right surface texture for each product specification.", meta: "Surface Finish", img: '/images/papermaking/Stages9.jpg' },
+    { id: 'stage-10', navTitle: 'Stage 10', sub: '10 Stage Ten', title: 'Paper Shipping', desc: "For products requiring further conversion notebooks, bags, boxes finished paper sheets are moved to the conversion workshop where they become the final product.", meta: "Internal Transfer", img: '/images/papermaking/Stages10.jpg' },
+    { id: 'stage-11', navTitle: 'Stage 11', sub: '11 Stage Eleven', title: 'Cutting', desc: "Sheets are cut to precise specifications product dimensions, envelope sizes, book pages, bag panels. Accuracy here determines quality throughout.", meta: "Precision Cut | Custom Size", img: '/images/papermaking/Stages11.jpg' },
+    { id: 'stage-12', navTitle: 'Stage 12', sub: '12 Stage Twelve', title: 'Stitching', desc: "For journals, notebooks, and bound products coptic or traditional stitching binds the pages by hand. Each spine is finished by a craftsperson who has done this thousands of times.", meta: "Hand Bound | Coptic Stitch", img: '/images/papermaking/Stages12.png' },
+    { id: 'stage-13', navTitle: 'Stage 13', sub: '13 Stage Thirteen', title: 'Final Production', desc: "Colour, embossing, natural dye application, floral embedding, and hand-painted accents are applied. Each product receives its finished character at this stage.", meta: "Natural Dyes | Hand Finished", img: '/images/papermaking/Stages13.png' },
+    { id: 'stage-14', navTitle: 'Stage 14', sub: '14 Stage Fourteen', title: 'Packing', desc: "Each product is hand-inspected, graded, and packed in multi-layer moisture-free export packaging by trained professionals. Ready to travel to 30+ countries.", meta: "Export Grade | 30+ Countries", img: '/images/papermaking/Stages14.jpg' },
   ];
 
-  // ScrollSpy Logic: Update active timeline item based on scroll position
+  // ScrollSpy Logic
   useEffect(() => {
     const handleScroll = () => {
       const sectionElements = stagesData.map(item => document.getElementById(item.id));
-      
       let currentActive = activeId;
+
       sectionElements.forEach(section => {
         if (section) {
           const rect = section.getBoundingClientRect();
-          // Adjust offset to trigger active state when section hits the upper third of screen
           if (rect.top <= 300 && rect.bottom >= 300) {
             currentActive = section.id;
           }
         }
       });
+
       if (currentActive !== activeId) {
         setActiveId(currentActive);
       }
@@ -86,11 +45,11 @@ const Stages = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [activeId, stagesData]);
 
-  // Click to scroll smoothly to a specific section
+  // Smooth Scroll calculation
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
-      const offset = 100; // Account for sticky headers
+      const offset = 100; 
       const bodyRect = document.body.getBoundingClientRect().top;
       const elementRect = element.getBoundingClientRect().top;
       const elementPosition = elementRect - bodyRect;
@@ -104,33 +63,17 @@ const Stages = () => {
     }
   };
 
-  // Helper to color the LAST word of the title red
-  const renderStyledTitle = (title) => {
-    const words = title.split(' ');
-    const lastWord = words.pop();
-    return (
-      <>
-        {words.join(' ')} <span className="text-[#860000]">{lastWord}</span>
-      </>
-    );
-  };
-
   return (
-    <section className="w-full py-20 bg-transparent relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+    <section className="w-full py-12 lg:py-20 relative">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="flex flex-col lg:flex-row relative gap-10 lg:gap-20">
           
-          {/* =========================================
-              LEFT COLUMN: STICKY TIMELINE NAV
-              ========================================= */}
-          {/* Mobile: Horizontal scrollable menu. Desktop: Vertical sticky timeline */}
-          <div className="lg:w-1/4 sticky top-[80px] z-30 lg:h-max bg-[#FAF6F1] lg:bg-transparent pb-4 lg:pb-0 border-b border-gray-300 lg:border-none pt-2">
-            
-            <div className="relative flex lg:flex-col overflow-x-auto lg:overflow-visible gap-6 lg:gap-8 py-2 hide-scrollbar">
+          {/* LEFT COLUMN: STICKY TIMELINE NAV (Hidden on mobile) */}
+          <div className="hidden lg:block lg:w-1/4 sticky top-[100px] z-30 lg:h-max pt-2">
+            <div className="relative flex flex-col gap-4 py-2">
               
-              {/* Vertical line (Desktop only) */}
-              <div className="hidden lg:block absolute left-[11px] top-4 bottom-4 w-[1px]  z-0"></div>
+              {/* Vertical line */}
+              <div className="absolute left-[11px] top-4 bottom-4 w-[1px] bg-gray-300 z-0"></div>
 
               {stagesData.map((item) => {
                 const isActive = activeId === item.id;
@@ -138,15 +81,13 @@ const Stages = () => {
                   <div 
                     key={item.id} 
                     onClick={() => scrollToSection(item.id)}
-                    className="relative flex items-center cursor-pointer group whitespace-nowrap lg:whitespace-normal z-10"
+                    className="relative flex items-center cursor-pointer group whitespace-normal z-10"
                   >
-                    {/* Circle Indicator (Desktop only) */}
-                    <div className="hidden lg:flex w-6 h-6 absolute left-0 items-center justify-center">
-                      <div className={`rounded-full transition-all duration-300 ${isActive ? 'w-6 h-6 bg-[#860000]' : 'w-2 h-2 group-hover:bg-[#860000]'}`}></div>
+                    <div className="flex w-6 h-6 absolute left-0 items-center justify-center">
+                      <div className={`rounded-full transition-all duration-300 ${isActive ? 'w-5 h-5 bg-[#860000]' : 'w-2 h-2 bg-gray-800 group-hover:bg-[#860000]'}`}></div>
                     </div>
                     
-                    {/* Nav Text */}
-                    <span className={`lg:ml-12 text-lg lg:text-xl transition-all duration-300 ${isActive ? 'text-[#860000] font-bold' : 'text-gray-600 font-medium group-hover:text-[#860000]'}`}>
+                    <span className={`ml-12 text-[14px] transition-all duration-300 uppercase tracking-widest font-bold ${isActive ? 'text-[#860000]' : 'text-gray-800 group-hover:text-[#860000]'}`}>
                       {item.navTitle}
                     </span>
                   </div>
@@ -155,77 +96,43 @@ const Stages = () => {
             </div>
           </div>
 
-          {/* =========================================
-              RIGHT COLUMN: SCROLLABLE CONTENT
-              ========================================= */}
-          <div className="lg:w-3/4 flex flex-col gap-24 lg:gap-32 pb-20">
+          {/* RIGHT COLUMN: CONTENT */}
+          <div className="w-full lg:w-3/4 flex flex-col gap-16 lg:gap-32 pb-10 lg:pb-20">
             {stagesData.map((item) => (
-              <div key={item.id} id={item.id} className="flex flex-col scroll-mt-32">
+              <div key={item.id} id={item.id} className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start scroll-mt-24 lg:scroll-mt-32">
                 
-                {/* Subheading */}
-                <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 tracking-tight">
-                  {item.sub}
-                </h3>
-                
-                {/* Main Heading */}
-                <h4 
-                  className="text-3xl sm:text-4xl lg:text-[3rem] text-gray-900 leading-[1.1] mb-8"
-                  style={{ fontFamily: 'Sooner, sans-serif' }}
-                >
-                  {renderStyledTitle(item.title)}
-                </h4>
-                
-                <div className="flex flex-col lg:flex-row gap-10 lg:gap-16">
-                  {/* Left Side: Description Paragraphs */}
-                  <div className="flex flex-col flex-1 gap-4">
-                    {item.desc.split('\n').map((paragraph, idx) => (
-                      <p key={idx} className="text-sm leading-tight text-gray-900 font-medium">
-                        {paragraph}
-                      </p>
-                    ))}
-
-                    {/* Conditional rendering for the specific list in Stage 1 */}
-                    {item.listTitle && (
-                      <div className="mt-4">
-                        <h5 className="text-sm font-bold text-gray-900 mb-4">{item.listTitle}</h5>
-                        <ul className="flex flex-col gap-2">
-                          {item.listItems.map((listItem, i) => (
-                            <li key={i} className="text-sm leading-tight text-gray-900 font-medium">
-                              {listItem}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
+                {/* Text Content */}
+                <div className="order-2 lg:order-1 flex flex-col">
+                  <span className="text-sm font-bold text-gray-900 mb-2 uppercase tracking-tight">
+                    {item.sub}
+                  </span>
+                  <h2 className="text-3xl lg:text-5xl text-gray-900 mb-4 lg:mb-6" style={{ fontFamily: 'MainFont, sans-serif' }}>
+                    {item.title}
+                  </h2>
+                  <p className="text-base text-gray-900 leading-relaxed mb-6 lg:mb-8 max-w-full lg:max-w-[270px]">
+                    {item.desc}
+                  </p>
+                  <div className="pt-2 lg:pt-4">
+                    <p className="text-xs lg:text-sm font-bold text-gray-900 uppercase tracking-tight border-l-2 border-[#860000] pl-3">
+                      {item.meta}
+                    </p>
                   </div>
+                </div>
 
-                  {/* Right Side: Associated Image */}
-                  <div className="w-full lg:w-[45%] rounded-sm overflow-hidden  flex-shrink-0">
-                    <img 
-                      src={item.img} 
-                      alt={item.title} 
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
+                {/* Image */}
+                <div className="order-1 lg:order-2 aspect-[4/3] overflow-hidden bg-gray-200 rounded-lg lg:rounded-none">
+                  <img 
+                    src={item.img} 
+                    alt={item.title} 
+                    className="w-full h-full object-cover"
+                  />
                 </div>
 
               </div>
             ))}
           </div>
-
         </div>
       </div>
-      
-      {/* Hide scrollbar for mobile horizontal nav while keeping it scrollable */}
-      <style jsx="true">{`
-        .hide-scrollbar::-webkit-scrollbar {
-          display: none;
-        }
-        .hide-scrollbar {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-      `}</style>
     </section>
   );
 };

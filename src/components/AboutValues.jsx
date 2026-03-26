@@ -21,7 +21,7 @@ const AboutValues = () => {
             
             <h2
               className="text-3xl sm:text-4xl lg:text-5xl text-gray-900 leading-[1.2] mb-8"
-              style={{ fontFamily: 'Sooner, sans-serif' }}
+              style={{ fontFamily: 'MainFont, sans-serif' }}
             >
               Design Is Not <span className="text-[#860000]">Decoration</span><br />
               It's Our <span className="text-[#860000]">Language</span>
@@ -67,7 +67,7 @@ const AboutValues = () => {
             
             <h2
               className="text-3xl sm:text-4xl lg:text-5xl text-gray-900 leading-[1.2] mb-8"
-              style={{ fontFamily: 'Sooner, sans-serif' }}
+              style={{ fontFamily: 'MainFont, sans-serif' }}
             >
               Quality Isn't a <span className="text-[#860000]">Process</span><br />
               It's a Standard of <span className="text-[#860000]">Care</span>
@@ -112,7 +112,7 @@ const AboutValues = () => {
             
             <h2
               className="text-3xl sm:text-4xl lg:text-5xl text-gray-900 leading-[1.2] mb-8"
-              style={{ fontFamily: 'Sooner, sans-serif' }}
+              style={{ fontFamily: 'MainFont, sans-serif' }}
             >
               Driven by <span className="text-[#860000]">Passion</span><br />
               Guided by <span className="text-[#860000]">Craft</span>

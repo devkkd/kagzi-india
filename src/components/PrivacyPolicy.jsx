@@ -17,7 +17,7 @@ const PrivacyPolicy = () => {
             </span>
             <h1 
               className="text-3xl sm:text-4xl lg:text-5xl text-gray-900 leading-[1.2]"
-              style={{ fontFamily: 'Sooner, sans-serif' }}
+              style={{ fontFamily: 'MainFont, sans-serif' }}
             >
               Privacy Policy
             </h1>

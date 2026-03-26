@@ -7,21 +7,21 @@ const ExtractFibreSteps = () => {
       title: 'Stage A',
       subtitle: 'Alkaline Treatment',
       desc: 'Shredded pineapple leaves are treated with a mild alkaline solution to break down the outer cellular structure and begin separating cellulose from surrounding plant matter. The leaves soften, begin to open up, and reveal the fibre within.',
-      img: '/images/papermaking/Stage1.svg'
+      img: '/images/papermaking/StageA.svg'
     },
     {
       id: 'B',
       title: 'Stage B',
       subtitle: 'First Bleaching',
       desc: 'An initial bleaching stage removes the residual deep-green pigmentation of the leaf and softens the fibre further – producing a pale, workable pulp that begins to resemble something a vat would welcome.',
-      img: '/images/papermaking/Stage2.svg'
+      img: '/images/papermaking/StageB.svg'
     },
     {
       id: 'C',
       title: 'Stage C',
       subtitle: 'Second Bleaching',
       desc: 'A final refining stage produces a clean, bright fibre suspension ready for the vat, the mould, and the hands of our craftspeople. The result is a pale, surprisingly strong fibre that behaves beautifully once it meets water.',
-      img: '/images/papermaking/Stage3.svg'
+      img: '/images/papermaking/StageC.svg'
     }
   ];
 
@@ -56,11 +56,13 @@ const ExtractFibreSteps = () => {
               <div className="flex flex-col flex-1">
                 <h3 
                   className="text-2xl sm:text-3xl lg:text-4xl text-gray-900 font-bold mb-2 leading-[1.2]"
+                  style={{ fontFamily: 'MainFont, sans-serif' }}
                 >
                   {step.title}
                 </h3>
                 <h4 
                   className="text-2xl sm:text-3xl lg:text-4xl text-gray-900 font-bold mb-6 leading-[1.2]"
+                  style={{ fontFamily: 'MainFont, sans-serif' }}
                 >
                   {step.subtitle}
                 </h4>
