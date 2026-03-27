@@ -12,6 +12,9 @@ const monaSans = Mona_Sans({
 export const metadata = {
   title: "Kagzi India - Handmade Paper",
   description: "Premium handmade paper products from India",
+  icons: {
+    icon: "/images/logo/KagziIcon.svg",
+  },
 };
 
 export default function RootLayout({ children }) {

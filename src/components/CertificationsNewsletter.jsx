@@ -32,7 +32,7 @@ const CertificationsNewsletter = () => {
             {certifications.map((cert) => (
               <div 
                 key={cert.id} 
-                className="flex justify-center items-center h-16 sm:h-20 lg:h-24 hover:scale-105 transition-transform duration-300"
+                className="flex justify-center items-center h-16 sm:h-20 lg:h-24 hover:scale-105 transition-transform duration-300 overflow-hidden"
               >
                 <img 
                   src={cert.src} 

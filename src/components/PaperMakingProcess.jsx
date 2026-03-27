@@ -10,7 +10,7 @@ const PaperMakingProcess = () => {
             title: "Sorting",
             description: "Collected cotton textile waste is hand-sorted - separating clean, unbleached rags from unusable material. Only the purest cotton makes the cut.",
             meta: "100% Cotton | Hand Sorted",
-            image: "/images/papermaking/Stages1.jpg",
+            image: "/images/papermaking/Stages1.JPG",
         },
         {
             id: "02.",
@@ -18,7 +18,7 @@ const PaperMakingProcess = () => {
             title: "Cutting",
             description: "Sorted rags are cut into small, uniform pieces - preparing the fibre for efficient soaking and beating. Size matters here; uniformity ensures even pulp.",
             meta: "Uniform Fibre",
-            image: "/images/papermaking/Stages2.jpg",
+            image: "/images/papermaking/Stages2.JPG",
         },
         {
             id: "03.",
@@ -26,7 +26,7 @@ const PaperMakingProcess = () => {
             title: "Pulping",
             description: "Cut rags are soaked in clean water then beaten into a fine, silky pulp using traditional wooden mallets. No bleach. No caustic chemicals.",
             meta: "Zero Chemicals | Clean Water",
-            image: "/images/papermaking/Stages3.jpg",
+            image: "/images/papermaking/Stages3.JPG",
         },
         {
             id: "04.",

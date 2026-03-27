@@ -25,7 +25,7 @@ const Footer = () => {
     },
     {
       title: 'Quick Links',
-      links: ['Our Story', 'The Craft', 'Sustainability', 'B2B Partnerships', 'Gallery', 'Blog']
+      links: ['Our Story', 'The Craft', 'Sustainability', 'B2B Partnerships', 'Blog']
     }
   ];
 
@@ -47,7 +47,9 @@ const Footer = () => {
           {/* Column 1: Company Info */}
           <div className="col-span-2 sm:col-span-3 md:col-span-4 lg:col-span-2 flex flex-col pr-4">
             <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-6">
-              Kagzi Industries
+              <img
+                src="/images/logo/Kagzi.svg"
+                alt="Kagzi India Background"/>
             </h2>
             <p className="text-sm leading-tight mb-8 text-gray-100">
               Born in Jaipur. Made by hand. Shipped with care to 30+ countries. We make paper that lasts - for writing, wrapping, and everything worth keeping.
@@ -118,7 +120,7 @@ const Footer = () => {
       {/* =========================================
           BOTTOM SECTION: GIANT LOGO
           ========================================= */}
-      <div className="w-full flex justify-center px-4 sm:px-20 sm:pb-16 sm:pt-12 translate-y-2 sm:translate-y-4">
+      <div className="w-full flex justify-center px-4 pb-10 pt-8 sm:px-20 sm:pb-16 sm:pt-12 translate-y-2 sm:translate-y-4">
         <img
           src="/images/logo/mainlogo.svg"
           alt="Kagzi India Background"
