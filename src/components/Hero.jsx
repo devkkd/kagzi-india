@@ -19,7 +19,7 @@ const Hero = () => {
 
         {/* 2. Sub-header text */}
         <div className="flex flex-col sm:flex-row justify-between items-center text-sm text-gray-900 uppercase tracking-wide mt-5 md:mt-8 ">
-          <span>JAIPUR, INDIA - EST. 1980</span>
+          <span>JAIPUR, INDIA - EST. 1940</span>
           <span className="mt-2 sm:mt-0">ARTISAN MAKING HANDMADE PAPER</span>
         </div>
 

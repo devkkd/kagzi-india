@@ -35,24 +35,27 @@ const OurStoryHero = () => {
           {/* Right Column: Description */}
           <div className="flex-1 lg:max-w-xl lg:pt-8">
             <p className="text-sm leading-tight text-gray-900 font-medium">
-              <span className="font-bold">Since 1990,</span> from a workshop on the banks of Sanganer's ancient paper quarter, we have been making paper the old way by hand, with conscience, for the world.
+              <span className="font-bold">Since 1960,</span> from a workshop on the banks of Sanganer's ancient paper quarter, we have been making paper the old way by hand, with conscience, for the world.
             </p>
           </div>
 
         </div>
       </div>
 
-      {/* Full-Width Image Section with Floating WhatsApp Button */}
+      {/* Full-Width Video Section with Floating WhatsApp Button */}
       <div className="w-full relative">
-        <img
-          src="/images/banner/about1.png"
-          alt="Kagzi India Facility"
+        <video
+          src="/images/banner/aboutvideo.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
           className="w-full h-[400px] sm:h-[500px] lg:h-[600px] object-cover"
         />
 
         {/* Floating WhatsApp Button */}
         <a
-          href="https://wa.me/919928424518" // You can replace this with the actual WhatsApp link
+          href="https://wa.me/919928424518" 
           target="_blank"
           rel="noopener noreferrer"
           className="absolute bottom-6 right-6 sm:bottom-10 sm:right-10 bg-[#25D366] text-white px-5 py-2.5 rounded-full text-sm font-medium hover:bg-[#1ebe5d] transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl z-10 hover:-translate-y-1"
@@ -61,6 +64,7 @@ const OurStoryHero = () => {
           WhatsApp
         </a>
       </div>
+      
       <RootedInJaipur />
       <SeveralThings />
       <AboutValues/>
