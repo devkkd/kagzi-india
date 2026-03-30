@@ -159,7 +159,7 @@ const ProductDetailClient = ({ product }) => {
 
                             {/* Specification Table */}
                             <div className="flex flex-col mb-10 border-t border-gray-200">
-                                <SpecRow label="SKU" value={product.sku} />
+                                {/* <SpecRow label="SKU" value={product.sku} /> */}
                                 <SpecRow label="Size" value={product.size} />
                                 <SpecRow label="Cover Material" value={product.coverMaterial} />
                                 <SpecRow label="Binding Type" value={product.bindingType} />

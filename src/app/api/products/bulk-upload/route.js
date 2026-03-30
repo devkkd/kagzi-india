@@ -162,12 +162,14 @@ export async function POST(req) {
     // Build a map of filename -> Buffer for all uploaded image files
     const uploadedFilesMap = {};
     const imageFiles = formData.getAll('images');
+    console.log('Received image files:', imageFiles.map(f => f?.name || 'unknown'));
     for (const imgFile of imageFiles) {
       if (imgFile && imgFile.name) {
         const buffer = Buffer.from(await imgFile.arrayBuffer());
         uploadedFilesMap[imgFile.name] = buffer;
       }
     }
+    console.log('uploadedFilesMap keys:', Object.keys(uploadedFilesMap));
 
     const rows = await parseFile(file);
 

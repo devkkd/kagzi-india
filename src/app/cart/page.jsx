@@ -237,10 +237,10 @@ const CartPage = () => {
                     <span className="font-semibold">Need Help?</span>
                   </p>
                   <p className="text-sm text-gray-600 mb-2">
-                    📧 Email: info@kagziindia.com
+                    📧 Email: sales@kagziindia.com
                   </p>
                   <p className="text-sm text-gray-600">
-                    📞 Phone: +91 XXXXX XXXXX
+                    📞 Phone: +91 99284 24518
                   </p>
                 </div>
               </div>
