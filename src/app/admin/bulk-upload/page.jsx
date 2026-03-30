@@ -1,11 +1,11 @@
 'use client';
 import { useState } from 'react';
-import { FiUpload, FiDownload, FiFile, FiCheckCircle, FiAlertCircle, FiX } from 'react-icons/fi';
+import { FiUpload, FiDownload, FiFile, FiCheckCircle, FiAlertCircle, FiX, FiImage } from 'react-icons/fi';
 
 export default function BulkUploadPage() {
   const [csvFile, setCsvFile] = useState(null);
+  const [imageFiles, setImageFiles] = useState([]);
   const [uploading, setUploading] = useState(false);
-  const [progress, setProgress] = useState(0);
   const [results, setResults] = useState(null);
   const [errors, setErrors] = useState([]);
 
@@ -48,7 +48,7 @@ export default function BulkUploadPage() {
       'Natural Brown',
       '100',
       'notebook|diary|journal',
-      'C:/Users/Admin/Pictures/notebook1.jpg|C:/Users/Admin/Pictures/notebook2.jpg'
+      'notebook1.jpg|notebook2.jpg'
     ];
 
     const sampleRow2 = [
@@ -68,7 +68,7 @@ export default function BulkUploadPage() {
       'Cream White',
       '50',
       'diary|journal|planner',
-      'D:/Images/diary.jpg'
+      'diary.jpg'
     ];
 
     // Properly escape CSV values (wrap in quotes if contains comma)
@@ -106,6 +106,19 @@ export default function BulkUploadPage() {
     }
   };
 
+  const handleImagesChange = (e) => {
+    const files = Array.from(e.target.files);
+    setImageFiles(prev => {
+      const existing = new Map(prev.map(f => [f.name, f]));
+      files.forEach(f => existing.set(f.name, f));
+      return Array.from(existing.values());
+    });
+  };
+
+  const removeImage = (name) => {
+    setImageFiles(prev => prev.filter(f => f.name !== name));
+  };
+
   const handleUpload = async () => {
     if (!csvFile) {
       alert('Please select a CSV file first');
@@ -113,12 +126,12 @@ export default function BulkUploadPage() {
     }
 
     setUploading(true);
-    setProgress(0);
     setErrors([]);
 
     try {
       const formData = new FormData();
       formData.append('file', csvFile);
+      imageFiles.forEach(img => formData.append('images', img));
 
       const response = await fetch('/api/products/bulk-upload', {
         method: 'POST',
@@ -130,6 +143,7 @@ export default function BulkUploadPage() {
       if (data.success) {
         setResults(data.results);
         setCsvFile(null);
+        setImageFiles([]);
       } else {
         setErrors(data.errors || ['Upload failed']);
       }
@@ -138,7 +152,6 @@ export default function BulkUploadPage() {
       setErrors(['Failed to upload. Please try again.']);
     } finally {
       setUploading(false);
-      setProgress(100);
     }
   };
 
@@ -160,27 +173,19 @@ export default function BulkUploadPage() {
           </li>
           <li className="flex items-start gap-2">
             <span className="font-bold shrink-0">2.</span>
-            <span>Fill in your product details in the CSV file (use Excel or any spreadsheet software)</span>
+            <span>Fill in your product details. For <strong>imagePaths</strong>, use only the <strong>filename</strong> (e.g., <code className="bg-blue-100 px-1 rounded">1.png</code> or <code className="bg-blue-100 px-1 rounded">photo1.jpg|photo2.jpg</code>)</span>
           </li>
           <li className="flex items-start gap-2">
             <span className="font-bold shrink-0">3.</span>
-            <span><strong>Category & Subcategory:</strong> You can use either the name (e.g., "Notebooks") or MongoDB ID</span>
+            <span><strong>Category & Subcategory:</strong> Use the name (e.g., "Notebooks") or MongoDB ID</span>
           </li>
           <li className="flex items-start gap-2">
             <span className="font-bold shrink-0">4.</span>
-            <span><strong>Image Paths:</strong> Provide full local file paths separated by | (pipe symbol)</span>
+            <span>Select your CSV file, then select all the image files referenced in the CSV</span>
           </li>
           <li className="flex items-start gap-2">
             <span className="font-bold shrink-0">5.</span>
-            <span>Example: <code className="bg-blue-100 px-1 rounded">C:/Users/Admin/Pictures/product1.jpg|D:/Images/product2.jpg</code></span>
-          </li>
-          <li className="flex items-start gap-2">
-            <span className="font-bold shrink-0">6.</span>
-            <span><strong>Important:</strong> Make sure image files exist at the specified paths before uploading</span>
-          </li>
-          <li className="flex items-start gap-2">
-            <span className="font-bold shrink-0">7.</span>
-            <span>Upload the completed CSV file and wait for processing</span>
+            <span>Click Upload — images will be matched by filename and uploaded to Cloudinary automatically</span>
           </li>
         </ol>
       </div>
@@ -246,6 +251,36 @@ export default function BulkUploadPage() {
           </label>
         </div>
 
+        {/* Image Files Picker */}
+        <div className="border-2 border-dashed border-gray-300 rounded-xl p-6 text-center mb-4">
+          <input
+            type="file"
+            accept="image/*"
+            multiple
+            onChange={handleImagesChange}
+            className="hidden"
+            id="images-upload"
+            disabled={uploading}
+          />
+          <label htmlFor="images-upload" className="cursor-pointer flex flex-col items-center">
+            <FiImage size={36} className="text-gray-400 mb-2" />
+            <p className="text-gray-700 font-medium mb-1">Click to select product images</p>
+            <p className="text-sm text-gray-500">Select all images referenced in your CSV (by filename)</p>
+          </label>
+          {imageFiles.length > 0 && (
+            <div className="mt-3 flex flex-wrap gap-2 justify-center">
+              {imageFiles.map(f => (
+                <span key={f.name} className="flex items-center gap-1 bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-full">
+                  {f.name}
+                  <button onClick={() => removeImage(f.name)} className="text-red-400 hover:text-red-600 ml-1">
+                    <FiX size={12} />
+                  </button>
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
+
         {/* Upload Button */}
         <button
           onClick={handleUpload}
@@ -260,13 +295,9 @@ export default function BulkUploadPage() {
           <div className="mt-4">
             <div className="flex items-center justify-between text-sm text-gray-600 mb-2">
               <span>Processing products...</span>
-              <span>{progress}%</span>
             </div>
             <div className="w-full bg-gray-200 rounded-full h-2">
-              <div
-                className="bg-[#860000] h-2 rounded-full transition-all duration-300"
-                style={{ width: `${progress}%` }}
-              />
+              <div className="bg-[#860000] h-2 rounded-full animate-pulse w-full" />
             </div>
           </div>
         )}

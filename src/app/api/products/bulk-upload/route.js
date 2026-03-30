@@ -4,7 +4,6 @@ import Product from '@/models/Product';
 import Category from '@/models/Category';
 import Subcategory from '@/models/Subcategory';
 import { uploadToCloudinary } from '@/lib/cloudinary';
-import fs from 'fs';
 import * as XLSX from 'xlsx';
 
 // Normalize header names: remove spaces, lowercase, handle common variations
@@ -96,12 +95,31 @@ async function parseFile(file) {
   });
 }
 
-async function uploadImageFromPath(imagePath) {
-  const normalizedPath = imagePath.trim().replace(/\\/g, '/');
-  if (!fs.existsSync(normalizedPath)) {
-    throw new Error(`File not found: ${normalizedPath}`);
+async function uploadImageFromPath(imagePath, uploadedFilesMap) {
+  const trimmed = imagePath.trim();
+
+  // If it's a URL, upload directly to Cloudinary
+  if (trimmed.startsWith('http://') || trimmed.startsWith('https://')) {
+    const result = await uploadToCloudinary(trimmed, 'kagzi-products');
+    if (!result.success) throw new Error(result.error || 'Upload failed');
+    return result.url;
   }
-  const result = await uploadToCloudinary(normalizedPath, 'kagzi-products');
+
+  // Extract just the filename (ignore any path prefix like C:/Users/...)
+  const fileName = trimmed.replace(/\\/g, '/').split('/').pop();
+
+  // Look for the file in uploaded images map (keyed by filename)
+  const fileBuffer = uploadedFilesMap[fileName];
+  if (!fileBuffer) {
+    throw new Error(`Image "${fileName}" not found in uploaded files. Make sure to select this image file in the Images field.`);
+  }
+
+  // Convert buffer to base64 data URI for Cloudinary
+  const base64 = fileBuffer.toString('base64');
+  const mimeType = fileName.match(/\.png$/i) ? 'image/png' : fileName.match(/\.gif$/i) ? 'image/gif' : 'image/jpeg';
+  const dataUri = `data:${mimeType};base64,${base64}`;
+
+  const result = await uploadToCloudinary(dataUri, 'kagzi-products');
   if (!result.success) throw new Error(result.error || 'Upload failed');
   return result.url;
 }
@@ -139,6 +157,16 @@ export async function POST(req) {
 
     if (!file) {
       return NextResponse.json({ success: false, message: 'No file uploaded' }, { status: 400 });
+    }
+
+    // Build a map of filename -> Buffer for all uploaded image files
+    const uploadedFilesMap = {};
+    const imageFiles = formData.getAll('images');
+    for (const imgFile of imageFiles) {
+      if (imgFile && imgFile.name) {
+        const buffer = Buffer.from(await imgFile.arrayBuffer());
+        uploadedFilesMap[imgFile.name] = buffer;
+      }
     }
 
     const rows = await parseFile(file);
@@ -181,7 +209,7 @@ export async function POST(req) {
         const uploadedImages = [];
         for (const imgPath of imagePaths) {
           try {
-            const url = await uploadImageFromPath(imgPath);
+            const url = await uploadImageFromPath(imgPath, uploadedFilesMap);
             uploadedImages.push(url);
           } catch (imgErr) {
             results.errors.push(`Row ${i + 2}: Image upload failed for "${imgPath}" - ${imgErr.message}`);
