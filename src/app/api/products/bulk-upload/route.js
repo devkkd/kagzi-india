@@ -116,15 +116,30 @@ async function uploadImageFromPath(imagePath, uploadedFilesMap) {
   // Extract just the filename (ignore any path prefix like C:/Users/...)
   const fileName = trimmed.replace(/\\/g, '/').split('/').pop();
 
-  // Look for the file in uploaded images map (keyed by filename)
-  const fileBuffer = uploadedFilesMap[fileName];
-  if (!fileBuffer) {
+  // Case-insensitive lookup in uploadedFilesMap
+  const mapKey = Object.keys(uploadedFilesMap).find(
+    k => k.toLowerCase() === fileName.toLowerCase()
+  );
+
+  if (!mapKey) {
     throw new Error(`Image "${fileName}" not found in uploaded files. Make sure to select this image file in the Images field.`);
   }
 
-  // Convert buffer to base64 data URI for Cloudinary
+  const fileBuffer = uploadedFilesMap[mapKey];
+
+  // Detect MIME type from extension
+  const ext = fileName.split('.').pop().toLowerCase();
+  const mimeMap = {
+    jpg: 'image/jpeg',
+    jpeg: 'image/jpeg',
+    png: 'image/png',
+    gif: 'image/gif',
+    webp: 'image/webp',
+    avif: 'image/avif',
+  };
+  const mimeType = mimeMap[ext] || 'image/jpeg';
+
   const base64 = fileBuffer.toString('base64');
-  const mimeType = fileName.match(/\.png$/i) ? 'image/png' : fileName.match(/\.gif$/i) ? 'image/gif' : 'image/jpeg';
   const dataUri = `data:${mimeType};base64,${base64}`;
 
   const result = await uploadToCloudinary(dataUri, 'kagzi-products');
@@ -255,7 +270,14 @@ export async function POST(req) {
           continue;
         }
 
-        await Product.create(productData);
+        // Use upsert by name to avoid duplicate errors on re-upload
+        const existingProduct = await Product.findOne({ name: productData.name });
+        if (existingProduct) {
+          Object.assign(existingProduct, productData);
+          await existingProduct.save();
+        } else {
+          await Product.create(productData);
+        }
         results.successful++;
 
       } catch (error) {

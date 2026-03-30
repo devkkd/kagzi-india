@@ -51,7 +51,6 @@ const ProductDetailPage = async ({ params }) => {
             description: product.description,
             price: product.price,
             images: product.images || [],
-            sku: product.sku,
             size: product.size,
             coverMaterial: product.coverMaterial,
             bindingType: product.bindingType,

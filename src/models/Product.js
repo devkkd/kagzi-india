@@ -82,12 +82,6 @@ const ProductSchema = new mongoose.Schema({
   },
   
   // Additional Details
-  sku: {
-    type: String, // Product code
-    unique: true,
-    sparse: true,
-    trim: true
-  },
   stock: {
     type: Number,
     default: 0,
@@ -144,15 +138,7 @@ ProductSchema.pre('save', async function() {
   }
 });
 
-// Auto-generate SKU if not provided
-ProductSchema.pre('save', async function() {
-  if (!this.sku) {
-    const count = await mongoose.models.Product.countDocuments();
-    this.sku = `KI-${String(count + 1).padStart(6, '0')}`;
-  }
-});
-
-// Virtual for main image
+// Indexes for better query performance
 ProductSchema.virtual('mainImage').get(function() {
   return this.images && this.images.length > 0 ? this.images[0] : null;
 });
@@ -178,7 +164,6 @@ ProductSchema.methods.toSafeObject = function() {
     gsm: this.gsm,
     coverPrint: this.coverPrint,
     color: this.color,
-    sku: this.sku,
     stock: this.stock,
     tags: this.tags,
     isActive: this.isActive,
@@ -216,7 +201,6 @@ ProductSchema.statics.validate = function(data) {
 ProductSchema.index({ slug: 1 });
 ProductSchema.index({ categoryId: 1 });
 ProductSchema.index({ subcategoryId: 1 });
-ProductSchema.index({ sku: 1 });
 ProductSchema.index({ isActive: 1 });
 ProductSchema.index({ price: 1 });
 ProductSchema.index({ createdAt: -1 });
