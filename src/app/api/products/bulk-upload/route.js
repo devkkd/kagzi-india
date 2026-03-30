@@ -6,6 +6,14 @@ import Subcategory from '@/models/Subcategory';
 import { uploadToCloudinary } from '@/lib/cloudinary';
 import * as XLSX from 'xlsx';
 
+export const config = {
+  api: {
+    bodyParser: false,
+    responseLimit: false,
+    sizeLimit: '50mb',
+  },
+};
+
 // Normalize header names: remove spaces, lowercase, handle common variations
 function normalizeHeader(header) {
   if (!header) return '';
