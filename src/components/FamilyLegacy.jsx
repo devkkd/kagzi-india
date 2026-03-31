@@ -3,9 +3,9 @@ import React from 'react';
 const FamilyLegacy = () => {
   const stats = [
     { number: '1960', label: 'Founded in Jaipur' },
-    { number: '120+', label: 'Products in Range' },
-    { number: '40+', label: 'Years Craft Expertise' },
-    { number: '30+', label: 'Countries Exported To' },
+    { number: '130+', label: 'Products in Range' },
+    { number: '60+', label: 'Years Craft Expertise' },
+    { number: '40+', label: 'Countries Exported To' },
     { number: '100%', label: 'Natural Fibres' },
   ];
 

@@ -22,13 +22,13 @@ const RootedInJaipur = () => {
           {/* Right Column: Description */}
           <div className="flex-1 flex flex-col gap-5 lg:pt-2">
             <p className="text-sm leading-tight text-gray-900">
-              <span className="font-bold">Founded in 1990, Kagzi Industries</span> began with a single vision: to bring the world's most ancient papermaking tradition into a global marketplace – without losing a single thread of its soul.
+              <span className="font-bold">Founded in 1960, Kagzi Industries</span> began with a single vision: to bring the world's most ancient papermaking tradition into a global marketplace – without losing a single thread of its soul.
             </p>
             <p className="text-sm leading-tight text-gray-900">
               <span className="font-bold">We started in Sanganer, Jaipur</span> - the historic heartland of India's handmade paper craft, where the <span className="font-bold">Kagzi community</span> has made paper for centuries. Armed with generations of inherited knowledge, recycled cotton fibres, and a deep belief that sustainable and beautiful are not opposing ideas, we built a business around craft.
             </p>
             <p className="text-sm leading-tight text-gray-900">
-              Today, we are one of India's leading manufacturers and exporters of handmade paper products, supplying brands across <span className="font-bold">30+ countries</span> with paper that carries something no machine can replicate: the imprint of a human hand.
+              Today, we are one of India's leading manufacturers and exporters of handmade paper products, supplying brands across <span className="font-bold">40+ countries</span> with paper that carries something no machine can replicate: the imprint of a human hand.
             </p>
           </div>
 

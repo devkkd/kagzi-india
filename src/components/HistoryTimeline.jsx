@@ -72,8 +72,8 @@ const HistoryTimeline = () => {
     },
     {
       id: 'sec-9',
-      navTitle: '1990',
-      sub: '1990 - Kagzi Industries',
+      navTitle: '1960',
+      sub: '1960 - Kagzi Industries',
       title: 'Our Chapter Begins',
       desc: "Founded in Sanganer, Jaipur, Kagzi Industries was established to carry this living tradition into a global marketplace - with innovation, sustainability, and absolute respect for the craft. We are not the beginning of this story. We are its latest, proudest chapter.",
       img: '/images/legacy/legacy9.svg'

@@ -23,7 +23,7 @@ export default function page() {
       <SliderSection/>
       <FeaturesSection/>
       <FamilyLegacy/>
-      <PaperMakingProcess/>
+      {/* <PaperMakingProcess/> */}
       <FeaturesSection2/>
       <BrowseCollection/>
       <OurProducts/>

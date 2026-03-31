@@ -38,10 +38,9 @@ const BrandPartners = () => {
           {/* Right: Statistic Text */}
           <div className="lg:pb-3">
             <span className="text-sm leading-tight font-bold text-gray-900 tracking-wide">
-              +30 Countries Worldwide
+              +40 Countries Worldwide
             </span>
           </div>
-          
         </div>
 
         {/* Brand Logos Row */}

@@ -1,38 +1,63 @@
-import React from 'react';
+"use client";
+import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
+import axios from 'axios';
 
 const Footer = () => {
-  // Organized link data for easy mapping and maintenance
-  const footerLinks = [
-    {
-      title: 'Diaries & Notebooks',
-      links: ['Leather Diary', 'Executive Diary', 'New Year Diaries', 'Notebooks']
-    },
-    {
-      title: 'Gift Packaging',
-      links: ['Gift Box', 'Paper Gift Box', 'Metal Gift Box', 'Sweet Boxes', 'Printed Cake Box', 'Slip Box', 'Paper Container Boxes']
-    },
-    {
-      title: 'Bags',
-      links: ['Shopping Bag', 'Paper Bag', 'Handmade Paper Bags']
-    },
-    {
-      title: 'Specialty Boxes',
-      links: ['Jewellery Boxes', 'Makeup Boxes', 'Tissue Paper Box']
-    },
-    {
-      title: 'Decor & Accessories',
-      links: ['Photo Frame', 'Other Products']
-    },
-    {
-      title: 'Quick Links',
-      links: ['Our Story', 'The Craft', 'Sustainability', 'B2B Partnerships', 'Blog']
-    }
-  ];
+  const [dynamicCategories, setDynamicCategories] = useState([]);
+
+  // Fetch Categories & Subcategories dynamically
+  useEffect(() => {
+    const fetchFooterData = async () => {
+      try {
+        const catRes = await axios.get('/api/categories');
+        if (catRes.data.success) {
+          // Get active categories and limit to 5
+          const activeCategories = catRes.data.data.filter(cat => cat.isActive).slice(0, 5);
+          
+          const categoriesWithSubs = await Promise.all(
+            activeCategories.map(async (cat) => {
+              const subRes = await axios.get(`/api/subcategories?categoryId=${cat.id}`);
+              const activeSubs = subRes.data.success 
+                ? subRes.data.data.filter(sub => sub.isActive) 
+                : [];
+              return { 
+                title: cat.name, 
+                id: cat.id,
+                links: activeSubs.map(sub => ({
+                  name: sub.name,
+                  url: `/products?category=${cat.id}&subcategory=${sub.id}`
+                }))
+              };
+            })
+          );
+          
+          setDynamicCategories(categoriesWithSubs);
+        }
+      } catch (err) {
+        console.error("Failed to load footer categories", err);
+      }
+    };
+
+    fetchFooterData();
+  }, []);
+
+  // Static Quick Links
+  const quickLinks = {
+    title: 'Quick Links',
+    links: [
+      { name: 'About Us', url: '/about' },
+      { name: 'Our Legacy', url: '/legacy' },
+      { name: 'Paper Making', url: '/papermaking' },
+      { name: 'Contact Us', url: '/contact' },
+      { name: 'FAQ\'s', url: '/faqs' }
+    ]
+  };
 
   const socialLinks = [
-    { name: 'Instagram', icon: '/images/icons/instagram.svg' },
-    { name: 'Facebook', icon: '/images/icons/facebook.png' },
-    { name: 'YouTube', icon: '/images/icons/youtube.png' }
+    { name: 'Instagram', icon: '/images/icons/instagram.svg', url: '#' },
+    { name: 'Facebook', icon: '/images/icons/facebook.png', url: '#' },
+    { name: 'YouTube', icon: '/images/icons/youtube.png', url: '#' }
   ];
 
   return (
@@ -42,49 +67,80 @@ const Footer = () => {
         {/* =========================================
             TOP SECTION: INFO & LINKS GRID
             ========================================= */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-9 gap-x-6 gap-y-12 mb-4 sm:mb-5">
+        {/* CHANGED HERE: Grid on mobile/tablet, Flex + justify-between on Desktop */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:flex lg:flex-row lg:justify-between w-full gap-x-6 gap-y-12 mb-4 sm:mb-5">
 
           {/* Column 1: Company Info */}
-          <div className="col-span-2 sm:col-span-3 md:col-span-4 lg:col-span-2 flex flex-col pr-4">
+          {/* CHANGED HERE: Added lg:w-[30%] lg:max-w-xs so it takes up proper space in flex mode */}
+          <div className="col-span-2 sm:col-span-3 md:col-span-4 lg:col-span-1 lg:w-[30%] lg:max-w-xs flex flex-col pr-4">
             <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-6">
               <img
                 src="/images/logo/Kagzi.svg"
-                alt="Kagzi India Background"/>
+                alt="Kagzi India Background" />
             </h2>
-            <p className="text-sm leading-tight mb-8 text-gray-100">
-              Born in Jaipur. Made by hand. Shipped with care to 30+ countries. We make paper that lasts - for writing, wrapping, and everything worth keeping.
-            </p>
-            <p className="text-sm leading-tight mb-4 text-gray-100">+91 99284 24518</p>
-            <p className="text-sm leading-tight text-gray-100">sales@kagziindia.com</p>
+            <div className="text-sm leading-tight mb-8 text-gray-100">
+              <span className="font-bold block mb-1">Kagzi Industries</span>
+              Khadi Gramodyog Road,<br />
+              Near Sanganer Stadium,<br />
+              Sanganer, Jaipur, Rajasthan 303902<br />
+              India 
+            </div>
+            <p className="text-sm leading-tight mb-4 text-gray-100">+91 99284 24518 <br /> +91 70234 77993</p>
+            <p className="text-sm leading-tight text-gray-100">sales@kagziindia.com <br /> sharifkagzi039@gmail.com</p>
           </div>
 
-          {/* Columns 2-7: Mapped Links */}
-          {footerLinks.map((section, index) => (
-            <div key={index} className="flex flex-col">
-              <h3 className="text-xs font-bold mb-5 tracking-wide">
-                {section.title}
-              </h3>
-              <ul className="flex flex-col">
+          {/* Columns 2-6: Dynamic Categories & Subcategories */}
+          {dynamicCategories.map((section, index) => (
+            <div key={section.id || index} className="flex flex-col lg:w-auto">
+              <Link href={`/products?category=${section.id}`}>
+                <h3 className="text-xs font-bold mb-5 tracking-wide hover:text-gray-300 transition-colors cursor-pointer">
+                  {section.title}
+                </h3>
+              </Link>
+              <ul className="flex flex-col gap-2">
                 {section.links.map((link, linkIndex) => (
                   <li key={linkIndex}>
-                    <a href="#" className="text-xs leading-tight text-gray-200 hover:text-white transition-colors">
-                      {link}
-                    </a>
+                    <Link href={link.url} className="text-xs leading-tight text-gray-200 hover:text-white transition-colors">
+                      {link.name}
+                    </Link>
                   </li>
                 ))}
+                {section.links.length === 0 && (
+                  <li>
+                    <Link href={`/products?category=${section.id}`} className="text-xs leading-tight text-gray-400 italic hover:text-white transition-colors">
+                      View all
+                    </Link>
+                  </li>
+                )}
               </ul>
             </div>
           ))}
 
+          {/* Column 7: Quick Links */}
+          <div className="flex flex-col lg:w-auto">
+            <h3 className="text-xs font-bold mb-5 tracking-wide">
+              {quickLinks.title}
+            </h3>
+            <ul className="flex flex-col gap-2">
+              {quickLinks.links.map((link, linkIndex) => (
+                <li key={linkIndex}>
+                  <Link href={link.url} className="text-xs leading-tight text-gray-200 hover:text-white transition-colors">
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
           {/* Column 8: Follow Us */}
-          <div className="flex flex-col">
+          <div className="flex flex-col lg:w-auto">
             <h3 className="text-sm font-bold mb-5 tracking-wide">
               Follow Us
             </h3>
             <ul className="flex flex-col gap-4">
               {socialLinks.map((social, index) => (
                 <li key={index}>
-                  <a href="#" className="flex items-center gap-3 group">
+                  <a href={social.url} className="flex items-center gap-3 group">
                     <img
                       src={social.icon}
                       alt={social.name}
@@ -109,9 +165,9 @@ const Footer = () => {
             © 2026 Kagzi Industries. All rights reserved. Made in Jaipur, India.
           </p>
           <div className="flex items-center gap-3">
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+            <Link href="/privacy_policy" className="hover:text-white transition-colors">Privacy Policy</Link>
             <span>|</span>
-            <a href="#" className="hover:text-white transition-colors">Terms of Use</a>
+            <Link href="/Terms&Conditions" className="hover:text-white transition-colors">Terms & Conditions</Link>
           </div>
         </div>
 
@@ -124,7 +180,6 @@ const Footer = () => {
         <img
           src="/images/logo/mainlogo.svg"
           alt="Kagzi India Background"
-          // `brightness-0 invert` ensures the logo turns pure white regardless of its original SVG color
           className="w-[75%] max-w-7xl h-auto object-contain brightness-0 invert opacity-95"
         />
       </div>
