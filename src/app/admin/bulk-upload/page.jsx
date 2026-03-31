@@ -14,7 +14,6 @@ export default function BulkUploadPage() {
     const headers = [
       'name',
       'description',
-      'price',
       'minimumOrderQuantity',
       'categoryId',
       'subcategoryId',
@@ -34,7 +33,6 @@ export default function BulkUploadPage() {
     const sampleRow1 = [
       'Premium Notebook',
       'High quality handmade notebook with eco-friendly paper',
-      '299',
       '50',
       'Notebooks',
       'Spiral Notebooks',
@@ -54,7 +52,6 @@ export default function BulkUploadPage() {
     const sampleRow2 = [
       'Handmade Diary',
       'Beautiful handcrafted diary for daily use',
-      '399',
       '25',
       'Diaries',
       '',

@@ -49,7 +49,6 @@ const ProductDetailPage = async ({ params }) => {
             _id: product._id.toString(),
             name: product.name,
             description: product.description,
-            price: product.price,
             images: product.images || [],
             size: product.size,
             coverMaterial: product.coverMaterial,
@@ -87,7 +86,7 @@ const ProductDetailPage = async ({ params }) => {
                     _id: { $ne: product._id },
                     isActive: true
                 })
-                .select('_id name price images size gsm minimumOrderQuantity slug')
+                .select('_id name images size gsm minimumOrderQuantity slug')
                 .limit(4)
                 .lean();
                 
@@ -96,7 +95,6 @@ const ProductDetailPage = async ({ params }) => {
                 relatedProducts = categoryProducts.map(p => ({
                     _id: p._id.toString(),
                     name: p.name,
-                    price: p.price,
                     images: p.images || [],
                     size: p.size,
                     gsm: p.gsm,
@@ -112,7 +110,7 @@ const ProductDetailPage = async ({ params }) => {
                     _id: { $ne: product._id },
                     isActive: true
                 })
-                .select('_id name price images size gsm minimumOrderQuantity slug')
+                .select('_id name images size gsm minimumOrderQuantity slug')
                 .limit(4)
                 .lean();
                 
@@ -121,7 +119,6 @@ const ProductDetailPage = async ({ params }) => {
                 relatedProducts = allProducts.map(p => ({
                     _id: p._id.toString(),
                     name: p.name,
-                    price: p.price,
                     images: p.images || [],
                     size: p.size,
                     gsm: p.gsm,

@@ -241,12 +241,9 @@ export async function POST(req) {
           }
         }
 
-        const price = parseFloat(row.price) || 0;
-
         const productData = {
           name: row.name.toString().trim(),
           description: row.description ? row.description.toString().trim() : '',
-          price,
           minimumOrderQuantity: parseInt(row.minimumOrderQuantity) || 1,
           images: uploadedImages,
           categoryId,

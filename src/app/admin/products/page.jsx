@@ -18,7 +18,6 @@ export default function ProductsPage() {
   const [formData, setFormData] = useState({
     name: '',
     description: '',
-    price: '',
     minimumOrderQuantity: 1,
     images: [],
     categoryId: '',
@@ -112,7 +111,6 @@ export default function ProductsPage() {
       setFormData({
         name: product.name,
         description: product.description || '',
-        price: product.price,
         minimumOrderQuantity: product.minimumOrderQuantity,
         images: product.images || [],
         categoryId: product.categoryId,
@@ -136,7 +134,6 @@ export default function ProductsPage() {
       setFormData({
         name: '',
         description: '',
-        price: '',
         minimumOrderQuantity: 1,
         images: [],
         categoryId: filterCategory || '',
@@ -323,7 +320,6 @@ export default function ProductsPage() {
 
               <div className="flex items-center justify-between mb-3">
                 <div>
-                  <p className="text-xl font-bold text-[#860000]">₹{product.price}</p>
                   <p className="text-xs text-gray-500">MOQ: {product.minimumOrderQuantity}</p>
                 </div>
                 <div className="text-right">
@@ -481,29 +477,8 @@ function ProductModal({
                   />
                 </div>
 
-                {/* Price & MOQ */}
+                {/* Category & Subcategory */}
                 <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
-                      Price (₹) *
-                    </label>
-                    <input
-                      type="number"
-                      name="price"
-                      value={formData.price}
-                      onChange={handleChange}
-                      min="0"
-                      step="0.01"
-                      className={`w-full px-4 py-2 border ${
-                        formErrors.price ? 'border-red-500' : 'border-[rgba(208,195,195,1)]'
-                      } rounded-lg focus:outline-none focus:ring-2 focus:ring-[#860000]`}
-                      placeholder="299"
-                    />
-                    {formErrors.price && (
-                      <p className="mt-1 text-sm text-red-600">{formErrors.price}</p>
-                    )}
-                  </div>
-
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-2">
                       Min Order Qty

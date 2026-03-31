@@ -17,7 +17,6 @@ const ProductCard = ({ product }) => {
     const cartItem = {
       id: product.id || product._id,
       name: product.title || product.name,
-      price: product.price,
       size: product.size || null,
       mainImage: product.image || product.mainImage || (product.images && product.images[0]) || null,
       images: product.images || [],
@@ -51,10 +50,6 @@ const ProductCard = ({ product }) => {
           <h3 className="text-lg font-bold text-gray-900 mb-2 leading-tight group-hover:text-[#860000] transition-colors">
             {product.title || product.name}
           </h3>
-          
-          <div className="text-sm font-medium text-gray-900 mb-1">
-            ₹ {product.price}
-          </div>
           
           <div className="text-sm text-gray-600 mb-4">
             {product.size && `Size ${product.size}`}

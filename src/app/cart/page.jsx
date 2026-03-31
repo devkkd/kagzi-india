@@ -168,9 +168,6 @@ const CartPage = () => {
                             <span className="font-medium">Size:</span> {item.size}
                           </p>
                         )}
-                        <p className="text-sm font-semibold text-[#860000]">
-                          ₹{item.price} per piece
-                        </p>
                       </div>
 
                       {/* Remove Button */}

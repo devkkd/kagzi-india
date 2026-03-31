@@ -47,14 +47,13 @@ const OurProductsServer = async () => {
 
         // Fetch products (limit to 4)
         const dbProducts = await Product.find({ isActive: true })
-            .select('_id name price images size gsm minimumOrderQuantity slug')
+            .select('_id name images size gsm minimumOrderQuantity slug')
             .limit(4)
             .lean();
 
         products = dbProducts.map(p => ({
             _id: p._id.toString(),
             name: p.name,
-            price: p.price,
             images: p.images || [],
             size: p.size,
             gsm: p.gsm,

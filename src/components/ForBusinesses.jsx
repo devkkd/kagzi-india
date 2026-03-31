@@ -21,8 +21,8 @@ const ForBusinesses = () => {
               className="text-4xl sm:text-5xl text-gray-900 leading-[1.1] sm:leading-[1.2]"
               style={{ fontFamily: 'MainFont, sans-serif' }}
             >
-              Custom Orders for Brands Crafting<br className="hidden sm:block" />
-              Legacy <span className="text-[#860000]"> Since 1940</span>
+              Custom Orders for Brands Crafting Legacy
+               <span className="text-[#860000]"> Since 1940</span>
             </h2>
           </div>
 

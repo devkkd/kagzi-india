@@ -122,7 +122,7 @@ class InquiryController {
       await connectDB();
 
       const inquiry = await Inquiry.findById(id)
-        .populate('productId', 'name slug mainImage price')
+        .populate('productId', 'name slug mainImage')
         .lean();
 
       if (!inquiry) {

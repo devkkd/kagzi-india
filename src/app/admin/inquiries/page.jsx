@@ -333,9 +333,6 @@ export default function InquiriesPage() {
                     )}
                     <div>
                       <p className="font-semibold text-gray-900">{selectedInquiry.product.name}</p>
-                      {selectedInquiry.product.price && (
-                        <p className="text-sm text-[#860000]">₹{selectedInquiry.product.price}</p>
-                      )}
                     </div>
                   </div>
                 </div>

@@ -21,7 +21,6 @@ const ProductSchema = new mongoose.Schema({
   // Pricing
   price: {
     type: Number,
-    required: [true, 'Price is required'],
     min: 0
   },
   minimumOrderQuantity: {
@@ -150,7 +149,6 @@ ProductSchema.methods.toSafeObject = function() {
     name: this.name,
     slug: this.slug,
     description: this.description,
-    price: this.price,
     minimumOrderQuantity: this.minimumOrderQuantity,
     images: this.images,
     mainImage: this.mainImage,
@@ -183,10 +181,6 @@ ProductSchema.statics.validate = function(data) {
     errors.name = 'Product name is required';
   }
 
-  if (!data.price || data.price <= 0) {
-    errors.price = 'Valid price is required';
-  }
-
   if (!data.categoryId) {
     errors.categoryId = 'Category is required';
   }
@@ -202,7 +196,6 @@ ProductSchema.index({ slug: 1 });
 ProductSchema.index({ categoryId: 1 });
 ProductSchema.index({ subcategoryId: 1 });
 ProductSchema.index({ isActive: 1 });
-ProductSchema.index({ price: 1 });
 ProductSchema.index({ createdAt: -1 });
 
 // Text index for search

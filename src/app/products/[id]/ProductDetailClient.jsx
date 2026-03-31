@@ -39,7 +39,6 @@ const ProductDetailClient = ({ product }) => {
         const cartItem = {
             id: product._id,
             name: product.name,
-            price: product.price,
             size: product.size || null,
             mainImage: product.images?.[0] || null,
             images: product.images || [],
@@ -135,14 +134,10 @@ const ProductDetailClient = ({ product }) => {
                                 </div>
                             )}
 
-                            {/* Title & Price */}
+                            {/* Title */}
                             <h1 className="text-3xl sm:text-4xl lg:text-5xl text-gray-900 leading-[1.1] mb-6 font-bold tracking-tight">
                                 {product.name}
                             </h1>
-
-                            <div className="text-2xl font-bold text-gray-900 mb-2">
-                                ₹ {product.price}
-                            </div>
 
                             {product.minimumOrderQuantity && (
                                 <p className="text-sm text-gray-600 mb-8">
