@@ -13,7 +13,11 @@ export const metadata = {
   title: "Kagzi India - Handmade Paper",
   description: "Premium handmade paper products from India",
   icons: {
-    icon: "/images/logo/KagziIcon.svg",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/images/logo/KagziIcon.png", type: "image/png" },
+    ],
+    apple: "/images/logo/KagziIcon.png",
   },
 };
 
