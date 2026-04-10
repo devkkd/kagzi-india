@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-const DocumentarySection = ({ videoUrl = "#" }) => {
+const DocumentarySection = ({ videoUrl = "https://www.youtube.com/watch?v=U0gYeVSQlGA" }) => {
   return (
     <section className="w-full py-16 sm:py-20 bg-[#FAF6F1]">
       <div className="w-full mx-auto px-4 sm:px-6 lg:px-10">
@@ -24,7 +24,7 @@ const DocumentarySection = ({ videoUrl = "#" }) => {
             </p>
 
             <Link
-              href={videoUrl}
+              href="https://www.youtube.com/watch?v=U0gYeVSQlGA"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 bg-[#860000] text-white px-7 py-3.5 rounded-full text-sm font-medium hover:bg-[#680000] transition-colors w-fit"
