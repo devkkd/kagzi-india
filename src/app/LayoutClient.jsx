@@ -4,7 +4,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import CertificationsNewsletter from "../components/CertificationsNewsletter";
 
-const WHATSAPP_NUMBER = "+919928424518"; // format: country code + number, no +
+const WHATSAPP_NUMBER = "917023477993"; // format: country code + number, no +
 const WHATSAPP_MESSAGE = "Hello! I'm interested in your handmade paper products.";
 
 export default function LayoutClient({ children }) {
