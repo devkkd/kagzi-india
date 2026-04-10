@@ -62,8 +62,9 @@ const CertificationsNewsletter = () => {
               className="text-3xl sm:text-4xl lg:text-5xl text-gray-900 leading-[1.2]"
               style={{ fontFamily: 'MainFont, sans-serif' }}
             >
-              Paper Love, Delivered To <br />
-              <span className="text-[#860000]">Your Inbox</span>
+               Manufacturer & Exporter  <br />
+              <span className="text-[#860000]">of Handmade Paper & Packaging Solutions from India
+              Paper</span>
             </h2>
           </div>
 

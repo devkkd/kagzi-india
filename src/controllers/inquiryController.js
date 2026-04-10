@@ -10,7 +10,59 @@ class InquiryController {
     try {
       await connectDB();
 
-      // Validate data
+      // Handle multi-product cart inquiry
+      const isCartInquiry = Array.isArray(data.products) && data.products.length > 0;
+
+      if (isCartInquiry) {
+        // Save one inquiry per product but send only ONE email
+        const savedInquiries = [];
+        for (const item of data.products) {
+          const inquiryData = {
+            fullName: data.fullName,
+            companyName: data.companyName,
+            email: data.email,
+            phone: data.phone,
+            message: data.message,
+            productId: item.productId
+          };
+          const validation = Inquiry.validate(inquiryData);
+          if (!validation.isValid) continue;
+          const inquiry = new Inquiry(inquiryData);
+          await inquiry.save();
+          savedInquiries.push(inquiry);
+        }
+
+        // Fetch product names for email
+        const productNames = data.products.map(p => p.name).filter(Boolean);
+
+        // Send ONE email for all products
+        try {
+          await sendProductInquiryNotification({
+            name: data.fullName,
+            email: data.email,
+            phone: data.phone,
+            company: data.companyName,
+            message: data.message,
+            productName: productNames.join(', '),
+          });
+
+          await sendCustomerConfirmation({
+            name: data.fullName,
+            email: data.email,
+            message: data.message,
+          });
+        } catch (emailError) {
+          console.error('Email notification error:', emailError);
+        }
+
+        return {
+          success: true,
+          message: 'Inquiry submitted successfully',
+          data: savedInquiries[0]?.toSafeObject()
+        };
+      }
+
+      // Single product inquiry (from product detail page)
       const validation = Inquiry.validate(data);
       if (!validation.isValid) {
         return {
@@ -23,15 +75,12 @@ class InquiryController {
       const inquiry = new Inquiry(data);
       await inquiry.save();
 
-      // Get product details if productId exists
       let productDetails = null;
       if (data.productId) {
         productDetails = await Product.findById(data.productId).select('name mainImage').lean();
       }
 
-      // Send email notifications (don't block the response if email fails)
       try {
-        // Send notification to admin
         await sendProductInquiryNotification({
           name: inquiry.fullName,
           email: inquiry.email,
@@ -42,7 +91,6 @@ class InquiryController {
           productImage: productDetails?.mainImage,
         });
 
-        // Send confirmation to customer
         await sendCustomerConfirmation({
           name: inquiry.fullName,
           email: inquiry.email,
@@ -50,7 +98,6 @@ class InquiryController {
         });
       } catch (emailError) {
         console.error('Email notification error:', emailError);
-        // Continue even if email fails
       }
 
       return {

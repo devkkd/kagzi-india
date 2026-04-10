@@ -16,6 +16,8 @@ import OurProductsServer from '@/components/OurProductsServer'
 
 
 
+import DocumentarySection from '@/components/DocumentarySection'
+
 export default function page() {
   return (
     <div>
@@ -31,6 +33,7 @@ export default function page() {
       <Testimonials/>
       <BrandPartners/>
       <QuoteSection/>
+      <DocumentarySection videoUrl="https://www.youtube.com/watch?v=YOUR_VIDEO_ID" />
       <FAQ/>
     </div>
   )

@@ -44,25 +44,24 @@ const CartPage = () => {
     e.preventDefault();
     
     if (!validateForm()) return;
+    if (submitting) return;
 
     setSubmitting(true);
 
     try {
-      // Create inquiry for each product in cart
-      const inquiryPromises = cart.map(item => 
-        axios.post('/api/inquiries', {
-          ...formData,
+      // Single API call with all cart products
+      await axios.post('/api/inquiries', {
+        ...formData,
+        products: cart.map(item => ({
           productId: item.id,
-          message: formData.message || `Inquiry for ${item.quantity} x ${item.name}`
-        })
-      );
+          name: item.name,
+          quantity: item.quantity,
+          size: item.size || null
+        })),
+        message: formData.message || `Inquiry for ${cart.length} product(s)`
+      });
 
-      await Promise.all(inquiryPromises);
-
-      // Show success modal - DON'T clear cart yet
       setShowSuccessModal(true);
-      
-      // Clear form only
       setFormData({
         fullName: '',
         companyName: '',

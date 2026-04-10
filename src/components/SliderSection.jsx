@@ -15,7 +15,7 @@ const SliderSection = () => {
   const marqueeItems = [
     "HANDMADE SINCE 1980",
     "ZERO-CHEMICAL DYEING",
-    "B2B & RETAIL",
+    "B2B",
     "MADE IN JAIPUR",
     "EXPORT QUALITY",
     "DECKLE EDGE ARTISAN PAPER",
@@ -24,7 +24,7 @@ const SliderSection = () => {
   ];
 
   return (
-    <section className="w-full flex flex-col mt-5">
+    <section className="w-full flex flex-col">
       
       {/* 1. Image Slider Section */}
       <div className="w-full relative group">
