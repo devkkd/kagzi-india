@@ -169,6 +169,17 @@ const Footer = () => {
             <span>|</span>
             <Link href="/Terms&Conditions" className="hover:text-white transition-colors">Terms & Conditions</Link>
           </div>
+          <p className="">
+           Crafted and Powered by{' '}
+            <a
+              href="https://www.kontentkraftdigital.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white font-medium hover:underline"
+            >
+              Kontent Kraft Digital
+            </a>
+          </p>
         </div>
 
       </div>
