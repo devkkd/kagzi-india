@@ -11,7 +11,7 @@ export default function sitemap() {
       priority: 0.8,
     },
     {
-      url: "https://www.kagziindia.com/our-legacy/",
+      url: "https://www.kagziindia.com/legacy/",
       changeFrequency: "monthly",
       priority: 0.8,
     },
@@ -31,11 +31,6 @@ export default function sitemap() {
       priority: 0.9,
     },
     {
-      url: "https://www.kagziindia.com/products?category=69d77484aa4642cb6232dbe3&subcategory=69d774e4aa4642cb6232dbed",
-      changeFrequency: "weekly",
-      priority: 0.7,
-    },
-    {
       url: "https://www.kagziindia.com/faqs/",
       changeFrequency: "monthly",
       priority: 0.6,
@@ -46,7 +41,7 @@ export default function sitemap() {
       priority: 0.7,
     },
     {
-      url: "https://www.kagziindia.com/request-quote/",
+      url: "https://www.kagziindia.com/request/",
       changeFrequency: "weekly",
       priority: 0.8,
     },
