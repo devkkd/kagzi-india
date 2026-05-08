@@ -1,0 +1,30 @@
+User-agent: *
+
+# PUBLIC PAGES
+Allow: /
+Allow: /products/
+Allow: /collections/
+Allow: /about/
+Allow: /contact/
+Allow: /faqs/
+Allow: /legacy/
+Allow: /papermaking/
+Allow: /request/
+
+# STATIC ASSETS
+Allow: /images/
+Allow: /fonts/
+
+# BLOCK ADMIN PANEL
+Disallow: /admin/
+
+# BLOCK APIs
+Disallow: /api/
+
+# BLOCK INTERNAL NEXT FILES
+Disallow: /_next/
+
+# OPTIONAL: BLOCK CART
+Disallow: /cart/
+
+Sitemap: https://www.kagziindia.com/sitemap.xml
