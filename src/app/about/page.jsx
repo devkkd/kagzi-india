@@ -35,7 +35,7 @@ const OurStoryHero = () => {
           {/* Right Column: Description */}
           <div className="flex-1 lg:max-w-xl lg:pt-8">
             <p className="text-sm leading-tight text-gray-900 font-medium">
-              <span className="font-bold">Since 1960,</span> from a workshop on the banks of Sanganer's ancient paper quarter, we have been making paper the old way by hand, with conscience, for the world.
+              <span className="font-bold">Looking for a handmade paper supplier?</span> Kagzi india is trusted handmade paper supplier in india based in sanganer, jaipur since 1940, Kagzi India offers premium handmade paper for printing packaging craft. For decades, we are preserving timeless craft of handmade paper while embracing sustainable innovation and modern design. 
             </p>
           </div>
 

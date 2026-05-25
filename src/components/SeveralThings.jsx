@@ -5,7 +5,7 @@ export default function SeveralThings() {
     {
       num: "01.",
       title: "Innovative &\nArtistic Designs",
-      desc: "Our designers stay current with global trends while honouring traditional craft forms. Every product is an original.",
+      desc: "Our designs are completely unique and beautifully reflect traditional asthetics for all kinds of paper products.",
       img: "/images/home/feature1.png" // Replace with your actual image paths
     },
     {
@@ -17,25 +17,25 @@ export default function SeveralThings() {
     {
       num: "03.",
       title: "Eco-Friendly by\nConviction",
-      desc: "We use 100% recycled cotton waste. No trees. No harmful chemicals. No compromises.",
+      desc: "We use 100% recycled cotton waste. No trees, no harmful chemicals. No compromises.",
       img: "/images/home/feature3.png"
     },
     {
       num: "04.",
       title: "Custom-Made for\nYour Brand",
-      desc: "GSM, size, colour, texture, embossing, foiling — we build exactly what your brand needs.",
+      desc: "GSM, Size, colour, texture, embossing, foiling — we build exactly what your brands need.",
       img: "/images/home/feature4.png"
     },
     {
       num: "05.",
       title: "Competitive\nPricing",
-      desc: "Premium craft at fair prices. We believe sustainable should be accessible to the brands that need it most.",
+      desc: "Trusted handmade paper manufacturer offering superior quality at competitive pricing.",
       img: "/images/home/feature5.png"
     },
     {
       num: "06.",
       title: "Fine\nFinishing",
-      desc: "Dried flowers, natural dyes, hand-painted accents. Our finishing artists bring beauty to every edge.",
+      desc: "Premium craftsmanship with smooth texture and fine finishing in every product.",
       img: "/images/home/feature6.png"
     }
   ];

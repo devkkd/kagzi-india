@@ -75,9 +75,9 @@ const PaperMakingIntro = () => {
           {/* Right Column: Description & Stats Grid */}
           <div className="flex flex-col flex-1 lg:max-w-xl lg:pt-[104px]">
             <p className="text-sm leading-tight text-gray-900 font-medium mb-16">
-              Cotton rag is not just a material to us it is the reason our paper exists at all. <br />
-              A fibre with <span className="font-bold">95%</span> cellulose purity, rescued from textile waste and reborn as something archival, beautiful, and permanent. <br />
-              Here is the science behind why it works.
+              Cotton rag is not just a material to us — it is the reason our handmade paper exists at all. <br />
+              A fibre with <span className="font-bold">95%</span> cellulose purity, rescued from textile waste and recycled paper sources, then reborn as something archival, beautiful, and permanent. <br />
+              This handmade in India craft paper reflects the heritage of sustainable paper products and timeless paper handmade paper artistry. Here is the science behind why it works.
             </p>
 
             {/* Stats Grid with interlocking borders */}

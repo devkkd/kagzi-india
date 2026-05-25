@@ -11,12 +11,12 @@ const PaperDifferences = () => {
     {
       subtitle: 'Quality 02',
       title: 'Deckle Edge',
-      desc: 'Each sheet has a natural, organic edge on all four sides unrepeatable, uneven, entirely handmade. No machine can fake it. No two sheets are the same.'
+      desc: 'Every sheet carries natural deckled edges on all four sides, giving each piece a unique and organic character. No two sheets of hand made paper are ever exactly alike — a true mark of authentic handmade products.'
     },
     {
       subtitle: 'Quality 03',
       title: 'Acid-Free',
-      desc: 'Our paper will not yellow, crack, or degrade over time. It is safe for fine art, legal documents, and anything meant to outlast the moment it was made for.'
+      desc: 'Our hand made paper is created to last — resisting yellowing, cracking, and ageing over time. Its archival quality makes it ideal for fine art, important documents, and timeless paper products meant to be preserved for years.'
     },
     {
       subtitle: 'Quality 04',
@@ -35,7 +35,7 @@ const PaperDifferences = () => {
     {
       num: '01.',
       title: 'Cotton Rag',
-      desc: 'Strong, long-lasting, archival. The primary building block of every sheet we make. Sourced from textile waste rescued before it reaches landfill.',
+      desc: 'Strong, durable, and archival in quality, cotton fibre forms the foundations of every sheet we create. Carefully sourced from reclaimed textile waste, it gives discarded fabrics a new life before it reaches landfill.',
       footer: 'Primary Fibre'
     },
     {
@@ -59,7 +59,7 @@ const PaperDifferences = () => {
     {
       num: '05.',
       title: 'Clean Water',
-      desc: 'The silent ingredient. Treated and returned to the ground after every use. Paper should nourish the world, not deplete it.',
+      desc: 'Water is at the heart of every sheet we make. Carefully treated and responsibly returned after use, it reflects our belief that paper making should work in harmony with nature, not against it.',
       footer: 'Zero Waste'
     }
   ];

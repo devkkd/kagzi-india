@@ -5,25 +5,25 @@ const FeaturesSection = () => {
     {
       icon: '/images/icons/icon1.svg',
       title: 'Waste, Reimagined',
-      description: 'Nothing is discarded here. What the world throws away, we transform giving forgotten cotton fibres a second life more beautiful than their first.',
+      description: 'We use 100% recycled cotton textiles waste and natural fibres, we craft environmental friendly handmade paper product without harming nature.',
       badge: '100% Recycled'
     },
     {
       icon: '/images/icons/icon2.svg',
-      title: 'Made for the Earth, Not Just on It',
-      description: 'Every choice we make from fibre to finish asks the same question: does this leave the world better? The answer, always, is yes.',
+      title: 'Made for the earth, not just on it',
+      description: 'Sustainability is not just a trend for us - it is reflected in every sheet we craft and the choice we make.',
       badge: 'Earth Positive'
     },
     {
       icon: '/images/icons/icon3.svg',
       title: 'Cotton, Reclaimed',
-      description: 'Our paper begins where cloth ends. One hundred percent textile cotton waste, rescued from landfill and reborn as something worth holding.',
+      description: 'Made from recycled cotton fibres, our handmade paper transforms textile waste into timeless creation crafted with sustainability and care.',
       badge: '100% Cotton Waste'
     },
     {
       icon: '/images/icons/icon4.svg',
-      title: 'We Take More Carbon Than We Give',
-      description: "Most industries leave a mark on the atmosphere. We're working to erase it one slow, sun-dried, handcrafted sheet at a time.",
+      title: 'We take more carbon, than we give',
+      description: 'Crafted through eco-friendly processes, our handmade paper products supports clean and more sustainable future.',
       badge: 'Carbon Negative'
     }
   ];

@@ -35,10 +35,10 @@ const PineappleInnovation = () => {
           {/* Right Column: Description Text */}
           <div className="flex flex-col flex-1 lg:max-w-xl gap-6 lg:pt-14">
             <p className="text-sm leading-tight text-gray-900 font-medium">
-              We don't just preserve tradition. We question it - carefully, scientifically, with the same hands that have made cotton rag paper for decades.
+              We don't just preserve tradition. We question it — carefully, scientifically, with the same hands that have made cotton rag handmade paper for decades.
             </p>
             <p className="text-sm leading-tight text-gray-900 font-medium">
-              <span className="font-bold">Our research programme</span> explores what happens when you look at agricultural waste not as a problem, but as a raw material waiting to be discovered. Pineapple is one of the world's most produced fruits. But for every kilogram eaten, nearly 60% of the plant - the leaves, the crown, the stem – is discarded. In most places, burned or left to rot.
+              <span className="font-bold">Our research programme</span> explores what happens when agricultural waste is transformed into sustainable recycled paper and innovative paper products instead of being discarded. Pineapple is one of the world’s most produced fruits, yet nearly 60% of the plant — the leaves, crown, and stem — is treated as waste.
             </p>
             <p className="text-sm leading-tight text-gray-900 font-medium">
               In our workshop in Sanganer, we asked a different question: <span className="font-bold">what if we made paper from it?</span>

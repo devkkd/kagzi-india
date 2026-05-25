@@ -57,10 +57,10 @@ const PackagingWarehouse = () => {
             
             <div className="flex flex-col gap-5">
               <p className="text-sm leading-tight text-gray-900">
-                Our spacious, well-guarded warehouse is designed for the safe storage of handmade paper products - protected against humidity, rodents, and damage.
+                Our warehouse is equipped to safely store and manage handmade paper products with efficiency and care, from recycled paper products to luxury leather journals, every item is carefully stored and packed in our warehouse facility.
               </p>
               <p className="text-sm leading-tight text-gray-900">
-                All items are stored in an organized system and regularly inspected by inventory managers.
+                A strong warehouse network helps us maintain consistent supply, fast delivery, and reliable service for international clients.
               </p>
             </div>
           </div>

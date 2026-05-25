@@ -11,7 +11,7 @@ const HistoryTimeline = () => {
       navTitle: '3500 BC',
       sub: '3500 BC - Egypt',
       title: 'Papyrus: Where Paper Began',
-      desc: "Before paper, there was papyrus. Made from the sliced pith of the Cyperus papyrus plant - a wetland sedge native to Africa - the ancient Egyptians created the world's first writing surface.\nStrips were laid in perpendicular layers, pressed, and dried under the sun.\nAn empire wrote its laws, its myths, and its love letters on its banks.",
+      desc: "Before modern handmade paper, the ancient Egyptians created papyrus — the world’s earliest writing material made from natural plant fibres.\nThis invention laid the foundation for today’s paper products, inspiring centuries of craftsmanship, creativity, and the evolution of sustainable paper making across civilizations.",
       img: '/images/legacy/legacy1.svg'
     },
     {
@@ -19,7 +19,7 @@ const HistoryTimeline = () => {
       navTitle: '2500 BC',
       sub: '2500 BC - Europe & Asia',
       title: 'Parchment: Skin as Manuscript',
-      desc: "When papyrus became scarce, Europe and Asia turned to animal skin.\nParchment - made from goat, sheep, or calf hide through a labour-intensive process of liming, fleshing, bleaching, stretching, and scraping - became the medium of monasteries, legal courts, and royal decrees.\nThe Codex Gigas, one of the largest medieval manuscripts in existence, was made from the skin of 160 donkeys.",
+      desc: "When papyrus became scarce, Europe and Asia turned to animal skin for writing and record keeping.\nParchment — made from goat, sheep, or calf hide through a labour-intensive process — became an important material for manuscripts, royal records, vintage diary making, leather journal covers, and handmade paper collections.\nThe famous Codex Gigas, one of the largest medieval manuscripts, was created using the skin of 160 donkeys, reflecting the rich history behind paper products, journal notebook traditions, and hand craft bookmaking.",
       img: '/images/legacy/legacy2.svg'
     },
     {
@@ -27,7 +27,7 @@ const HistoryTimeline = () => {
       navTitle: '105 AD',
       sub: '105 AD - China',
       title: 'The Birth of True Paper',
-      desc: "The oldest surviving piece of writing paper was excavated from a tomb at Fangmatan, Gansu Province, China - dating to the Western Han Dynasty.\nBut it was Cai Lun, an official of the Imperial Chinese court, who is credited with formalising papermaking using bark, hemp, rags, and fishnets. By 740 AD, China had printed the world's first newspaper - on mulberry paper.",
+      desc: "The oldest surviving writing paper was discovered in Fangmatan, Gansu Province, China, dating back to the Western Han Dynasty.\nLater, Cai Lun improved the art of papermaking using bark, hemp, rags, and fishnets, laying the foundation for modern handmade paper and recycled paper techniques.\nBy 740 AD, China had printed the world’s first newspaper on mulberry paper, influencing the future of paper products, decorative paper, craft paper, and paper for art and craft across the world.",
       img: '/images/legacy/legacy3.svg'
     },
     {
@@ -35,7 +35,7 @@ const HistoryTimeline = () => {
       navTitle: '6TH CENTURY AD',
       sub: '6th Century AD - Japan',
       title: 'Washi: Paper Elevated to Art',
-      desc: "Approximately 500 years after China, the craft crossed to Korea and then to Japan through a Korean monk named Don-cho. What Japan did with it transformed papermaking into an art form.\nWashi - made from the inner bark fibres of three native plants - became not just a material but a cultural philosophy. Light, strong, luminous, and deeply revered.",
+      desc: "Approximately 500 years after China, the craft crossed to Korea and then to Japan through a Korean monk named Don-cho. What Japan did with it transformed papermaking into an art form.\nWashi — made from the inner bark fibres of three native plants — became not just a material but a cultural philosophy. Light, strong, luminous, and deeply revered, it inspired generations of artisans and modern paper company traditions around the world.\nToday, the legacy of handmade paper continues through sustainable practices like recycled paper, eco-friendly paper to make crafts, luxury stationery, and handmade in India paper products that blend heritage with creativity.",
       img: '/images/legacy/legacy4.svg'
     },
     {
@@ -51,7 +51,7 @@ const HistoryTimeline = () => {
       navTitle: '1420 - 1470 CE',
       sub: '1420 - 1470 CE - India',
       title: 'Arrival in the Subcontinent',
-      desc: "Handmade paper first arrived in India through Kashmir, introduced from Samarkand by King Zain-ul-Abidin.\nWhen Emperor Babur established Mughal rule in 1526, he brought master papermakers from Bukhara and Balkh.\nThe craft flourished - becoming a major centre of production and a precious export commodity across Rajasthan, Uttar Pradesh, Madhya Pradesh, Bihar, West Bengal, Maharashtra, and Karnataka.",
+      desc: "Handmade paper first arrived in India through Kashmir, introduced from Samarkand by King Zain-ul-Abidin. This early tradition of hand made paper and craft handmade techniques later inspired many handmade products and decorative paper styles still valued today.\nWhen Emperor Babur established Mughal rule in 1526, he brought master papermakers from Bukhara and Balkh. Their skills helped expand the paper company culture, paper mill paper mill production, and luxury paper & card craftsmanship across the region.",
       img: '/images/legacy/legacy6.svg'
     },
     {
@@ -59,7 +59,7 @@ const HistoryTimeline = () => {
       navTitle: '1600 CE',
       sub: '1600 CE - Sanganer, Jaipur',
       title: 'The Kagzi Community Finds its Home',
-      desc: "Handmade paper first arrived in India through Kashmir, introduced from Samarkand by King Zain-ul-Abidin.\nWhen Emperor Babur established Mughal rule in 1526, he brought master papermakers from Bukhara and Balkh.\nThe craft flourished - becoming a major centre of production and a precious export commodity across Rajasthan, Uttar Pradesh, Madhya Pradesh, Bihar, West Bengal, Maharashtra, and Karnataka.",
+      desc: "Handmade paper first arrived in India through Kashmir, introduced from Samarkand by King Zain-ul-Abidin.\nWhen Emperor Babur established Mughal rule in 1526, he brought master papermakers from Bukhara and Balkh.\nThe craft flourished - becoming a major centre of production and a precious export commodity across Rajasthan, Uttar Pradesh, Madhya Pradesh, Bihar, West Bengal, Maharashtra, and Karnatka.",
       img: '/images/legacy/legacy7.svg'
     },
     {
@@ -75,7 +75,7 @@ const HistoryTimeline = () => {
       navTitle: '1960',
       sub: '1960 - Kagzi Industries',
       title: 'Our Chapter Begins',
-      desc: "Founded in Sanganer, Jaipur, Kagzi Industries was established to carry this living tradition into a global marketplace - with innovation, sustainability, and absolute respect for the craft. We are not the beginning of this story. We are its latest, proudest chapter.",
+      desc: "Founded in Sanganer, Jaipur, Kagzi Industries was established to carry this living tradition into a global marketplace — with innovation, sustainability, and absolute respect for the craft. As a handmade in India paper company, we create handmade products using recycled paper.\nWe are not the beginning of this story. We are its latest, proudest chapter.",
       img: '/images/legacy/legacy9.svg'
     }
   ];

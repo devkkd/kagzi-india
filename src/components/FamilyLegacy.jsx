@@ -38,7 +38,7 @@ const FamilyLegacy = () => {
             {/* Paragraphs */}
             <div className="text-gray-900 text-sm leading-tight space-y-6 max-w-xl">
               <p>
-                In the workshops of <span className="font-bold">Sanganer, Jaipur</span> where afternoon light falls in long golden strips and the river Saraswati once ran clear we make paper the way it has always been made.
+                In the workshops of <span className="font-bold">Sanganer, Jaipur</span> where afternoon light falls in long golden strips and the river Saraswati once ran clear we make handmade paper the way it has always been made.
               </p>
               
               <p className="font-bold">
@@ -46,7 +46,7 @@ const FamilyLegacy = () => {
               </p>
 
               <p>
-                <span className="font-bold">Kagzi Industries</span> has been a quiet keeper of this tradition since 1990, supplying India and the world with paper that carries the imprint of its maker. We are not a factory. We are a family of paper-lovers artisans who understand that the deckled edge of a handmade sheet is not a flaw, but a signature.
+                <span className="font-bold">Kagzi Industries</span> has been a quiet keeper of this tradition since 1990, supplying India and the world with paper products that carries the imprint of its maker. We are not a factory. We are a family of paper-lovers artisans who understand that the deckled edge of a handmade sheet is not a flaw, but a signature. Every decorative paper at Kagzi India reflects patience, skills and respect for the nature.
               </p>
 
               <p>

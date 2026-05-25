@@ -21,7 +21,7 @@ const WithUs = () => {
           {/* Right Column: Description and Button */}
           <div className="flex flex-col flex-1 lg:max-w-xl">
             <p className="text-sm leading-tight text-gray-900 font-medium mb-8">
-              Whether you're a global Distributor, boutique stationery brand, or a packaging house looking for a sustainable edge - we're ready to make something extraordinary together.
+              Whether you're a global distributor, stationery brand, or packaging company, our handmade paper products are crafted to bring sustainability, creativity, and premium quality to every project, from recycled paper and luxury journal notebooks to custom leather diary collections, we help brands worldwide create products that leave a lasting impression.
             </p>
             
             <button className="bg-[#860000] text-white px-8 py-3.5 rounded-full text-sm font-medium hover:bg-[#680000] transition-colors flex items-center justify-center gap-2 w-max">

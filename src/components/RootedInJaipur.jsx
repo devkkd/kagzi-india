@@ -72,8 +72,8 @@ const RootedInJaipur = () => {
                 Our Vision
               </h3>
             </div>
-            <div className="text-sm leading-tight text-gray-900  pl-2 mx-auto">
-              A world where every sheet of paper carries a story worth telling, and every business that touches it is made more purposeful by the choice.
+            <div className="text-sm leading-tight text-gray-900 pl-2 mx-auto">
+              A world where every sheet of paper made from carries a story worth telling, and every business that chooses sustainable paper to make premium products is made more purposeful by that choice.
             </div>
           </div>
 

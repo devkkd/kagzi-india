@@ -12,23 +12,23 @@ const FAQPage = () => {
       items: [
         {
           q: 'What raw material do you use to make your paper?',
-          a: 'All our paper is made from 100% recycled cotton textile waste – remnants from garment and textile factories. We use no wood pulp. Some specialty papers incorporate khadi fibre, pineapple leaf fibre, or other natural plant-based materials. All our input materials are biodegradable and sustainably sourced.'
+          a: 'All our paper is made from 100% recycled cotton textile waste.Our handmade paper products are crafted in India using recycled paper, natural fibers, and traditional paper making techniques.Our handmade paper starts with carefully sourced cotton rags, recycled fibres, and agricultural by-products, giving new purpose to materials that would otherwise go to waste.'
         },
         {
           q: 'Is your paper acid-free?',
-          a: 'Yes. All our handmade cotton rag paper is acid-free and archival quality - meaning it will not yellow, crack, or degrade over time. Suitable for fine art, legal documents, and anything designed to last.'
+          a: 'Yes. All our handmade paper is acid-free and archival quality, ensuring it will not yellow, crack, or deteriorate over time. Made from recycled paper fibres and premium cotton rag pulp, our handmade paper is ideal for fine art, legal documents, journals, and keepsakes designed to last for generations. Proudly handmade in India by a trusted paper company, every sheet combines durability.'
         },
         {
           q: 'What GSM weights are available?',
-          a: 'Our standard range runs from 120 GSM to 250 GSM. Custom weights are available on request for B2B orders. Please include your GSM requirement in your enquiry.'
+          a: 'Our handmade paper products are available in a wide range of GSM weights to suit different creative and packaging needs. We offer lightweight decorative paper and each handmade paper sheet is carefully crafted in India using recycled paper and natural fibers, providing excellent texture.'
         },
         {
           q: 'What sizes do you offer?',
-          a: 'Our standard maximum sheet size is 22 × 30 inches. Custom sizes are available. Please specify your required dimensions in your enquiry form.'
+          a: 'Our standard maximum handmade paper sheet size is 22 × 30 inches. Custom sizes are available. Please specify your required dimensions in your enquiry form.'
         },
         {
           q: 'Do you offer coloured paper?',
-          a: 'Yes. We offer natural white, a range of soft pastels, and custom-dyed sheets using natural pigments indigo, turmeric, rose, pomegranate rind, and more. Bespoke colour matching is available for B2B orders.'
+          a: 'Yes. We offer handmade paper in natural white, a range of soft pastels, and custom-dyed sheets using natural pigments. Colour matching is also available for B2B orders, allowing businesses to create unique handmade paper products tailored to their brand requirements.'
         },
         {
           q: 'What is a deckle edge?',
@@ -68,7 +68,7 @@ const FAQPage = () => {
       items: [
         {
           q: 'Which countries do you export to?',
-          a: 'We export to 30+ countries worldwide, including the United States, United Kingdom, Germany, France, Japan, Australia, Canada, and across Southeast Asia, the Middle East, and Africa.'
+          a: 'We export our handmade products and premium paper products to many countries worldwide, including the USA, UK, Europe, Australia, and the Middle East, germany, japan, australia, africa, france. Our handmade in India collections, including handmade sheet, paper notebook, decorative paper, and recycled paper products, are trusted by global buyers for quality and craftsmanship.'
         },
         {
           q: 'What are your shipping and payment terms?',
@@ -86,11 +86,11 @@ const FAQPage = () => {
       items: [
         {
           q: 'Is your paper really eco-friendly?',
-          a: 'Yes, fully. Our paper is made from 100% recycled cotton waste – no trees are cut. We use no bleach or caustic chemicals. Our natural dyes are plant-based. All process water is treated and returned. We are ISO 9001:2015 certified and follow sustainable manufacturing practices throughout.'
+          a: 'Yes, our handmade paper is truly eco-friendly and made using recycled paper and sustainable processes. Our paper products are crafted with care to reduce waste while offering premium quality for craft paper, paper bags, handmade diary, and other creative applications.'
         },
         {
           q: 'Are your products biodegradable?',
-          a: 'Yes. All our paper products are fully biodegradable and will return to the earth without harmful residue.'
+          a: 'Yes. All our handmade paper products are fully biodegradable and will return to the earth without harmful residue. Made from recycled paper fibres and premium cotton rag pulp.'
         },
         {
           q: 'Do you have any environmental certifications?',

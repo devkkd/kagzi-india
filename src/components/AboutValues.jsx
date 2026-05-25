@@ -23,19 +23,19 @@ const AboutValues = () => {
               className="text-3xl sm:text-4xl lg:text-5xl text-gray-900 leading-[1.2] mb-8"
               style={{ fontFamily: 'MainFont, sans-serif' }}
             >
-              Design Is Not <span className="text-[#860000]">Decoration</span><br />
-              It's Our <span className="text-[#860000]">Language</span>
+              Timeless Design <span className="text-[#860000]">Philosophy</span><br />
+              for Luxury <span className="text-[#860000]">Paper Products</span>
             </h2>
             
             <div className="flex flex-col gap-5">
               <p className="text-sm leading-tight text-gray-900">
-                We believe design plays a vital role in expanding market reach. Our products are not just items - they are expressions of creativity, emotional values, and cultural heritage.
+                We believe design plays a vital role in expanding market reach. Our paper products are not just items — they are expressions of creativity, emotional values, and cultural heritage.
               </p>
               <p className="text-sm leading-tight text-gray-900">
-                We always provide our clients with original designs that blend tradition and modernity without apology.
+                As a trusted handmade paper manufacturer, we always provide our clients with original designs that blend tradition and modernity without apology. From journal notebook collections to premium leather diary designs, every creation reflects timeless craftsmanship and sustainable innovation.
               </p>
               <p className="text-sm leading-tight text-gray-900">
-                Every product begins with a question: What does this mean to the person who holds it? The answer shapes everything the texture, the weight, the colour, the edge.
+                At Kagzi Industries, we create paper products that turn everyday writing and packaging into a creative experience.
               </p>
             </div>
           </div>
@@ -69,19 +69,19 @@ const AboutValues = () => {
               className="text-3xl sm:text-4xl lg:text-5xl text-gray-900 leading-[1.2] mb-8"
               style={{ fontFamily: 'MainFont, sans-serif' }}
             >
-              Quality Isn't a <span className="text-[#860000]">Process</span><br />
-              It's a Standard of <span className="text-[#860000]">Care</span>
+              Quality You Can Feel in <span className="text-[#860000]">Every Sheet,</span><br />
+              Excellence Crafted by <span className="text-[#860000]">Hand</span>
             </h2>
             
             <div className="flex flex-col gap-5">
               <p className="text-sm leading-tight text-gray-900">
-                Quality is at the heart of everything we do. We procure the finest biodegradable handmade paper and leather from the most reliable sources. Raw materials are tested on multiple parameters before entering production.
+                Quality is at the heart of everything we do. We procure the finest biodegradable handmade paper and leather from the most reliable sources. Raw materials are tested on multiple parameters before entering production. 
               </p>
               <p className="text-sm leading-tight text-gray-900">
-                Accessories are meticulously attached. Printing, where required, is done with precision. The entire process is supervised by master craftsmen.
+                Our premium quality accessories and handmade paper products are thoughtfully crafted for modern and creative lifestyles.
               </p>
               <p className="text-sm leading-tight text-gray-900">
-                Our ornamentation artists then enhance finished products with dried flowers, leaves, or hand-applied paint. Finally, we personally handpick the best items before dispatch - ensuring only the finest reach our clients.
+                From elegant leather diary and vintage diary collections to stylish diary notebook, paper notebook, and leather journal designs, every piece reflects fine craftsmanship and timeless appeal.
               </p>
             </div>
           </div>
@@ -120,7 +120,7 @@ const AboutValues = () => {
             
             <div className="flex flex-col gap-5">
               <p className="text-sm leading-tight text-gray-900">
-                Our team comprises experienced craftsmen, designers, and skilled artisans - each a master in their respective field.
+                Our team comprises experienced craftsmen, designers, and skilled artisans - each a master in their respective field. 
               </p>
               <p className="text-sm leading-tight text-gray-900">
                 Our designers are well-versed in global market trends and work in close collaboration with clients to bring ideas to life, transforming them into paper products that stand apart in any market.

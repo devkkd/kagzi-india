@@ -37,22 +37,19 @@ const CelluloseInfo = () => {
             
             {/* Sub-heading */}
             <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-6">
-              The Cellulose Molecule Why Cotton Paper Lasts Centuries
+              The Cellulose Molecule — Why Cotton Paper Lasts for Centuries
             </h3>
 
             {/* Paragraph Text */}
             <div className="flex flex-col gap-4">
               <p className="text-sm leading-tight text-gray-900 font-medium">
-                Cellulose is a long-chain polymer of glucose the structural backbone of all plant cell walls.
+                Cellulose is the natural backbone of every handmade sheet, giving cotton rag paper its remarkable strength and durability. In cotton, these fibres exist in their purest form, creating handmade paper with exceptional texture, flexibility, and archival quality.
               </p>
               <p className="text-sm leading-tight text-gray-900 font-medium">
-                In cotton, it exists in its purest natural form: straight, tightly-packed chains that bond strongly to each other when dried, creating paper of extraordinary tensile strength.
+                Unlike ordinary wood-pulp paper, cotton rag is lignin-free, which means recycled paper made from cotton will not easily yellow, crack, or become brittle over time. This is why handmade in India paper products, luxury journals, diary notebook collections, and premium paper for art and craft can last for generations.
               </p>
               <p className="text-sm leading-tight text-gray-900 font-medium">
-                Unlike wood-pulp paper, which contains lignin that slowly breaks down and turns pages yellow, cotton rag paper is lignin-free meaning it will not degrade, yellow, or become brittle with age.
-              </p>
-              <p className="text-sm leading-tight text-gray-900 font-medium">
-                The oldest surviving cotton rag manuscripts are over 600 years old, and still legible. That is what we make.
+                Some of the oldest cotton rag manuscripts are over 600 years old — still beautiful, still readable. That is the legacy behind every Kagzi paper creation.
               </p>
             </div>
 
