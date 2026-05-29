@@ -13,10 +13,12 @@ import BrandPartners from '@/components/BrandPartners'
 import QuoteSection from '@/components/QuoteSection'
 import FAQ from '@/components/FAQ'
 import OurProductsServer from '@/components/OurProductsServer'
-
-
-
 import DocumentarySection from '@/components/DocumentarySection'
+
+export const metadata = {
+  title: "Handmade Paper in India | Decorative & Eco-Friendly Paper | Kagzi India",
+  description: "Discover premium handmade paper, decorative paper, and eco-friendly paper products by Kagzi India. Explore sustainable handmade paper sheets in unique textures, colors, and designs.",
+}
 
 export default function page() {
   return (

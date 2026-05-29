@@ -8,6 +8,11 @@ import ExtractFibreSteps from '@/components/ExtractFibreSteps'
 import Stages from '@/components/Stages'
 import PaperDifferences from '@/components/PaperDifferences'
 
+export const metadata = {
+  title: "Leading Handmade Paper Manufacturer & Decorative Paper Supplier | Kagzi India",
+  description: "Trusted handmade paper manufacturer offering decorative paper, recycled paper products, journals, notebooks, and customized paper solutions for global businesses.",
+}
+
 export default function page() {
   return (
     <div>

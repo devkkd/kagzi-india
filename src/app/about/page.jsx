@@ -9,6 +9,11 @@ import BrandPartners from '@/components/BrandPartners';
 import QuoteSection from '@/components/QuoteSection';
 import FAQ from '@/components/FAQ';
 
+export const metadata = {
+  title: "Handmade Paper Manufacturers & Exporters in India | Kagzi India",
+  description: "Kagzi India is a leading handmade paper manufacturer and exporter in India, offering decorative paper, eco-friendly paper products, and custom handmade paper solutions worldwide.",
+}
+
 const OurStoryHero = () => {
   return (
     <section className="w-full">
@@ -16,7 +21,6 @@ const OurStoryHero = () => {
       {/* Top Text Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16 sm:pb-20">
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-5 lg:gap-8">
-
           {/* Left Column: Title */}
           <div className="flex flex-col flex-1">
             <span className="text-xs leading-tight font-medium text-gray-900 mb-6">
@@ -35,7 +39,7 @@ const OurStoryHero = () => {
           {/* Right Column: Description */}
           <div className="flex-1 lg:max-w-xl lg:pt-8">
             <p className="text-sm leading-tight text-gray-900 font-medium">
-              <span className="font-bold">Looking for a handmade paper supplier?</span> Kagzi india is trusted handmade paper supplier in india based in sanganer, jaipur since 1940, Kagzi India offers premium handmade paper for printing packaging craft. For decades, we are preserving timeless craft of handmade paper while embracing sustainable innovation and modern design. 
+              <span className="font-bold">Looking for a handmade paper supplier?</span> Kagzi india is trusted handmade paper supplier in india based in sanganer, jaipur since 1940, Kagzi India offers premium handmade paper for printing packaging craft. For decades, we are preserving timeless craft of handmade paper while embracing sustainable innovation and modern design.
             </p>
           </div>
 
@@ -55,7 +59,7 @@ const OurStoryHero = () => {
 
         {/* Floating WhatsApp Button */}
         <a
-          href="https://wa.me/919928424518" 
+          href="https://wa.me/919928424518"
           target="_blank"
           rel="noopener noreferrer"
           className="absolute bottom-6 right-6 sm:bottom-10 sm:right-10 bg-[#25D366] text-white px-5 py-2.5 rounded-full text-sm font-medium hover:bg-[#1ebe5d] transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl z-10 hover:-translate-y-1"
@@ -64,7 +68,7 @@ const OurStoryHero = () => {
           WhatsApp
         </a>
       </div>
-      
+
       <RootedInJaipur />
       <SeveralThings />
       <AboutValues/>
