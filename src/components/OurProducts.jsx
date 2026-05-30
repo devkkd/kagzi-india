@@ -21,10 +21,9 @@ const OurProducts = () => {
     const loadData = async () => {
         try {
             setLoading(true);
-            const base = process.env.NEXT_PUBLIC_APP_URL || '';
             const [catRes, prodRes] = await Promise.all([
-                fetch(`${base}/api/categories`).then(r => r.json()),
-                fetch(`${base}/api/products`).then(r => r.json())
+                fetch('/api/categories').then(r => r.json()),
+                fetch('/api/products').then(r => r.json())
             ]);
 
             if (catRes.success) {
