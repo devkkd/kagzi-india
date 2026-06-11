@@ -1,20 +1,30 @@
 "use client";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { FiSearch, FiShoppingCart, FiMenu, FiX, FiChevronDown } from 'react-icons/fi';
 import { useCart } from '@/context/CartContext';
 import axios from 'axios';
+import SearchDropdown from './SearchDropdown';
 
 const Header = () => {
   const pathname = usePathname();
+  const router = useRouter();
   const { getCartCount } = useCart();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
-  // New States for Dynamic Dropdown
+  // Navigation dropdown
   const [navigationData, setNavigationData] = useState([]);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMobileProductsOpen, setIsMobileProductsOpen] = useState(false);
+
+  // Search states
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchResults, setSearchResults] = useState(null);
+  const [isSearching, setIsSearching] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const searchRef = useRef(null);
+  const debounceRef = useRef(null);
 
   // Fetch Categories & Subcategories on mount
   useEffect(() => {
@@ -52,6 +62,58 @@ const Header = () => {
       : "text-gray-900 hover:text-[#860000] transition-colors";
   };
 
+  // Search debounce
+  const handleSearchChange = useCallback((e) => {
+    const val = e.target.value;
+    setSearchQuery(val);
+    setIsSearchOpen(true);
+
+    if (debounceRef.current) clearTimeout(debounceRef.current);
+
+    if (val.trim().length < 2) {
+      setSearchResults(null);
+      return;
+    }
+
+    debounceRef.current = setTimeout(async () => {
+      setIsSearching(true);
+      try {
+        const res = await axios.get(`/api/search?q=${encodeURIComponent(val.trim())}`);
+        if (res.data.success) setSearchResults(res.data.data);
+      } catch {
+        setSearchResults(null);
+      } finally {
+        setIsSearching(false);
+      }
+    }, 300);
+  }, []);
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      router.push(`/products?search=${encodeURIComponent(searchQuery.trim())}`);
+      setIsSearchOpen(false);
+      setSearchQuery('');
+      setSearchResults(null);
+    }
+  };
+
+  const closeSearch = () => {
+    setIsSearchOpen(false);
+    setSearchResults(null);
+  };
+
+  // Close search on outside click
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (searchRef.current && !searchRef.current.contains(e.target)) {
+        closeSearch();
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
   const closeMobileMenu = () => {
     setIsMobileMenuOpen(false);
     setIsMobileProductsOpen(false); // Reset mobile accordion on close
@@ -77,13 +139,35 @@ const Header = () => {
             </button>
 
             {/* Desktop: Search Bar */}
-            <div className="hidden lg:flex items-center px-4 py-2 border border-[rgba(208,195,195,1)] rounded-full w-44 xl:w-56 bg-transparent">
-              <FiSearch className="text-[#a39a9a] shrink-0" size={14} />
-              <input
-                type="text"
-                placeholder="Search handmade paper..."
-                className="ml-2 w-full bg-transparent outline-none text-gray-800 placeholder-[#a39a9a] text-xs"
-              />
+            <div ref={searchRef} className="hidden lg:block relative">
+              <form onSubmit={handleSearchSubmit} className="flex items-center px-4 py-2 border border-[#860000] rounded-full w-44 xl:w-56 bg-transparent focus-within:ring-2 focus-within:ring-[#860000]/30 transition-all">
+                <FiSearch className="text-[#860000] shrink-0" size={14} />
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={handleSearchChange}
+                  onFocus={() => searchQuery.length >= 2 && setIsSearchOpen(true)}
+                  placeholder="Search handmade paper..."
+                  className="ml-2 w-full bg-transparent outline-none text-gray-800 placeholder-[#a39a9a] text-xs"
+                  autoComplete="off"
+                />
+                {searchQuery && (
+                  <button type="button" onClick={() => { setSearchQuery(''); setSearchResults(null); }} className="text-gray-400 hover:text-gray-600">
+                    <FiX size={12} />
+                  </button>
+                )}
+              </form>
+
+              {/* Search Dropdown */}
+              {isSearchOpen && searchQuery.length >= 2 && (isSearching || searchResults) && (
+                <SearchDropdown
+                  query={searchQuery}
+                  results={searchResults}
+                  isSearching={isSearching}
+                  onClose={closeSearch}
+                  onViewAll={handleSearchSubmit}
+                />
+              )}
             </div>
           </div>
 

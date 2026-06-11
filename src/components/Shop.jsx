@@ -14,6 +14,7 @@ const Shop = () => {
 
     const [activeCategory, setActiveCategory] = useState('All');
     const [activeSubCategory, setActiveSubCategory] = useState('All');
+    const [searchTerm, setSearchTerm] = useState('');
 
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -24,9 +25,11 @@ const Shop = () => {
     useEffect(() => {
         const category = searchParams.get('category') || 'All';
         const subcategory = searchParams.get('subcategory') || 'All';
+        const search = searchParams.get('search') || '';
 
         setActiveCategory(category);
         setActiveSubCategory(subcategory);
+        setSearchTerm(search);
 
         setIsReady(true); // 🔥 NOW we allow fetching
     }, [searchParams]);
@@ -72,19 +75,24 @@ const Shop = () => {
 
     // ✅ FETCH PRODUCTS (MAIN FIX)
     useEffect(() => {
-        if (!isReady) return; // 🔥 THIS FIXES YOUR BUG
+        if (!isReady) return;
 
         const fetchProducts = async () => {
             try {
                 setLoading(true);
 
                 let url = '/api/products';
+                const params = [];
 
-                if (activeSubCategory !== 'All') {
-                    url += `?subcategoryId=${activeSubCategory}`;
+                if (searchTerm) {
+                    params.push(`search=${encodeURIComponent(searchTerm)}`);
+                } else if (activeSubCategory !== 'All') {
+                    params.push(`subcategoryId=${activeSubCategory}`);
                 } else if (activeCategory !== 'All') {
-                    url += `?categoryId=${activeCategory}`;
+                    params.push(`categoryId=${activeCategory}`);
                 }
+
+                if (params.length) url += `?${params.join('&')}`;
 
                 const res = await axios.get(url);
 
@@ -100,7 +108,7 @@ const Shop = () => {
         };
 
         fetchProducts();
-    }, [activeCategory, activeSubCategory, isReady]);
+    }, [activeCategory, activeSubCategory, searchTerm, isReady]);
 
     // ✅ URL UPDATE
     const updateURL = (category, subcategory) => {
@@ -159,6 +167,21 @@ const Shop = () => {
 
                 {/* FILTERS */}
                 <div className="flex flex-col gap-4 mb-12">
+
+                    {/* Search result banner */}
+                    {searchTerm && (
+                        <div className="flex items-center justify-between bg-[#FAF6F1] border border-[#860000]/20 rounded-lg px-4 py-3">
+                            <p className="text-sm text-gray-700">
+                                Showing results for <span className="font-bold text-[#860000]">&quot;{searchTerm}&quot;</span> — {products.length} product{products.length !== 1 ? 's' : ''} found
+                            </p>
+                            <button
+                                onClick={() => router.push('/products')}
+                                className="text-xs text-gray-500 hover:text-[#860000] underline"
+                            >
+                                Clear search
+                            </button>
+                        </div>
+                    )}
 
                     <div className="flex flex-wrap items-center gap-3">
                         <button
@@ -237,7 +260,7 @@ const Shop = () => {
                             ))
                         ) : (
                             <div className="col-span-full py-16 text-center text-gray-500 font-medium">
-                                No products found for this category.
+                                {searchTerm ? `No products found for "${searchTerm}"` : 'No products found for this category.'}
                             </div>
                         )}
                     </div>
