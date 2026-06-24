@@ -179,6 +179,7 @@ const Header = () => {
               <Link href="/about" className={getLinkStyle('/about')}>About</Link>
               <Link href="/legacy" className={getLinkStyle('/legacy')}>Our Legacy</Link>
               <Link href="/papermaking" className={getLinkStyle('/papermaking')}>Paper Making</Link>
+              
             </nav>
 
             {/* Logo */}
@@ -324,6 +325,7 @@ const Header = () => {
           <Link href="/about" className={getLinkStyle('/about')} onClick={closeMobileMenu}>About</Link>
           <Link href="/legacy" className={getLinkStyle('/legacy')} onClick={closeMobileMenu}>Our Legacy</Link>
           <Link href="/papermaking" className={getLinkStyle('/papermaking')} onClick={closeMobileMenu}>Paper Making</Link>
+          <Link href="/blogs" className={getLinkStyle('/blogs')} onClick={closeMobileMenu}>Blogs</Link>
           <Link href="/collections" className={getLinkStyle('/collections')} onClick={closeMobileMenu}>Collections</Link>
           
           {/* Mobile Products Accordion */}

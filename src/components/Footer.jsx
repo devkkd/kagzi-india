@@ -50,7 +50,8 @@ const Footer = () => {
       { name: 'Our Legacy', url: '/legacy' },
       { name: 'Paper Making', url: '/papermaking' },
       { name: 'Contact Us', url: '/contact' },
-      { name: 'FAQ\'s', url: '/faqs' }
+      { name: 'FAQ\'s', url: '/faqs' },
+      { name: 'Blogs', url: '/blogs' }
     ]
   };
 

@@ -21,6 +21,7 @@ const menuItems = [
   { icon: FiFileText, label: 'Subcategories', href: '/admin/subcategories' },
   { icon: FiPackage, label: 'Products', href: '/admin/products' },
   { icon: FiUploadCloud, label: 'Bulk Upload', href: '/admin/bulk-upload' },
+  { icon: FiFileText, label: 'Blogs', href: '/admin/blogs' },
   { icon: FiMessageSquare, label: 'Product Inquiries', href: '/admin/inquiries' },
   { icon: FiMessageSquare, label: 'Customer Inquiries', href: '/admin/customer-inquiries' },
 ];
