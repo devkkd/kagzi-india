@@ -51,6 +51,10 @@ const BlogSchema = new mongoose.Schema({
     type: String,
     default: 'General',
     trim: true
+  },
+  schemaScript: {
+    type: String,
+    trim: true
   }
 }, {
   timestamps: true // Adds createdAt and updatedAt
@@ -95,6 +99,7 @@ BlogSchema.methods.toSafeObject = function() {
     metaTitle: this.metaTitle,
     metaDescription: this.metaDescription,
     category: this.category,
+    schemaScript: this.schemaScript,
     createdAt: this.createdAt,
     updatedAt: this.updatedAt
   };

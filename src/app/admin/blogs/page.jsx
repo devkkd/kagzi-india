@@ -25,6 +25,7 @@ export default function AdminBlogsPage() {
     metaTitle: '',
     metaDescription: '',
     category: 'General',
+    schemaScript: '',
     isActive: true
   });
   
@@ -79,6 +80,7 @@ export default function AdminBlogsPage() {
         metaTitle: blog.metaTitle || '',
         metaDescription: blog.metaDescription || '',
         category: blog.category || 'General',
+        schemaScript: blog.schemaScript || '',
         isActive: blog.isActive
       });
     } else {
@@ -93,6 +95,7 @@ export default function AdminBlogsPage() {
         metaTitle: '',
         metaDescription: '',
         category: 'General',
+        schemaScript: '',
         isActive: true
       });
     }
@@ -115,6 +118,7 @@ export default function AdminBlogsPage() {
       metaTitle: '',
       metaDescription: '',
       category: 'General',
+      schemaScript: '',
       isActive: true
     });
     setFormErrors({});
@@ -583,6 +587,22 @@ export default function AdminBlogsPage() {
                         className="w-full px-4 py-2 border border-[rgba(208,195,195,1)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#860000] bg-white text-gray-800 text-xs"
                         placeholder="Leave blank to use post excerpt"
                       />
+                    </div>
+                    <div className="md:col-span-2">
+                      <label className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">
+                        JSON-LD Schema Script (Paste complete script tag for SEO)
+                      </label>
+                      <textarea
+                        name="schemaScript"
+                        value={formData.schemaScript}
+                        onChange={handleChange}
+                        rows="4"
+                        className="w-full px-4 py-2 border border-[rgba(208,195,195,1)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#860000] bg-white text-gray-800 text-xs font-mono"
+                        placeholder='e.g. <script type="application/ld+json">...</script>'
+                      />
+                      <p className="text-[10px] text-gray-500 mt-1">
+                        Ensure you include the opening and closing script tags, e.g., &lt;script type="application/ld+json"&gt; &lt;/script&gt;
+                      </p>
                     </div>
                   </div>
                 </div>

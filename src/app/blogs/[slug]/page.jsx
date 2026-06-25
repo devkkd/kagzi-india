@@ -81,11 +81,29 @@ const BlogDetailPage = async ({ params }) => {
       author: blogDoc.author || 'Admin',
       readTime: blogDoc.readTime || 5,
       category: blogDoc.category || 'General',
+      schemaScript: blogDoc.schemaScript || null,
       createdAt: blogDoc.createdAt ? blogDoc.createdAt.toISOString() : null,
     };
 
+    // Helper to render schema script (wrapping in script tag if it's raw JSON)
+    const renderSchemaScript = (scriptStr) => {
+      if (!scriptStr) return null;
+      const trimmed = scriptStr.trim();
+      if (trimmed.startsWith('<script')) {
+        return <div dangerouslySetInnerHTML={{ __html: trimmed }} />;
+      }
+      return (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: trimmed }}
+        />
+      );
+    };
+
     return (
-      <main className="bg-[#FAF9F6] min-h-screen pb-20">
+      <main className=" min-h-screen pb-20">
+        {/* Render Schema Script for SEO */}
+        {renderSchemaScript(blog.schemaScript)}
         
         {/* Back Link Header */}
         <div className="max-w-4xl mx-auto px-6 pt-8 pb-4">
