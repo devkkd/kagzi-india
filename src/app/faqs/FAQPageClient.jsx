@@ -8,93 +8,79 @@ const FAQPage = () => {
   const faqData = [
     {
       id: 'faq-1',
-      category: 'ABOUT OUR PRODUCTS',
+      category: 'ABOUT CUSTOMIZATION ',
       items: [
         {
-          q: 'What raw material do you use to make your paper?',
-          a: 'All our paper is made from 100% recycled cotton textile waste.Our handmade paper products are crafted in India using recycled paper, natural fibers, and traditional paper making techniques.Our handmade paper starts with carefully sourced cotton rags, recycled fibres, and agricultural by-products, giving new purpose to materials that would otherwise go to waste.'
+          q: 'Can you customize handmade paper according to our brand requirements?',
+          a: 'Yes. We can provide sustainable customized handmade paper in different sizes, GSM, colors, textures, and finishes that comply with your brand and product requirements.'
         },
         {
-          q: 'Is your paper acid-free?',
-          a: 'Yes. All our handmade paper is acid-free and archival quality, ensuring it will not yellow, crack, or deteriorate over time. Made from recycled paper fibres and premium cotton rag pulp, our handmade paper is ideal for fine art, legal documents, journals, and keepsakes designed to last for generations. Proudly handmade in India by a trusted paper company, every sheet combines durability.'
+          q: 'Do you offer custom printing and embossing services?',
+          a: 'Yes. We offer custom printing, foil stamping, embossing, debossing, and branding for premium packaging, stationery, invitations, and corporate gifting.'
         },
         {
-          q: 'What GSM weights are available?',
-          a: 'Our handmade paper products are available in a wide range of GSM weights to suit different creative and packaging needs. We offer lightweight decorative paper and each handmade paper sheet is carefully crafted in India using recycled paper and natural fibers, providing excellent texture.'
+          q: 'Can you develop exclusive paper designs for luxury brands?',
+          a: 'Yes. As a supplier of handmade paper for luxury packaging, we design exclusive papers with textures and finishes for luxury brands wanting unique packaging solutions.'
         },
         {
-          q: 'What sizes do you offer?',
-          a: 'Our standard maximum handmade paper sheet size is 22 × 30 inches. Custom sizes are available. Please specify your required dimensions in your enquiry form.'
+          q: 'Is custom color matching available?',
+          a: 'Yes. We offer accurate color matching utilizing eco-friendly pigments to ensure that your handmade papers match your branding and packaging needs.'
         },
         {
-          q: 'Do you offer coloured paper?',
-          a: 'Yes. We offer handmade paper in natural white, a range of soft pastels, and custom-dyed sheets using natural pigments. Colour matching is also available for B2B orders, allowing businesses to create unique handmade paper products tailored to their brand requirements.'
+          q: 'Can you manufacture products under our private label?',
+          a: 'Yes. As a leading eco-friendly paper manufacturer, we offer private label manufacturing with personalized packaging, branding, and product specs to businesses throughout the world.'
         },
-        {
-          q: 'What is a deckle edge?',
-          a: 'A deckle edge is the natural, organic, uneven edge created during the sheet-lifting stage of handmade papermaking. It appears on all four sides of a handmade sheet and is the hallmark of authentic handmade paper. It cannot be replicated by machines. Many of our customers specifically seek it out as a design feature.'
-        }
       ]
     },
     {
       id: 'faq-2',
-      category: 'ABOUT ORDERING',
+      category: 'ABOUT QUALITY & CERTIFICATIONS ',
       items: [
         {
-          q: 'What is your minimum order quantity (MOQ)?',
-          a: 'MOQ varies by product. For handmade paper sheets, it is typically 100 sheets. For notebooks, bags, and boxes, MOQ is discussed based on custom specifications. Please submit an enquiry and our team will advise accordingly.'
+          q: 'How do you maintain consistent product quality?',
+          a: 'The organization conducts extensive quality inspections for each batch of its handmade paper products that to confirm thickness, texture, colour consistency, strength and finishing is perfect to guarantee the highest level of quality in every product.'
         },
         {
-          q: 'Can I request a sample before placing a bulk order?',
-          a: 'Yes. We offer sample packs to qualified B2B buyers. Please submit an enquiry specifying which products you\'d like to sample, and our team will arrange this.'
+          q: 'Is your handmade paper suitable for premium packaging?',
+          a: 'Yes. Our sustainable handmade paper was developed specifically for luxury packaging, premium stationery products, gift boxes, shopping bags and high-quality branding.'
         },
         {
-          q: 'Do you offer custom products?',
-          a: 'Absolutely. Custom GSM, size, colour, texture, embossing, foiling, branding, and packaging are all available. We work directly with brands on product development. Submit an enquiry with your specifications and we\'ll take it from there.'
+          q: 'Do your products meet international quality standards?',
+          a: 'Yes. As an environmentally responsible paper manufacturer we have a very strict production process with corresponding checks during all stages of production. We strive to produce consistent, high-quality products to fulfill the needs of both domestic and international customers.'
         },
         {
-          q: 'How long does production take?',
-          a: 'Lead times depend on the product and order volume. Standard reorders typically take 15–30 days. New custom products may require 30–45 days from sample approval. Exact timelines are shared at the quotation stage.'
+          q: 'Do you inspect products before shipment?',
+          a: 'Absolutely! Each and every order is examined and evaluated by a person prior to the shipment of an order to make sure that it meets the quality standards of our company and the specifications provided by the customer.'
         },
         {
-          q: 'Do you have a product catalogue?',
-          a: 'Yes. Please submit a catalogue request through our enquiry form and we\'ll share our current product catalogue in PDF format.'
+          q: 'Why do luxury brands choose your handmade paper?',
+          a: 'We are a top-tier handmade paper supplier for luxury packaging. We consistently provide our luxury brand customers with premium handmade paper and a wide variety of customization options. In addition, we guarantee consistent product quality and long-term durability from our handmade paper products.'
         }
       ]
     },
     {
       id: 'faq-3',
-      category: 'ABOUT SHIPPING & EXPORT',
+      category: 'ABOUT BUSINESS PARTNERSHIPS',
       items: [
         {
-          q: 'Which countries do you export to?',
-          a: 'We export our handmade products and premium paper products to many countries worldwide, including the USA, UK, Europe, Australia, and the Middle East, germany, japan, australia, africa, france. Our handmade in India collections, including handmade sheet, paper notebook, decorative paper, and recycled paper products, are trusted by global buyers for quality and craftsmanship.'
+          q: 'Do you work with wholesalers and distributors?',
+          a: 'Yes. We mainly serve the needs of international importers, wholesalers, distributors and large-scale companies looking for reliable sellers of eco-friendly handmade paper. We focused on large quantity export orders, with stable quality, customized service and reliable shipping all over the world.'
         },
         {
-          q: 'What are your shipping and payment terms?',
-          a: 'We offer standard international trade terms (FOB, CIF, etc.) and payment via bank transfer (T/T), Letter of Credit (L/C), or agreed terms for established partners. Full terms are discussed and confirmed at the quotation stage.'
+          q: 'Can you supply bulk orders for international markets?',
+          a: 'Yes, being an eco-friendly handmade paper exporter; we can export bulk orders while maintaining uniformity of quality, proper packaging and prompt delivery.'
         },
         {
-          q: 'How do you pack your products for export?',
-          a: 'We use high-quality, multi-layer, moisture-free, cushioned, and sturdy packaging suitable for long ocean freight transit. All export orders are packed by trained professionals and include appropriate documentation.'
-        }
-      ]
-    },
-    {
-      id: 'faq-4',
-      category: 'ABOUT SUSTAINABILITY',
-      items: [
-        {
-          q: 'Is your paper really eco-friendly?',
-          a: 'Yes, our handmade paper is truly eco-friendly and made using recycled paper and sustainable processes. Our paper products are crafted with care to reduce waste while offering premium quality for craft paper, paper bags, handmade diary, and other creative applications.'
+          q: 'Do you support long-term business partnerships?',
+          a: 'Our company supports the creation of long-term business relations by providing competitive pricing on large wholesale production, dependable production capacity, customized solutions and fast customer service.'
         },
-        {
-          q: 'Are your products biodegradable?',
-          a: 'Yes. All our handmade paper products are fully biodegradable and will return to the earth without harmful residue. Made from recycled paper fibres and premium cotton rag pulp.'
+         {
+          q: 'Which industries do you serve? ',
+          a: 'Companies in the following industries purchase handmade paper products including packaging, luxury goods, publishers, custom stationery, gift products, designers, and corporate clients across the globe.'
         },
-        {
-          q: 'Do you have any environmental certifications?',
-          a: 'Yes ISO 9001:2015 Certified, IAF Accredited, AGCS Verified. We are continuously working toward additional certifications as our sustainability programme develops.'
+         {
+          q: 'Why should businesses choose your company?',
+          a: 'Reliable eco-friendly paper manufacturer with global experience in sustainable handmade paper, luxury packaging solutions, customization and exports.'
         }
       ]
     }

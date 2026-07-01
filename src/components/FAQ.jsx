@@ -1,4 +1,5 @@
 "use client";
+import Link from 'next/link';
 import React, { useState } from 'react';
 
 const FAQ = () => {
@@ -8,24 +9,24 @@ const FAQ = () => {
   // FAQ Data from the design
   const faqs = [
     {
-      question: "What raw material do you use to make your paper?",
-      answer: "All our paper is made from 100% recycled cotton textile waste remnants from garment and textile factories. We use no wood pulp. Some specialty papers incorporate khadi fibre, pineapple leaf fibre, or other natural plant-based materials. All input materials are biodegradable and sustainably sourced."
+      question: "Can you customize handmade paper according to our brand requirements?",
+      answer: "Yes. We can provide sustainable customized handmade paper in different sizes, GSM, colors, textures, and finishes that comply with your brand and product requirements."
     },
     {
-      question: "Is your paper acid-free?",
-      answer: "Yes. All our handmade cotton rag paper is acid-free and archival quality - meaning it will not yellow, crack, or degrade over time. Suitable for fine art, legal documents, and anything designed to last."
+      question: "Do you offer custom printing and embossing services?",
+      answer: "Yes. We offer custom printing, foil stamping, embossing, debossing, and branding for premium packaging, stationery, invitations, and corporate gifting."
     },
     {
-      question: "What GSM weights are available?",
-      answer: "Our standard range runs from 120 GSM to 250 GSM. Custom weights are available on request for B2B orders. Please include your GSM requirement in your enquiry."
+      question: "Can you develop exclusive paper designs for luxury brands?",
+      answer: "Yes. As a supplier of handmade paper for luxury packaging, we design exclusive papers with textures and finishes for luxury brands wanting unique packaging solutions."
     },
     {
-      question: "What sizes do you offer?",
-      answer: "Our standard maximum sheet size is 22 × 30 inches. Custom sizes are available. Please specify your required dimensions in your enquiry form."
+      question: "Is custom color matching available?",
+      answer: "Yes. We offer accurate color matching utilizing eco-friendly pigments to ensure that your handmade papers match your branding and packaging needs."
     },
     {
-      question: "What is a deckle edge?",
-      answer: "A deckle edge is the natural, organic, uneven edge created during the sheet-lifting stage of handmade papermaking. It appears on all four sides of a handmade sheet and is the hallmark of authentic handmade paper. It cannot be replicated by machines. Many of our customers specifically seek it out as a design feature."
+      question: " Can you manufacture products under our private label?",
+      answer: "Yes. As a leading eco-friendly paper manufacturer, we offer private label manufacturing with personalized packaging, branding, and product specs to businesses throughout the world."
     }
   ];
 
@@ -58,7 +59,7 @@ const FAQ = () => {
           <div className="lg:w-3/5 flex flex-col">
             
             <span className="text-sm font-medium text-gray-900 mb-4">
-              About Our Products
+              About Customization
             </span>
 
             <div className="flex flex-col border-t border-gray-300">
@@ -98,9 +99,11 @@ const FAQ = () => {
 
             {/* Button */}
             <div className="mt-10">
+              <Link href="faqs">
               <button className="bg-[#171717] text-white px-8 py-3.5 rounded-full text-sm font-medium hover:bg-gray-800 transition-colors flex items-center justify-center gap-2 w-max">
                 See All FAQ's <span aria-hidden="true">&rarr;</span>
               </button>
+              </Link>
             </div>
 
           </div>
