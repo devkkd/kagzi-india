@@ -51,7 +51,7 @@ export default function EventPopup() {
           {/* Banner Image - Responsive */}
           <div className="relative w-full">
             <Image
-              src="/expo.png"
+              src="/expo1.png"
               alt="IHGF Delhi Fair Autumn 2026"
               width={500}
               height={680}
