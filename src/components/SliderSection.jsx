@@ -1,14 +1,15 @@
-"use client"
-import React from 'react';
+"use client";
+
+import React from "react";
 // Import Swiper React components and modules
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
-import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
 // Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 const SliderSection = () => {
   // Array of text items for the marquee
@@ -23,6 +24,13 @@ const SliderSection = () => {
     "SUSTAINABLE",
   ];
 
+  // Banner images
+  const bannerImages = [
+    "/images/banner/banner1.png",
+    "/images/banner/banner2.png",
+    "/images/banner/banner3.png",
+  ];
+
   return (
     <section className="w-full flex flex-col">
       
@@ -33,26 +41,29 @@ const SliderSection = () => {
           spaceBetween={0}
           slidesPerView={1}
           loop={true}
-          autoplay={{ delay: 5000, disableOnInteraction: false }}
+          autoplay={{
+            delay: 5000,
+            disableOnInteraction: false,
+          }}
           pagination={{
             clickable: true,
-            el: '.custom-swiper-pagination',
-            bulletClass: 'swiper-custom-bullet',
-            bulletActiveClass: 'swiper-custom-bullet-active',
+            el: ".custom-swiper-pagination",
+            bulletClass: "swiper-custom-bullet",
+            bulletActiveClass: "swiper-custom-bullet-active",
           }}
           navigation={{
-            prevEl: '.custom-prev',
-            nextEl: '.custom-next',
+            prevEl: ".custom-prev",
+            nextEl: ".custom-next",
           }}
           className="w-full h-[400px] sm:h-[500px] lg:h-[600px]"
         >
-          {/* Repeating the same image 3 times as requested */}
-          {[1, 2, 3].map((index) => (
+          {/* Banner Slides */}
+          {bannerImages.map((image, index) => (
             <SwiperSlide key={index}>
               <div className="w-full h-full relative">
-                <img 
-                  src="/images/banner/banner1.png" 
-                  alt={`Banner Slide ${index}`} 
+                <img
+                  src={image}
+                  alt={`Banner Slide ${index + 1}`}
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -60,21 +71,31 @@ const SliderSection = () => {
           ))}
         </Swiper>
 
-        {/* Custom Navigation Arrows (matching the white circles in your design) */}
-        <button className="custom-prev absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-gray-800 hover:bg-gray-100 transition-colors opacity-0 group-hover:opacity-100 cursor-pointer">
+        {/* Custom Navigation Arrows */}
+        <button
+          className="custom-prev absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-gray-800 hover:bg-gray-100 transition-colors opacity-0 group-hover:opacity-100 cursor-pointer"
+          aria-label="Previous slide"
+        >
           <FiChevronLeft size={24} />
         </button>
-        <button className="custom-next absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-gray-800 hover:bg-gray-100 transition-colors opacity-0 group-hover:opacity-100 cursor-pointer">
+
+        <button
+          className="custom-next absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-gray-800 hover:bg-gray-100 transition-colors opacity-0 group-hover:opacity-100 cursor-pointer"
+          aria-label="Next slide"
+        >
           <FiChevronRight size={24} />
         </button>
 
         {/* Custom Pagination Container */}
-        {/* <div className="custom-swiper-pagination absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex gap-2 bg-black/20 backdrop-blur-sm px-4 py-2 rounded-full"></div> */}
+        {/* 
+        <div className="custom-swiper-pagination absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex gap-2 bg-black/20 backdrop-blur-sm px-4 py-2 rounded-full"></div> 
+        */}
       </div>
 
       {/* 2. Infinite Marquee Banner (Left to Right) */}
       <div className="w-full bg-[#860000] py-3.5 overflow-hidden flex relative mt-5">
         <div className="flex whitespace-nowrap animate-marquee-lr">
+          
           {/* We duplicate the content twice to create the seamless infinite loop */}
           {[...Array(2)].map((_, arrayIndex) => (
             <div key={arrayIndex} className="flex items-center">
@@ -83,8 +104,11 @@ const SliderSection = () => {
                   <span className="text-white text-xs sm:text-sm font-semibold tracking-wider px-6">
                     {item}
                   </span>
+
                   {/* Diamond Separator */}
-                  <span className="text-white text-[10px] mx-2">◆</span>
+                  <span className="text-white text-[10px] mx-2">
+                    ◆
+                  </span>
                 </React.Fragment>
               ))}
             </div>
@@ -94,15 +118,21 @@ const SliderSection = () => {
 
       {/* 3. Embedded CSS for custom Swiper styling & Left-to-Right Marquee Animation */}
       <style jsx="true">{`
-        /* Marquee Animation (Left to Right) */
+        /* Marquee Animation (Left-to-Right) */
         @keyframes marquee-lr {
-          0% { transform: translateX(-50%); }
-          100% { transform: translateX(0%); }
+          0% {
+            transform: translateX(-50%);
+          }
+
+          100% {
+            transform: translateX(0%);
+          }
         }
+
         .animate-marquee-lr {
           animation: marquee-lr 30s linear infinite;
           /* Width is doubled due to the two identical blocks of content */
-          width: max-content; 
+          width: max-content;
         }
 
         /* Swiper Custom Pagination Bullets */
@@ -115,12 +145,12 @@ const SliderSection = () => {
           cursor: pointer;
           transition: all 0.3s ease;
         }
+
         .swiper-custom-bullet-active {
           background-color: #ffffff;
           transform: scale(1.2);
         }
       `}</style>
-      
     </section>
   );
 };

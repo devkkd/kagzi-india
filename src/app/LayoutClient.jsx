@@ -22,6 +22,17 @@ export default function LayoutClient({ children }) {
           <CertificationsNewsletter />
           <Footer />
 
+          {/* Email Floating Button */}
+          <a
+            href="mailto:sales@kagziindia.com?subject=Query from Kagzi India&body=Hi,I have a query regarding your products.Thank you!"
+            className="fixed bottom-24 right-6 z-50 w-14 h-14 bg-red-600 rounded-full flex items-center justify-center shadow-lg hover:bg-red-700 hover:scale-110 transition-all duration-200"
+            aria-label="Send Email"
+          >
+            <svg viewBox="0 0 24 24" className="w-7 h-7 fill-white">
+              <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+            </svg>
+          </a>
+
           {/* WhatsApp Floating Button */}
           <a
             href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`}

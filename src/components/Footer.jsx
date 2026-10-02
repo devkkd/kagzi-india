@@ -56,9 +56,9 @@ const Footer = () => {
   };
 
   const socialLinks = [
-    { name: 'Instagram', icon: '/images/icons/instagram.svg', url: '#' },
-    { name: 'Facebook', icon: '/images/icons/facebook.png', url: '#' },
-    { name: 'YouTube', icon: '/images/icons/youtube.png', url: '#' }
+    { name: 'Instagram', icon: '/images/icons/instagram.svg', url: 'https://www.google.com/url?q=https://www.instagram.com/kagzi_industries/%3Fhl%3Den&sa=U&sqi=2&ved=2ahUKEwiV_ceWgpuXAxVCzTgGHfUiMKQQFnoECCIQAQ&usg=AOvVaw1flUmMHHivRtHLftNV2hAE' },
+    // { name: 'Facebook', icon: '/images/icons/facebook.png', url: '#' },
+    // { name: 'YouTube', icon: '/images/icons/youtube.png', url: '#' }
   ];
 
   return (
