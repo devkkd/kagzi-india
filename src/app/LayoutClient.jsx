@@ -15,7 +15,7 @@ export default function LayoutClient({ children }) {
   return (
     <>
       {!isAdminRoute && <Header />}
-      {!isAdminRoute && <EventPopup />}
+      {/* {!isAdminRoute && <EventPopup />} */}
       {children}
       {!isAdminRoute && (
         <>
