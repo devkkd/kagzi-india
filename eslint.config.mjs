@@ -11,6 +11,7 @@ const eslintConfig = defineConfig([
       '@next/next/no-html-link-for-pages': 'warn',
       'react-hooks/exhaustive-deps': 'warn',
       'react-hooks/set-state-in-effect': 'warn',
+      'react-hooks/error-boundaries': 'warn',
       '@next/next/no-page-custom-font': 'warn',
     }
   },
