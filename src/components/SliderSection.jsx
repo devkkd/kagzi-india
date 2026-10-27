@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-// Import Swiper React components and modules
+import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
@@ -12,7 +12,6 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 const SliderSection = () => {
-  // Array of text items for the marquee
   const marqueeItems = [
     "HANDMADE SINCE 1980",
     "ZERO-CHEMICAL DYEING",
@@ -24,17 +23,25 @@ const SliderSection = () => {
     "SUSTAINABLE",
   ];
 
-  // Banner images
   const bannerImages = [
-    "/images/banner/banner1.png",
-    "/images/banner/banner2.png",
-    "/images/banner/banner3.png",
+    {
+      src: "/images/banner/banner1.png",
+      alt: "Kagzi India premium handmade paper — Banner 1",
+    },
+    {
+      src: "/images/banner/banner2.png",
+      alt: "Kagzi India eco-friendly paper products — Banner 2",
+    },
+    {
+      src: "/images/banner/banner3.png",
+      alt: "Kagzi India artisan handmade paper — Banner 3",
+    },
   ];
 
   return (
     <section className="w-full flex flex-col">
-      
-      {/* 1. Image Slider Section */}
+
+      {/* 1. Image Slider */}
       <div className="w-full relative group">
         <Swiper
           modules={[Navigation, Pagination, Autoplay]}
@@ -57,21 +64,38 @@ const SliderSection = () => {
           }}
           className="w-full h-[400px] sm:h-[500px] lg:h-[600px]"
         >
-          {/* Banner Slides */}
           {bannerImages.map((image, index) => (
             <SwiperSlide key={index}>
               <div className="w-full h-full relative">
-                <img
-                  src={image}
-                  alt={`Banner Slide ${index + 1}`}
-                  className="w-full h-full object-cover"
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  fill
+                  className="object-cover"
+                  /*
+                   * priority=true on first slide → tells Next.js to preload this image,
+                   * removes lazy-loading, and emits a <link rel="preload"> in <head>.
+                   * This is the #1 fix for the 36.4s LCP score.
+                   */
+                  priority={index === 0}
+                  /*
+                   * Subsequent slides are lazy-loaded to save bandwidth.
+                   */
+                  loading={index === 0 ? "eager" : "lazy"}
+                  /*
+                   * sizes tells the browser the image always fills 100vw,
+                   * so it picks the right srcset entry and avoids downloading
+                   * a 1920px image on a 375px phone.
+                   */
+                  sizes="100vw"
+                  quality={85}
                 />
               </div>
             </SwiperSlide>
           ))}
         </Swiper>
 
-        {/* Custom Navigation Arrows */}
+        {/* Navigation Arrows */}
         <button
           className="custom-prev absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-gray-800 hover:bg-gray-100 transition-colors opacity-0 group-hover:opacity-100 cursor-pointer"
           aria-label="Previous slide"
@@ -85,18 +109,11 @@ const SliderSection = () => {
         >
           <FiChevronRight size={24} />
         </button>
-
-        {/* Custom Pagination Container */}
-        {/* 
-        <div className="custom-swiper-pagination absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex gap-2 bg-black/20 backdrop-blur-sm px-4 py-2 rounded-full"></div> 
-        */}
       </div>
 
-      {/* 2. Infinite Marquee Banner (Left to Right) */}
+      {/* 2. Marquee Banner */}
       <div className="w-full bg-[#860000] py-3.5 overflow-hidden flex relative mt-5">
         <div className="flex whitespace-nowrap animate-marquee-lr">
-          
-          {/* We duplicate the content twice to create the seamless infinite loop */}
           {[...Array(2)].map((_, arrayIndex) => (
             <div key={arrayIndex} className="flex items-center">
               {marqueeItems.map((item, index) => (
@@ -104,9 +121,7 @@ const SliderSection = () => {
                   <span className="text-white text-xs sm:text-sm font-semibold tracking-wider px-6">
                     {item}
                   </span>
-
-                  {/* Diamond Separator */}
-                  <span className="text-white text-[10px] mx-2">
+                  <span className="text-white text-[10px] mx-2" aria-hidden="true">
                     ◆
                   </span>
                 </React.Fragment>
@@ -116,26 +131,16 @@ const SliderSection = () => {
         </div>
       </div>
 
-      {/* 3. Embedded CSS for custom Swiper styling & Left-to-Right Marquee Animation */}
+      {/* 3. CSS for marquee animation and Swiper bullets */}
       <style jsx="true">{`
-        /* Marquee Animation (Left-to-Right) */
         @keyframes marquee-lr {
-          0% {
-            transform: translateX(-50%);
-          }
-
-          100% {
-            transform: translateX(0%);
-          }
+          0%   { transform: translateX(-50%); }
+          100% { transform: translateX(0%); }
         }
-
         .animate-marquee-lr {
           animation: marquee-lr 30s linear infinite;
-          /* Width is doubled due to the two identical blocks of content */
           width: max-content;
         }
-
-        /* Swiper Custom Pagination Bullets */
         .swiper-custom-bullet {
           width: 8px;
           height: 8px;
@@ -145,7 +150,6 @@ const SliderSection = () => {
           cursor: pointer;
           transition: all 0.3s ease;
         }
-
         .swiper-custom-bullet-active {
           background-color: #ffffff;
           transform: scale(1.2);

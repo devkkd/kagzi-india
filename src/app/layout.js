@@ -1,14 +1,7 @@
-import { Mona_Sans } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "../context/CartContext";
 import LayoutClient from "./LayoutClient";
 import Script from "next/script";
-
-const monaSans = Mona_Sans({
-  subsets: ["latin"],
-  variable: "--font-mona",
-  weight: ["200","300","400","500","600","700","800","900"]
-});
 
 export const metadata = {
   title: "Kagzi India - Handmade Paper",
@@ -25,10 +18,29 @@ export const metadata = {
   },
 };
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
+        {/* Preconnect to Cloudinary for faster image loading */}
+        <link rel="preconnect" href="https://res.cloudinary.com" />
+        <link rel="dns-prefetch" href="https://res.cloudinary.com" />
+
+        {/* Preload the LCP image (first banner) */}
+        <link
+          rel="preload"
+          as="image"
+          href="/images/banner/banner1.png"
+          fetchPriority="high"
+        />
+
+        {/* Google Analytics — deferred, non-render-blocking */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-9FBC24526C"
           strategy="afterInteractive"
@@ -42,7 +54,7 @@ export default function RootLayout({ children }) {
           `}
         </Script>
       </head>
-      <body className={`${monaSans.variable} antialiased`}>
+      <body className="antialiased">
         <CartProvider>
           <LayoutClient>
             {children}

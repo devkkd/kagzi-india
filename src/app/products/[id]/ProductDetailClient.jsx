@@ -163,7 +163,7 @@ const ProductDetailClient = ({ product }) => {
                                 <SpecRow label="GSM" value={product.gsm} />
                                 <SpecRow label="Cover Print" value={product.coverPrint} />
                                 <SpecRow label="Color" value={product.color} />
-                                <SpecRow label="Stock Available" value={product.stock > 0 ? `${product.stock} units` : 'Out of Stock'} />
+                                {/* <SpecRow label="Stock Available" value={product.stock > 0 ? `${product.stock} units` : 'Out of Stock'} /> */}
                             </div>
 
                             {/* Features */}

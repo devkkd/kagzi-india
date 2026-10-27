@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
 import { FiSearch, FiShoppingCart, FiMenu, FiX, FiChevronDown } from 'react-icons/fi';
 import { useCart } from '@/context/CartContext';
@@ -184,10 +185,13 @@ const Header = () => {
 
             {/* Logo */}
             <Link href="/" className="shrink-0 mx-3 xl:mx-5 cursor-pointer hover:opacity-80 transition-opacity">
-              <img
+              <Image
                 src="/images/logo/mainlogo.svg"
                 alt="Kagzi India"
-                className="h-3 md:h-7 object-contain"
+                width={120}
+                height={28}
+                className="h-7 w-auto object-contain"
+                priority
               />
             </Link>
 
@@ -210,10 +214,13 @@ const Header = () => {
 
           {/* Mobile Center Logo */}
           <Link href="/" className="lg:hidden absolute left-1/2 -translate-x-1/2 cursor-pointer hover:opacity-80 transition-opacity">
-            <img
+            <Image
               src="/images/logo/mainlogo.svg"
               alt="Kagzi India"
-              className="h-5 md:h-7 object-contain"
+              width={100}
+              height={28}
+              className="h-5 md:h-7 w-auto object-contain"
+              priority
             />
           </Link>
 
@@ -308,7 +315,7 @@ const Header = () => {
         {/* Menu Header */}
         <div className="flex items-center justify-between px-5 py-4 border-b border-[rgba(208,195,195,0.5)]">
           <Link href="/" onClick={closeMobileMenu}>
-            <img src="/images/logo/mainlogo.svg" alt="Kagzi India" className="h-8 object-contain" />
+            <Image src="/images/logo/mainlogo.svg" alt="Kagzi India" width={100} height={32} className="h-8 w-auto object-contain" />
           </Link>
           <button
             onClick={closeMobileMenu}
